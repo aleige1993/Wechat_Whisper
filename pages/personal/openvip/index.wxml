@@ -1,0 +1,59 @@
+<!--pages/personal/openvip/index.wxml-->
+<view>
+  <view class="title-t">
+    会员等级说明及开通
+  </view>
+  <view class="vip-panl">
+    <view class="vip-lis" wx:for="{{listData}}">
+      <view class="header-info">
+        <view class="levael"> {{item.title}}</view>
+      </view>
+      <view class="foot-info">
+       {{item.description}}
+      </view>
+      <view class="change-lev">
+            <view class="open-b  ">升级</view>
+            <view class="open-c open-g" data-id="{{item.vipConfigId}}">开通</view>
+      </view>
+    </view>
+     <!-- <view class="vip-lis">
+      <view class="header-info">
+        <view class="levael"> Lv月：30元/月</view>
+      </view>
+      <view class="foot-info">
+       
+        开通之后。用户在发送定时悄悄话时，可以选择的送达时间范围为一个月以内的任意时刻。
+      </view>
+      <view class="change-lev">
+            <view class="open-b">升级</view>
+            <view class="open-c">开通</view>
+        </view>
+    </view>
+     <view class="vip-lis">
+      <view class="header-info">
+        <view class="levael"> Lv半年：100元/半年</view>
+      </view>
+      <view class="foot-info">
+        开通之后。用户在发送定时悄悄话时，可以选择的送达时间范围为半年以内的任意时刻。
+      </view>
+      <view class="change-lev">
+            <view class="open-b">升级</view>
+            <view class="open-c">开通</view>
+        </view>
+    </view>
+     <view class="vip-lis">
+      <view class="header-info">
+        <view class="levael"> Lv年：150元/年</view>
+       
+      </view>
+      <view class="foot-info">
+        开通之后。用户在发送定时悄悄话时，可以选择的送达时间范围为一年以内的任意时刻。
+      </view>
+       <view class="change-lev">
+            <view class="open-b">升级</view>
+            <view class="open-c">开通</view>
+        </view>
+    </view> -->
+  </view>
+
+</view>

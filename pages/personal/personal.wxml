@@ -1,0 +1,286 @@
+<view class="mine">
+  <view class="mine-body">
+    <view class="mine-container" bindtap="goPortrait"> 
+      <image  class="mine-containe_img" src="{{avatarUrl}}" role="img"></image>
+      <view class="mine-containe_name">{{username}}</view>
+        <view class="hadericont icontitle iconfont iconyou"></view>  
+    </view>
+    <view class="mine-tool-box">
+      <!-- <view bindtap="onToolClick" class="mine-tool-item" data-e-tap-so="this">
+        <image class="mine-tool-item_img" src="/assets/images/common/relationship.png" role="img"></image>
+        <view class="mine-tool-item_msg">
+          <text>亲密关系</text>
+          <image src="/assets/images/common/right.png" role="img"></image>
+        </view>
+      </view> -->
+      <!-- <view class="mine-tool-item">
+        <image class="mine-tool-item_img quick" src="/assets/images/common/quick.png" role="img"></image>
+        <view bindtap="onHelpClick" class="mine-tool-item_msg " data-e-tap-so="this">
+          <text>快捷使用</text>
+          <image src="/assets/images/common/right.png" role="img"></image>
+        </view> -->
+
+        <!-- <view class="mine-tool-item">
+          <image class="mine-tool-item_img quick" src="/assets/images/common/quick.png" role="img"></image>
+          <view bindtap="onOpenVip" class="mine-tool-item_msg " data-e-tap-so="this">
+            <text>开通会员</text>
+            <image src="/assets/images/common/right.png" role="img"></image>
+          </view>
+        </view>
+         <view class="mine-tool-item">
+          <image class="mine-tool-item_img quick" src="/assets/images/common/quick.png" role="img"></image>
+          <view bindtap="onDevLop" class="mine-tool-item_msg noBorder" data-e-tap-so="this">
+            <text>特殊定制</text>
+            <image src="/assets/images/common/right.png" role="img"></image>
+          </view>
+        </view> -->
+      <!-- </view> --> 
+      <navigator class="tiaozhuanpyq border2">
+        <view class="title">
+           悄悄说
+        </view>
+        <view class="imgbox">
+          <image wx:for="{{[1,2,3,4,5]}}"  wx:key="a" src="/assets/images/tabs/jiaren.png"></image>
+        </view>
+        <view class="icontitle iconfont iconyou"></view>
+      </navigator> 
+      <view class="gongzhpanl  ifguzhu border2">
+         <navigator class="tiaozhuanpyq">
+            <view class="title">
+              公众号
+            </view>
+            <view class="guanzhu">
+              <text>未关注，点击关注</text>
+            </view>
+            <view class="icontitle iconfont iconyou"></view>
+          </navigator>
+        <view class="title_guz">关注后，定时接收好友悄悄话。</view>
+      </view>
+      
+
+      <!-- <view class="mine-tool-item centerTesxts border2" bindtap="showMESGfc">
+        <image class="xinxi" src="/assets/images/common/xinxi.png"></image>
+        <text class="sxinxi">定时发送</text>
+      </view> -->
+    </view>
+    <!-- <view class="tuwer">
+      <view class="werpanls">
+        <view class="erweipanl">
+          <image class="erweima" bindtap="bcimgs" src="/assets/images/common/erwei.jpg"></image>
+        </view>
+        <view class="text_panl">
+          <view class="tes1">微信搜一搜加关注</view>
+          <view class="tes2">公众号</view>
+          <view class="sobut">
+            <image class="soso" src="/assets/images/common/souss.png"></image>
+            <text>定时悄悄话</text>
+          </view>
+        </view>
+
+      </view>
+      <view class="gzhao_tips">
+        关注公众号之后，能够收到对方发送给你的定时悄悄话
+      </view>
+    </view> -->
+    <!-- <view class="gzhao_tips">
+      关注“定时悄悄话”公众号之后，能够收到对方发送给您的定时悄悄话。
+    </view>
+    <view class="weview">
+      <image class="erweima" bindtap="bcimgs" src="/assets/images/common/erwei.jpg"></image>
+    </view> -->
+    <!-- <view class="mine-tool-box">
+      <view class="mine-tool-item" style="padding:20rpx 0;align-items: center;justify-content: center;">
+        <image mode="widthFix" style="disable:block;width:34rpx;margin: 0 25rpx 0 0;" src="/assets/images/common/send.png" role="img"></image>
+        <view bindtap="onHelpClick" style="font-size;34rpx;font-weight:bold;">
+          <text style="color:#576b95;">定时发送</text>
+        </view>
+      </view>
+    </view>
+    <view class="desc " style="margin:20rpx auto 0 auto">*"关注定时悄悄话"公众号之后，</view>
+    <view class="desc" style="margin:0rpx auto 20rpx auto">能够收到对方发送给你的定时悄悄话</view> -->
+    <view bindtap="onVersionClick" class="mine-version-msg" data-e-tap-so="this">意见反馈</view>
+  </view>
+
+  <view class="layer" wx:if="{{layers}}"></view>
+</view>
+<view wx:if="{{isShowHelp}}" bindtap="onHideHelp" class="help1" data-e-tap-so="this">
+  <text>
+1、点击右上角的
+</text>
+  <image src="/assets/images/common/dian.png" role="img"></image>
+</view>
+
+<view wx:if="{{isShowHelp}}" bindtap="onHideHelp" class="help1" data-e-tap-so="this">
+  <text>
+1、点击右上角的
+</text>
+  <image src="/assets/images/common/dian.png" role="img"></image>
+</view>
+
+<view wx:if="{{isShowFuc}}" bindtap="onHideFc" class="help2" data-e-tap-so="this">
+  <text>
+2、点击左下角的“浮窗”
+</text>
+  <image src="/assets/images/common/yuan.png" role="img"></image>
+  <view class="gotowill" bindtap="onHideFc">
+    去试试
+  </view>
+</view>
+
+<view wx:if="{{isShowTd}}" bindtap="onHideTd" class="help3" data-e-tap-so="this">
+  <text>
+    3、点击右侧边缘的 “浮窗(如右侧图)”标志， 即可进入小程序。 
+</text>
+  <text>
+4、拖动“浮窗(如右侧图)”，可将其放置在页面的任意位置。
+</text>
+  <view class="yidong">
+    <image src="/assets/images/common/yidong.png" role="img"></image>
+  </view>
+  <view class="gotowill" bindtap="onHideTd">
+    去试试
+  </view>
+</view>
+
+<block wx:if="{{isTells}}">
+  <view class="message-input {{isFocus?'message-input--focus':''}}">
+    <view class="message-input-box">
+      <image bindtap="onSwitchModel" class="message-input-textIcon" src="{{isVoice?'../../assets/images/common/text.png':'/assets/images/common/voice.png'}}"></image>
+      <view wx:if="{{isVoice}}" bindlongpress="handleRecordStart" bindtouchmove="handleTouchMove" bindtouchend="handleRecordStop" class="message-input-speak">
+        {{voiceMsgVal}}
+      </view>
+      <!-- <view class="message-input-speak" bindlongpress="handleRecordStart" bindtouchmove="handleTouchMove" bindtouchend="handleRecordStop" >{{voiceMsgVal}}</view>  -->
+      <view class="message-input-speak" bindtap="ontextareaViewClick" wx:else>
+        <!--  -->
+        <block wx:if="{{isShowTextarea}}">
+          <form bindsubmit="onConfirm" report-submit="true" style="width:100%;">
+            <!-- <view bindtap="onConfirm">发送按钮</view> -->
+            <textarea wx:if="{{isShowTextarea}}" auto-focus="{{autoFocus}}" cursor-spacing="30" class='message-input-text' show-confirm-bar="{{true}}" adjust-position="{{true}}" bindfocus="openKeyboard" bindblur="outKeyboard" auto-height style="max-height: 150px"
+              bindlinechange="onLineChange" bindconfirm="onConfirm" bindinput="onInput" value="{{inputValue}}" maxlength="200">
+            </textarea>
+          </form>
+        </block>
+        <block wx:else>
+          <view calss='message-input-text'>{{inputValue}}</view>
+        </block>
+        <view class="message-input-numBox">
+          <view class="message-input-numBox1">
+            <view>
+              <text class="message-input-numBox1-box">{{inputValue.length}}</text>
+            </view>
+            <view>200</view>
+          </view>
+        </view>
+      </view>
+      <image bindtap="onShowImage" class="message-input-cameraIcon" data-e-tap-so="this" src="/assets/images/common/camera.png" role="img"></image>
+    </view>
+    <block wx:if="{{isChoose}}">
+      <view class="message-input-choose">
+        <view class="choose-item" bindtap="onImageToolClick" data-flag="album">
+          <view class="choose-item-img">
+            <image src="/assets/images/common/choose_img.png"></image>
+          </view>
+          <view class="choose-item-title">图片</view>
+        </view>
+        <view class="choose-item" bindtap="onImageToolClick" data-flag="camera">
+          <view class="choose-item-img">
+            <image src="/assets/images/common/choose_camera.png"></image>
+          </view>
+          <view class="choose-item-title">拍照</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</block>
+<view class="messageCover" wx:if="{{ismessageModal}}"></view>
+<view class="messageModal" wx:if="{{ismessageModal}}">
+  <view class="{{!isDateShow && !isAnimate ? 'messageModal-body' : isAnimate ? 'messageModal-body animate-none' : 'messageModal-body animate-style'}}">
+    <block wx:if="{{isInputEnter}}">
+      <scroll-view class="messageModal-body-msg" scroll-y="{{true}}">{{inputValue}}</scroll-view>
+    </block>
+    <block wx:if="{{isVoiceEnter}}">
+      <view class="messageModal-body-voice" bindtap="playVoice">
+        <image class="messageModal-body-play" src='{{isPlayVoice ? "/assets/images/common/voice_black.gif" : "/assets/images/common/voice2.png"}}'></image>
+        <text class="messageModal-body-length">{{isVoice ? duration: 0}}"</text>
+        <view class="triangle"></view>
+      </view>
+    </block>
+    <block wx:if="{{isImageEnter}}">
+      <scroll-view scroll-y="{{true}}" class="messageModal-body-msg">
+        <image class="messageModal-body-img" mode="widthFix" src="{{v}}" wx:for="{{imageValue}}" wx:for-item="v" wx:for-index="_anonIdx2"></image>
+      </scroll-view>
+    </block>
+    <block wx:if="{{isMsg4Enter}}">
+      <scroll-view scroll-y="{{true}}" class="messageModal-body-msg">
+        <view>{{msg4_input}}</view>
+        <image class="messageModal-body-img" mode="widthFix" src="{{v}}" wx:for="{{msg4_imgs}}" wx:for-item="v" wx:for-index="_anonIdx2"></image>
+      </scroll-view>
+    </block>
+    <view wx:if="{{imgUrl}}" bindtap="onChooseFriend" class="messageModal-body-add" data-e-tap-so="this">
+      <image bindtap="onChooseFriend" class="messageModal-body-imgurl" data-e-tap-so="this" src="{{imgUrl}}" role="img">
+      </image>
+      <text style="color:rgba(30,39,55,1)">{{friendName}}</text>
+    </view>
+    <view wx:else class="messageModal-body-add" bindtap="onChooseFriend" data-e-tap-so="this">
+      <view></view>
+      <text>选择收话人</text>
+    </view>
+    <view class="messageModal-body-line">
+    </view>
+    <view class="messageModal-body-timeTitle">送达时间</view>
+    <!-- bindtap="openCalendar"  -->
+    <view class="messageModal-body-time" bindtap="onSelectDateShow" data-e-tap-so="this">{{year}} 年 {{month}} 月 {{day
+      < 10 ? '0' + day : day}} 日</view>
+        <view class="messageModal-body-timeTitle">{{weekDayNew}}</view>
+        <view class="messageModal-body-time" bindtap="onSelectDateShow" data-e-tap-so="this">{{hh}}:{{mm}}</view>
+
+
+        <view class="messageModal-body-line">
+        </view>
+        <view class="messageModal-body-button">
+          <image bindtap="isModalhide" src="/assets/images/common/cancel.png" role="img">
+          </image>
+          <image bindtap="onSendMessage" data-e-tap-so="this" src="/assets/images/common/send.png" role="img">
+          </image>
+        </view>
+    </view>
+    <view class="{{isDateShow && isAnimate ? 'messageModal-body' : isAnimate ? 'messageModal-body animate-style' : 'messageModal-body animate-none'}}">
+      <picker-view indicator-style="height: 40px;" style="width: 100%; height: 200px;" value="{{yearValue}}" bindchange="onChangeYear">
+        <picker-view-column>
+          <view class="picker-view-style" wx:key="item" wx:for="{{years}}" wx:for-item="item" wx:for-index="_anonIdx4">{{item}}年</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view class="picker-view-style" wx:key="item" wx:for="{{months}}" wx:for-item="item" wx:for-index="_anonIdx6">{{item}}月</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view class="picker-view-style" wx:key="item" wx:for="{{days}}" wx:for-item="item" wx:for-index="_anonIdx8">{{item}}日</view>
+        </picker-view-column>
+      </picker-view>
+      <view class="messageModal-body-line" style="margin: 10px 0"></view>
+      <picker-view indicator-style="height: 40px;" style="width: 130px; height: 200px;position: relitave;" value="{{timeValue}}" bindchange="onChangeTime">
+        <view class="messageModal-position-time">:</view>
+        <picker-view-column>
+          <view class="picker-view-style" wx:key="item" wx:for="{{hours}}" wx:for-item="item" wx:for-index="_anonIdx10">{{item}}</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view class="picker-view-style" wx:key="item" wx:for="{{minutes}}" wx:for-item="item" wx:for-index="_anonIdx12">{{item}}</view>
+        </picker-view-column>
+      </picker-view>
+      <view class="messageModal-body-button">
+        <image bindtap="onShowMessage" src="/assets/images/common/cancel.png" data-e-tap-so="this"></image>
+        <image bindtap="onShowMessage" src="/assets/images/common/enter.png" data-e-tap-so="this"></image>
+      </view>
+    </view>
+  </view>
+  <wxs module="tools" src="../../utils/tools.wxs" />
+  <!-- <wux-calendar id="wux-calendar" /> -->
+  <van-popup show="{{isCurDate}}" position="bottom" bind:close="onClose">
+    <van-datetime-picker type="time" value="{{ timeHours }}" bind:confirm="onCurrentDate" bind:cancel="onCurrCel" />
+  </van-popup>
+
+  <view class="voice-popup" wx:if="{{isShowVoiceA}}">
+    <image src="/assets/images/common/voice_b.gif"></image>
+  </view>
+
+  <view bindtap="showMESGfc" class="layers" wx:if="{{isTells}}" catchtouchmove="preventD"></view>
+  <!-- <tab-bar index="{{'3'}}"></tab-bar> -->

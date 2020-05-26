@@ -1,0 +1,61 @@
+<!--pages/personal/openvip/index.wxml-->
+<view>
+  <view class="vip-panl">
+    <view class="vip-lis" wx:for="{{listData}}">
+      <view class="header-info">
+        <view class="levael">{{item.title}}</view>
+        <view class="change-lev">
+            <view class="open-c" data-id="{{item.customConfigId}}" bindtap="shop_goto">购买</view>
+        </view>
+      </view>
+      <view class="foot-info">
+        <view class="left_y"></view>
+        <view class="right_y"></view>
+        <text>{{item.description}}</text>
+      </view>
+    </view>
+     <!-- <view class="vip-lis">
+      <view class="header-info">
+        <view class="levael">三年内任意：20元</view>
+        <view class="change-lev">
+            <view class="open-c">购买</view>
+        </view>
+      </view>
+      <view class="foot-info">
+       <view class="left_y"></view>
+        <view class="right_y"></view>
+       <text>定制之后，用户无论哪种会员等级，均可发送一条定时范围在三年以内任意时刻的定时悄悄话。
+        此次行为为单次购买，用完即无。</text>
+      </view>
+    </view>
+     <view class="vip-lis">
+      <view class="header-info">
+        <view class="levael">五年内任意：30元</view>
+        <view class="change-lev">
+            <view class="open-c">购买</view>
+        </view>
+      </view>
+      <view class="foot-info">
+       <view class="left_y"></view>
+        <view class="right_y"></view>
+        <text>定制之后，用户无论哪种会员等级，均可发送一条定时范围在五年以内任意时刻的定时悄悄话。
+        此次行为为单次购买，用完即无。</text>
+      </view>
+    </view>
+     <view class="vip-lis">
+      <view class="header-info">
+        <view class="levael"> 十年内任意：40元</view>
+        <view class="change-lev">
+            <view class="open-c">购买</view>
+        </view>
+      </view>
+      <view class="foot-info">
+       <view class="left_y"></view>
+        <view class="right_y"></view>
+        <text>定制之后，用户无论哪种会员等级，均可发送一条定时范围在十年以内任意时刻的定时悄悄话。
+        此次行为为单次购买，用完即无。</text>
+      </view>
+    </view> -->
+  </view>
+
+</view>

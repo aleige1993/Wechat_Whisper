@@ -1,0 +1,95 @@
+<view class="message">
+  <view class="message-content">
+    <view class="message-content-item right" wx:key="_anonIdx2" wx:for="{{messageList}}"   wx:for-index="index">
+					<image bindtap="{{ item.userid == userId?'right':'onItemClickToFriendInfo'}}" data-item="{{item}}" class="message-content-item_img" src="{{item.userid != userId ? item.imgurl : item.userImgurl}}" role="img"></image>
+					<view class="message-content-item_msg">
+						<view class="message-content-title">
+							<text class="message-content-time" wx:if="{{item.messagestatus == 1}}">{{item.plantime+'送达该消息'}}</text>
+							<text class="message-content-time" wx:if="{{item.messagestatus == 2}}">{{item.plantime}}</text>
+							<text class="message-content-time" wx:if="{{item.messagestatus == 3}}">{{item.plantime}}</text>
+							<text class="message-content-time" wx:if="{{item.messagestatus == 4}}">{{'该消息超时未接收'}}</text>
+							<text class="message-content-time errmsg" wx:if="{{item.messagestatus == 5}}">{{'该消息送达失败'}}</text>
+						</view> 
+						<view wx:if="{{item.messagetype === 2}}" class="message-content-voice" style="width:{{item.voicetime * 7}}px" bindtap="onPlayVoice" data-index="{{index}}" data-item="{{item}}"> 
+							<!-- <image wx:if="{{item.userid!=userId}}" class="message-content-play" src="{{item.ishooks?'/assets/images/tabs/left_123.gif':'/assets/images/common/voice2.png'}}"></image>  -->
+							<image  class="message-content-play" src="{{item.ishooks? '/assets/images/tabs/right_123.gif':'/assets/images/common/voice-right.png'}}"></image>
+							<text class='message-content-length'>{{item.voicetime}}"</text> 
+							<view wx:if="{{ item.userid == userId ? false:true && item.messagestatus == 2}}" class="message-content-point"></view>
+						</view> 
+						<view wx:if="{{item.messagetype === 4 && item.messagestr != ''}}" class="fiuer4">
+						<view class="message-content-msg">
+								{{item.messagestr}}
+							</view>
+						</view>
+						<view class="message-content-strimg {{item.messagestr == '' ? 'strimgtop':''}} {{item.messagecontent.length == 4? 'aswha':''}}" wx:if="{{item.messagecontent[0] != '' && item.messagetype === 4}}">
+						<!-- <view bindtap="dwewqewq">{{imagesinfos[30].width}}</view> -->
+							<block wx:for-index="imgIndex"  wx:for-item="imgItem" wx:for="{{item.messagecontent}}" wx:if="{{item.messagecontent.length==1}}" >
+								<view class="derwwaaa"> 
+										<image  bindtap="getShowimgs" bindload="imageLoad"  data-index="{{ index }}"  data-item="{{imgItem}}" data-list="{{item.messagecontent}}" class="moveimges"   src="{{imgItem}}" style="width:{{imagesinfos[index].width}}rpx; height:{{ imagesinfos[index].height}}rpx;"></image> 
+								</view> 
+							</block>
+							<block  wx:if="{{item.messagecontent.length == 4}}" wx:for-index="imgIndex"  wx:for-item="imgItem" wx:for="{{item.messagecontent}}" >  
+											<image bindtap="getShowimgs" wx:if="{{imgItem}}" data-item="{{imgItem}}" data-list="{{item.messagecontent}}" class="moveimgesfweq" mode='aspectFill' src="{{imgItem}}"></image>
+									
+							</block>
+								<block wx:for-index="imgIndex"  wx:for-item="imgItem" wx:for="{{item.messagecontent}}"  wx:if="{{item.messagecontent.length>1 && item.messagecontent.length != 4}}">
+								  <image bindtap="getShowimgs" wx:if="{{imgItem}}" data-item="{{imgItem}}" data-list="{{item.messagecontent}}" class="moveimges addvewimh" mode='aspectFill' src="{{imgItem}}"></image>
+							</block>
+						</view>
+					</view> 
+
+      <!-- <image class="message-content-item_img" src="{{v.imgurl}}"></image>
+      <view class="message-content-item_msg"> 
+        <view class="message-content-title">
+          <text class="message-content-time">{{v.plantime}}</text>
+        </view>
+        <block wx:if="{{v.messagetype === 1}}">
+          <view class="message-content-msg">{{v.messagecontent}}</view>
+        </block>
+        <block wx:if="{{v.messagetype === 2}}">
+          <view class="message-content-voice" style="width:{{v.voicetime * 7}}px" bindtap="onPlayVoice" data-item="{{v}}"> 
+							<image  class="message-content-play" src="{{item.ishooks? '/assets/images/tabs/right_123.gif':'/assets/images/common/voice-right.png'}}"></image>
+            <text class="message-content-length">{{v.voicetime}}"</text>
+          </view>
+        </block>
+        <block wx:if="{{v.messagetype === 3}}">
+          <view class="message-content-img">
+            <image class="message-content-img_img" mode="widthFix" src="{{v.messagecontent}}"></image>
+          </view>
+        </block>
+         <view wx:if="{{v.messagetype === 4 && v.messagestr != ''}}" class="message-content-msg" >
+             <view>
+							 {{v.messagestr}} 
+							</view> 
+            </view> 
+                <block wx:for-index="imgIndex"  wx:for-item="imgItem" wx:for="{{v.messagecontent}}" wx:if="{{v.messagecontent.length==1}}" >
+								<view class="derwwaaa"> 
+										<image  bindtap="getShowimgs" bindload="imageLoad"  data-index="{{ index }}"  data-item="{{imgItem}}" data-list="{{v.messagecontent}}" class="moveimges"   src="{{imgItem}}" style="width:{{imagesinfos[index].width}}rpx; height:{{ imagesinfos[index].height}}rpx;"></image> 
+								</view> 
+							</block>
+              <block  wx:if="{{v.messagecontent.length == 4}}" wx:for-index="imgIndex"  wx:for-item="imgItem" wx:for="{{v.messagecontent}}" >  
+											<image bindtap="getShowimgs" wx:if="{{imgItem}}" data-item="{{imgItem}}" data-list="{{v.messagecontent}}" class="moveimgesfweq" mode='aspectFill' src="{{imgItem}}"></image>
+							</block>
+								<block wx:for-index="imgIndex"  wx:for-item="imgItem" wx:for="{{v.messagecontent}}"  wx:if="{{v.messagecontent.length>1 && v.messagecontent.length != 4}}">
+								  <image bindtap="getShowimgs" wx:if="{{imgItem}}" data-item="{{imgItem}}" data-list="{{v.messagecontent}}" class="moveimges addvewimh" mode='aspectFill' src="{{imgItem}}"></image>
+							</block>
+        <view wx:if="{{v.messagetype === 4}}" class="{{v.messagecontent[0] != '' ? 'message-content-img' : 'message-content-msg'}}">
+          {{v.messagestr}}
+          <view wx:if="{{v.messagecontent[0] != ''}}">
+            <block wx:for-index="imgIndex" wx:for-item="imgItem" wx:for="{{v.messagecontent}}">
+              <image bindtap="getShowimgs" wx:if="{{imgItem}}" data-item="{{imgItem}}" data-list="{{v.messagecontent}}" class="moveimges" mode='widthFix' src="{{imgItem}}"></image>
+            </block>
+          </view>
+        </view>
+        <block wx:if="{{v.messagetype === 4}}">
+                         <view class="strMES">{{v.messagestr}}</view>
+                        <view>
+                          <block wx:for-index="imgIndex" wx:for-item="imgItem" wx:for="{{v.messagecontent}}">
+                            <image data-item="{{imgItem}}" data-list="{{v.messagecontent}}" class="message-content-img_img" mode='widthFix' src="{{imgItem}}"></image>
+                          </block>
+                        </view> 
+                    </block>
+      </view> -->
+    </view>
+  </view>
+</view>

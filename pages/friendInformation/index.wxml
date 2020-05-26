@@ -1,0 +1,155 @@
+ <view class="information">
+ 	<view class="coajisa">
+ 		<view class="information-msg">
+ 			<image class="information-msg_img" src="{{imgurl}}"></image>
+ 			<view class="information-msg_box">
+ 				<view class="information-msg_name">{{remarkname != "null" ? remarkname:friendname}}
+ 					<image style="margin-left:6rpx;" class="information-msg_sex2" src="{{sex == 1 ? '/assets/images/tabs/nan.png':'/assets/images/tabs/nv.png'}}"></image>
+ 				</view>
+ 				<view class="information-msg_remark" wx:if="{{remarkname != 'null'}}">微信名字：{{friendname}}</view>
+ 				<!-- <view class="information-msg_status">
+        <image class="{{sex == 1 ? 'information-msg_sex2' : 'information-msg_sex'}}" src="{{sex == 1 ? '/assets/images/common/sex2.png':'/assets/images/common/sex.png'}}"></image>
+        <block wx:if="{{intimate != 'null'}}">
+          <image class="information-msg_rela" src="/assets/images/common/relationship.png"></image>
+        </block>
+        <block wx:if="{{intimate != 'null'}}">
+          <text class="information-msg_msg">{{intimate}}</text>
+        </block>
+      </view> -->
+ 			</view>
+ 		</view>
+ 		<navigator wx:if="{{userAdmin == 1 || userAdmin == 2}}">
+ 			<view class="information-handle  clearTOP" bindtap="onSetCommen">
+ 				<text>备注昵称</text>
+ 				<view class="icontitle iconfont iconyou"></view>
+ 				<view class="links"></view>
+ 			</view>
+ 		</navigator>
+ 		<navigator wx:if="{{userAdmin == 1 || userAdmin == 2 || userAdmin == 3}}">
+ 			<view class="information-handle " bindtap="onSearchMessage" data-e-tap-so="this">
+ 				<text>待送达悄悄话</text>
+ 				<view class="icontitle iconfont iconyou"></view>
+ 				<view class="links"></view>
+ 			</view>
+ 		</navigator>
+ 		<navigator wx:if="{{userAdmin == 1}}"  url="/pages/friendInformation/move?options={{options}}" >
+ 			<view class="information-handle " >
+ 				<text>更多</text>
+ 				<view class="icontitle iconfont iconyou"></view>
+ 				<view class="links"></view>
+ 			</view>
+ 		</navigator>
+ 		<navigator wx:if="{{userAdmin == 2 || userAdmin == 3}}">
+ 			<view class="information-handle " bindtap="onClearMessage">
+ 				<text>清空收话记录</text>
+ 				<view class="links"></view>
+ 			</view>
+ 		</navigator>
+ 	</view>
+
+ 	<!-- <view class="information-tool topp_news">
+    <view class="information-tool-switch">
+      <view class="information-tool-title">置顶收话人</view>
+      <view class="tool-switch-box">
+      <van-switch checked="{{ istop }}" bind:change="onSwitchChange" />
+      </view>
+    </view>
+  </view> -->
+ 	<!-- <view class="information-tool"> 
+    <view class="hls-switch">
+      <view class="climove" bindtap="onClearMessage">清空记录</view>
+      <view class="climove"  bindtap="onDeleteFriend">删除</view> 
+      <view class="tool-switch-box">
+      <view class="switcmon">消息拒收</view>
+      <van-switch checked="{{ isreject }}" bind:change="onSwitchReject" /> 
+      </view>
+    </view>
+  </view> -->
+ 	<!-- <view class="information-handle" bindtap="onSearchMessage" data-e-tap-so="this">
+    <text>待送达悄悄话</text>
+    <image class="xxright" src="/assets/images/common/right.png"></image> 
+  </view> -->
+ 	<!-- <view style="background:#fff">
+    <view class="information-handle diff" bindtap="onClearMessage" data-e-tap-so="this">
+      清空收话记录
+    </view>
+    <view class="information-handle diff2" bindtap="onDeleteFriend" data-e-tap-so="this">删除</view>
+  </view> -->
+ 	<!-- <view class="information-button" bindtap="onButtonClick" data-e-tap-so="this">
+    给{{sex == 1 ? '他' : '她'}}说悄悄话
+  </view> -->
+ 	<navigator class="tiaozhuanpyq border2" wx:if="{{userAdmin == 1 || userAdmin == 2}}">
+ 		<view class="title">
+ 			悄悄说
+ 		</view>
+ 		<view class="imgbox">
+ 			<image wx:for="{{[1,2,3,4,5]}}" wx:key="a" src="/assets/images/tabs/jiaren.png"></image>
+ 		</view>
+ 		<view class="icontitle iconfont iconyou"></view>
+ 	</navigator>
+ 	<view wx:if="{{userAdmin == 1 || userAdmin == 3}}" class="mine-tool-item centerTesxts border2" bindtap="onButtonClick">
+ 		<image class="xinxi" src="/assets/images/common/xinxi.png"></image>
+ 		<text>定时发送</text>
+ 	</view>
+ 	<!-- 消息拒收 -->
+ 	<view class="weui-demo-dialog {{isRejectOpened ? 'weui-demo-dialog_show' : ''}}">
+ 		<view class="weui-mask" bindtap="onActionClose"></view>
+ 		<view class="weui-actionsheet {{isRejectOpened ? 'weui-actionsheet_toggle' : ''}}" catchtap="stopEvent">
+ 			<view class="weui-actionsheet__title">
+ 				<view class="weui-actionsheet__title-text">开启之后，将不再接收该收话人给您发送的悄悄话</view>
+ 			</view>
+ 			<view class="weui-actionsheet__menu">
+ 				<view class="weui-actionsheet__cell weui-actionsheet__cell_warn" bindtap="rejectFriend">
+ 					确定
+ 				</view>
+ 			</view>
+ 			<view class="weui-actionsheet__action">
+ 				<view class="weui-actionsheet__cell" bindtap="onActionClose">取消</view>
+ 			</view>
+ 		</view>
+ 	</view>
+ 	<!-- // 弹窗 -->
+ 	<view class="weui-demo-dialog {{isDeleteOpened ? 'weui-demo-dialog_show' : ''}}">
+ 		<view class="weui-mask" bindtap="onActionClose"></view>
+ 		<view class="weui-actionsheet {{isDeleteOpened ? 'weui-actionsheet_toggle' : ''}}" catchtap="stopEvent">
+ 			<view class="weui-actionsheet__title">
+ 				<view class="weui-actionsheet__title-text">将“{{friendname}}”从列表删除，同时删除与该收话人的收话记录</view>
+ 			</view>
+ 			<view class="weui-actionsheet__menu">
+ 				<view class="weui-actionsheet__cell weui-actionsheet__cell_warn" bindtap="deleteFriend">
+ 					删除收话人
+ 				</view>
+ 			</view>
+ 			<view class="weui-actionsheet__action">
+ 				<view class="weui-actionsheet__cell" bindtap="onActionClose">取消</view>
+ 			</view>
+ 		</view>
+ 	</view>
+ 	<view class="weui-demo-dialog {{isClearOpened ? 'weui-demo-dialog_show' : ''}}">
+ 		<view class="weui-mask" bindtap="onActionClose"></view>
+ 		<view class="weui-actionsheet {{isClearOpened ? 'weui-actionsheet_toggle' : ''}}" catchtap="stopEvent">
+ 			<view class="weui-actionsheet__menu">
+ 				<view class="weui-actionsheet__cell weui-actionsheet__cell_warn" bindtap="deleteMessage">
+ 					清空收话记录
+ 				</view>
+ 			</view>
+ 			<view class="weui-actionsheet__action">
+ 				<view class="weui-actionsheet__cell" bindtap="onActionClose">取消</view>
+ 			</view>
+ 		</view>
+ 	</view>
+ </view>
+ <van-transition show="{{ isOpens }}" name="slide-up">
+ 	<van-popup show="{{ isOpens }}">
+ 		<view class="ownStlye">
+ 			<view class="openTions">
+ 				<view bindtap="onCloseOpens">取消</view>
+ 				<view>设置备注</view>
+ 				<view class="onDoen {{isDone?'stlylv':'stlyhui'}} " bindtap="okCommt">完成</view>
+ 			</view>
+ 			<view class="commoText">
+ 				<input maxlength="15" focus="{{isOpens}}" placeholder="请输入备注信息" value="{{commVal}}" bindinput="changComm"></input>
+ 			</view>
+ 		</view>
+ 	</van-popup>
+ </van-transition>

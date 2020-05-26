@@ -1,0 +1,85 @@
+/* pages/personal/openvip/index.wxss */
+page{
+  background-color: #EDEDED;
+}
+view,text,button{
+  font-size: 30rpx;
+}
+.vip-panl{
+  padding:0 30rpx 30rpx;
+}
+.vip-lis{
+  /* background-color: #fff; */
+  margin-bottom: 20rpx;
+  border-radius:6rpx; 
+}
+.title-t{
+  color: #999;
+  padding: 30rpx;
+  font-size: 24rpx;
+}
+.header-info{
+  display: flex;
+  
+}
+.levael{
+  display: inline-block;
+  background-color: rgb(255, 225, 225);
+  color: rgb(173, 0, 0);
+  border-top-left-radius:20rpx;
+  border-top-right-radius: 20rpx;
+  padding:10rpx 30rpx; 
+}
+.change-lev{
+  display: flex;
+  justify-content:flex-end;
+  margin-bottom: 20rpx;
+  background-color: #fff;
+  padding: 20rpx;
+  border-top:1px dashed #EDEDED; 
+}
+.change-lev view{
+  margin-left: 30rpx;
+  padding: 6rpx 30rpx;
+  border-radius:4rpx; 
+  font-size: 24rpx;
+}
+.foot-info{
+  position: relative;
+  border-top:1px dotted #EDEDED; 
+  font-size: 26rpx;
+  color: #777;
+  padding:30rpx 20rpx;
+  background-color: #fff;
+}
+.foot-info text{
+  font-size: 26rpx;
+}
+.left_y,.right_y{
+  position: absolute;
+  z-index: 2;
+  top: -25rpx;
+  width: 50rpx;
+  height: 50rpx;
+  border-radius:100%;
+  background-color: #EDEDED; 
+}
+.left_y{
+  left: -50rpx;
+}
+.right_y{
+  right: -50rpx;
+}
+.open-b{
+  color: #ff976a;
+  border: 1px solid #ff976a;
+}
+.open-c{
+  color: #07c160;
+  border: 1px solid #07c160;
+}
+.open-g{
+  color: #414141 !important;
+  background-color:#eee !important;
+  border: 1px solid #f2f2f2 !important; 
+}

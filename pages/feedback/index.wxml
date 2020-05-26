@@ -1,0 +1,25 @@
+<!--index.wxml-->
+<page>
+  <view class="feedback">
+    <view class="feedback-top">
+      <view class="feedback-textarea">
+        <textarea bindinput="onTextAreaChange" data-e-input-so="this" placeholder="请填写10个字以上的问题描述以便我们为您提供更好的帮助"></textarea>
+        <text>200</text>
+      </view>
+      <view class="feedback-image-title">
+        <text>相关截图（选填）</text>
+        <text>{{imgNum}}/3</text>
+      </view>
+      <view class="feedback-image-box">
+       <van-uploader file-list="{{ feedbackimg }}" bind:delete="delImgs" bind:after-read="afterRead" max-count="3" />
+      </view>
+    </view>
+    <view class="feedback-phone">
+      <view class="feedback-phone-title">联系方式</view>
+      <input bindinput="onContactChange" data-e-input-so="this" placeholder="邮箱/手机号" type="tel"> 邮箱/手机号
+      </input>
+    </view>
+    <view class="feedback-msg">请输入有效联系方式以便开发者联系您（选填）</view>
+    <view bindtap="addFeed" class="feedback-button" data-e-tap-so="this">提交</view>
+  </view>
+</page>

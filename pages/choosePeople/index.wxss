@@ -1,0 +1,236 @@
+.tells3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+}
+
+.tells3-navbar {
+  background: #ededed;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.tells3-navbar-img {
+  height: 40rpx;
+  width: 36rpx;
+}
+
+.tells3-navbar-text {
+  font-size: 20rpx;
+  color: #1e2737;
+  margin-left: 16rpx;
+}
+
+.tells3-search {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  position: relative;
+}
+
+.tells3-search_cover {
+  background: black;
+  opacity: 0.4;
+  width: 100%;
+  position: absolute;
+  z-index: 90;
+  top: 0;
+  left: 0;
+}
+
+.tells3-search-isSearch {
+  background: #fff;
+}
+
+.tells3-search-isSearch-title {
+  width: 100%;
+  height: 64rpx;
+  background: whitesmoke;
+  font-size: 24rpx;
+  color: #999;
+  line-height: 64rpx;
+  padding-left: 28rpx;
+}
+
+.tells3-top {
+  height: auto;
+}
+
+.tells3-top-title {
+  position: relative;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  height: 64rpx;
+  line-height: 64rpx;
+  background: whitesmoke;
+  padding-left: 28rpx;
+  color: #999;
+  font-size: 24rpx;
+}
+
+.tells3-top-title .triangle {
+  position: absolute;
+  right: 16rpx;
+  top: 24rpx;
+  width: 0;
+  height: 0;
+  border-width: 8rpx;
+  border-style: solid;
+  border-color: #767778 transparent transparent transparent;
+  margin-top: 8rpx;
+  -webkit-transform-origin: 0, 0;
+  -ms-transform-origin: 0, 0;
+  transform-origin: 0, 0;
+}
+
+.tells3-list-item {
+  height: 106rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0 28rpx;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.tells3-list-item .list_img {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 8rpx;
+  background: #eee;
+}
+
+.tells3-list-item .list_msg {
+  margin-left: 28rpx;
+  border-bottom: 2rpx solid #eee;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #1e2737;
+  font-size: 28rpx;
+  height: 106rpx;
+}
+
+.tells3-choose {
+  height: 96rpx;
+  background: white;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.tells3-choose-msg {
+  font-size: 28rpx;
+  color: #1e2737;
+  margin-left: 28rpx;
+}
+
+.tells3-choose image {
+  width: 10rpx;
+  height: 20rpx;
+  margin-right: 28rpx;
+}
+
+.tells3 .at-tab-bar .at-tab-bar__icon {
+  font-size: 28rpx;
+}
+
+.tells3 .at-tab-bar .at-tab-bar__item {
+  padding: 0;
+}
+
+.tells3 .at-search-bar {
+  background: #ededed;
+  padding: 16rpx 20rpx;
+}
+
+.tells3 .at-search-bar .at-search-bar__clear,
+.tells3 .at-search-bar .at-search-bar__input,
+.tells3 .at-search-bar .at-search-bar__input-cnt,
+.tells3 .at-search-bar .at-search-bar__placeholder-wrap {
+  height: 72rpx !important;
+  font-size: 34rpx !important;
+  border-radius: 10rpx !important;
+}
+
+.tells3 .at-search-bar .at-search-bar__input {
+  color: #191a1b;
+}
+
+.tells3 .at-search-bar .at-search-bar__placeholder-wrap .at-icon {
+  font-size: 34rpx;
+}
+
+.tells3 .at-search-bar .at-search-bar__input-cnt {
+  background: #fff;
+}
+
+.tells3 .at-search-bar .at-search-bar__action {
+  font-size: 36rpx !important;
+  line-height: 50rpx !important;
+  background: none;
+  color: #576b95;
+  margin-left: 0;
+}
+
+.tells3 .at-indexes__list .at-indexes__list-title {
+  padding: 0;
+  height: 64rpx;
+  background: whitesmoke;
+  font-size: 24rpx;
+  padding-left: 28rpx;
+  line-height: 64rpx;
+}
+
+.tells3 .wux-index-item__hd {
+  height: 64rpx;
+  background: whitesmoke;
+  font-size: 24rpx;
+  color: #666;
+  line-height: 64rpx;
+  padding-left: 28rpx;
+}
+.isshowcomt{
+height:32px;
+overflow:hidden;
+padding-bottom:8px;
+}
+.isshowicon{
+transform:rotate(-90deg);
+margin-top:0px
+}

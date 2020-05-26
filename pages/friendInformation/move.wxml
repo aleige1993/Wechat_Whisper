@@ -1,0 +1,68 @@
+<!--pages/friendInformation/move.wxml-->
+<view>
+	<view class="coajisa  dweqwa">
+		<navigator>
+			<view class="information-handle " bindtap="onClearMessage">
+				<text>清空收话记录</text>
+			</view>
+		</navigator>
+		<navigator>
+			<view class="information-handle " bindtap="">
+				<text>消息拒收</text>
+				<van-switch class="weqdxz" checked="{{ isreject }}" bind:change="onSwitchReject" />
+				<view class="links"></view>
+			</view>
+		</navigator>
+	</view>
+	<view class="mine-tool-item centerTesxts border2" bindtap="onDeleteFriend">
+		<text class="colorred">删除</text>
+	</view>
+</view>
+
+<!-- 消息拒收 -->
+<view class="weui-demo-dialog {{isRejectOpened ? 'weui-demo-dialog_show' : ''}}">
+	<view class="weui-mask" bindtap="onActionClose"></view>
+	<view class="weui-actionsheet {{isRejectOpened ? 'weui-actionsheet_toggle' : ''}}" catchtap="stopEvent">
+		<view class="weui-actionsheet__title">
+			<view class="weui-actionsheet__title-text">开启之后，将不再接收该收话人给您发送的悄悄话</view>
+		</view>
+		<view class="weui-actionsheet__menu">
+			<view class="weui-actionsheet__cell weui-actionsheet__cell_warn" bindtap="rejectFriend">
+				确定
+			</view>
+		</view>
+		<view class="weui-actionsheet__action">
+			<view class="weui-actionsheet__cell" bindtap="onActionClose">取消</view>
+		</view>
+	</view>
+</view>
+<!-- // 弹窗 -->
+<view class="weui-demo-dialog {{isDeleteOpened ? 'weui-demo-dialog_show' : ''}}">
+	<view class="weui-mask" bindtap="onActionClose"></view>
+	<view class="weui-actionsheet {{isDeleteOpened ? 'weui-actionsheet_toggle' : ''}}" catchtap="stopEvent">
+		<view class="weui-actionsheet__title">
+			<view class="weui-actionsheet__title-text">将“{{friendname}}”从列表删除，同时删除与该收话人的收话记录</view>
+		</view>
+		<view class="weui-actionsheet__menu">
+			<view class="weui-actionsheet__cell weui-actionsheet__cell_warn" bindtap="deleteFriend">
+				删除收话人
+			</view>
+		</view>
+		<view class="weui-actionsheet__action">
+			<view class="weui-actionsheet__cell" bindtap="onActionClose">取消</view>
+		</view>
+	</view>
+</view>
+<view class="weui-demo-dialog {{isClearOpened ? 'weui-demo-dialog_show' : ''}}">
+	<view class="weui-mask" bindtap="onActionClose"></view>
+	<view class="weui-actionsheet {{isClearOpened ? 'weui-actionsheet_toggle' : ''}}" catchtap="stopEvent">
+		<view class="weui-actionsheet__menu">
+			<view class="weui-actionsheet__cell weui-actionsheet__cell_warn" bindtap="deleteMessage">
+				清空收话记录
+			</view>
+		</view>
+		<view class="weui-actionsheet__action">
+			<view class="weui-actionsheet__cell" bindtap="onActionClose">取消</view>
+		</view>
+	</view>
+</view>

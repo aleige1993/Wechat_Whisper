@@ -1,0 +1,109 @@
+<!--pages/editMesg/index.wxml-->
+<view>
+	<view class="title_hd">
+		<view class="oncol" bindtap="oncloes">取消</view>
+		<!-- <view>预览</view> {{isDone? 'stlylv' : 'stlyhui'}} -->
+		<view class="onDoen stlylv " bindtap="onDoen">完成</view>
+	</view>
+	<view class="edit_commen">
+		<view class="textareStr">
+			<textarea focus="{{true}}" auto-height class="textpand" placeholder-style="color:#B4B4B4" maxlength="{{800}}" placeholder="输入悄悄话..." value="{{strInput}}" bindinput="contionsInout"></textarea>
+			<!-- <text class="maxstr">{{strNum}}/200</text> -->
+		</view>
+
+		<view class="move_img">
+			<van-uploader multiple="{{true}}" file-list="{{ fileList }}" bind:delete="delImgs" bind:after-read="afterRead" max-count="9" image-fit="aspectFill" />
+		</view>
+	</view>
+</view>
+<view class="messageCover" wx:if="{{ismessageModal}}"></view>
+<view class="messageModal messgstyle" wx:if="{{ismessageModal}}">
+	<view class="titledwe" wx:if="{{ismessageModal}}">定时送达时间</view>
+	<view class="{{!isDateShow && !isAnimate ? 'messageModal-body' : isAnimate ? 'messageModal-body animate-none' : 'messageModal-body animate-style'}}">
+		<!-- <block wx:if="{{isInputEnter}}">
+				<scroll-view class="messageModal-body-msg" scroll-y="{{true}}">{{inputValue}}</scroll-view>
+			</block> -->
+		<!-- <block wx:if="{{isVoiceEnter}}">
+				<view class="messageModal-body-voice" bindtap="playVoice">
+					<image class="messageModal-body-play" src='{{isPlayVoice ? "/assets/images/common/voice_black.gif" : "/assets/images/common/voice2.png"}}'></image>
+					<text class="messageModal-body-length">{{isVoice ? duration: 0}}"</text>
+					<view class="triangle"></view>
+				</view>
+			</block> -->
+		<!-- <block wx:if="{{isImageEnter}}">
+				<scroll-view scroll-y="{{true}}" class="messageModal-body-msg">
+					<image class="messageModal-body-img" mode="widthFix" src="{{v}}" wx:for="{{imageValue}}" wx:for-item="v" wx:for-index="_anonIdx2"></image>
+				</scroll-view>
+			</block> -->
+		<!-- <block wx:if="{{isMsg4Enter}}">
+				<scroll-view scroll-y="{{true}}" class="messageModal-body-msg">
+					<view>{{msg4_input}}</view>
+					<image class="messageModal-body-img" mode="widthFix" src="{{v}}" wx:for="{{msg4_imgs}}" wx:for-item="v" wx:for-index="_anonIdx2"></image>
+				</scroll-view>
+			</block> -->
+		<!-- <view class="messageModal-body-add">
+				<image bindtap="onChooseFriend" class="messageModal-body-imgurl" data-e-tap-so="this" src="{{imgUrl}}" role="img">
+				</image>
+				<text style="color:rgba(30,39,55,1)">{{friendName}}</text>
+			</view> -->
+		<!-- <view class="messageModal-body-line">
+			</view> -->
+		<!-- <view class="messageModal-body-timeTitle">送达时间</view> -->
+		<!-- bindtap="openCalendar"  -->
+		<view class="messageModal-body-time" bindtap="onSelectDateShow" data-e-tap-so="this">{{year}} 年 {{month}} 月 {{day
+      < 10 ? '0' + day : day}} 日</view>
+		<view class="messageModal-body-time" bindtap="onSelectDateShow" data-e-tap-so="this">{{hh}}:{{mm}}</view>
+		<view class="messageModal-body-timeTitle" bindtap="onSelectDateShow">{{weekDayNew}}</view>
+		<view class="messageModal-body-timeTitle" bindtap="onSelectDateShow">{{luanrText}}</view>
+		<view class="messageModal-body-line">
+		</view>
+		<view class="messageModal-body-button">
+			<image bindtap="isModalhide" src="/assets/images/common/cancel.png" role="img">
+			</image>
+			<image bindtap="onSendMessage" data-e-tap-so="this" src="/assets/images/common/send.png" role="img">
+			</image>
+		</view>
+	</view>
+	<view class="{{isDateShow && isAnimate ? 'messageModal-body' : isAnimate ? 'messageModal-body animate-style' : 'messageModal-body animate-none'}}">
+		<view class="mesgsdfsa">
+			<picker-view indicator-class="fwads" indicator-style="height: 40px;font-size:40rpx;" style="width: 70%; height: 140px;" value="{{yearValue}}" bindchange="onChangeYear">
+				<picker-view-column>
+					<view class="picker-view-style" wx:key="item" wx:for="{{years}}" wx:for-item="item" wx:for-index="_anonIdx4">{{item}}年</view>
+				</picker-view-column>
+				<picker-view-column>
+					<view class="picker-view-style" wx:key="item" wx:for="{{months}}" wx:for-item="item" wx:for-index="_anonIdx6">{{item}}月</view>
+				</picker-view-column>
+				<picker-view-column>
+					<view class="picker-view-style" wx:key="item" wx:for="{{days}}" wx:for-item="item" wx:for-index="_anonIdx8">{{item}}日</view>
+				</picker-view-column>
+			</picker-view>
+			<!-- <view class="messageModal-body-line" style="margin: 10px 0"></view> -->
+			<picker-view indicator-style="height: 40px;" style="width:30%; height: 140px;position: relitave;" value="{{timeValue}}" bindchange="onChangeTime">
+				<view class="messageModal-position-time">:</view>
+				<picker-view-column>
+					<view class="picker-view-style" wx:key="item" wx:for="{{hours}}" wx:for-item="item" wx:for-index="_anonIdx10">{{item}}</view>
+				</picker-view-column>
+				<picker-view-column>
+					<view class="picker-view-style" wx:key="item" wx:for="{{minutes}}" wx:for-item="item" wx:for-index="_anonIdx12">{{item}}</view>
+				</picker-view-column>
+			</picker-view>
+		</view>
+		<view class="messageModal-body-line"></view>
+		<view class="messageModal-body-button">
+			<image bindtap="onShowMessage" src="/assets/images/common/cancel.png" data-e-tap-so="this"></image>
+			<image bindtap="onShowMessage" src="/assets/images/common/enter.png" data-e-tap-so="this"></image>
+		</view>
+	</view>
+</view>
+<!-- </view> -->
+<!-- <wxs module="tools" src="../../utils/tools.wxs" /> -->
+<!-- <wux-calendar id="wux-calendar" /> -->
+<van-popup show="{{isCurDate}}" position="bottom" bind:close="onClose">
+	<van-datetime-picker type="time" value="{{ timeHours }}" bind:confirm="onCurrentDate" bind:cancel="onCurrCel" />
+</van-popup>
+
+<!-- <view class="voice-popup" wx:if="{{isShowVoiceA}}">
+  <image src="/assets/images/common/voice_b.gif"></image>
+</view> -->
+
+<view class="layers msgyser" wx:if="{{ismessageModal}}" catchtouchmove="preventD"></view>

@@ -1,0 +1,8 @@
+<!--pages/personal/portrait/index.wxml-->
+<view class="impanl">
+  <image  mode="aspectFill"  class="panlimgs" style="width:{{imgwidth}}px;height:{{imgwidth}}px" src="{{tempFilePaths}}"></image>
+</view>
+<view class="changimg" bindtap="changimg" wx:if="{{ischange}}" >
+  点击更换
+</view>
+<mp-actionSheet bindactiontap="bindactiontap" mask="{{false}}" bindclose="bindclose" show="{{!ischange}}" actions="{{groups}}"></mp-actionSheet>

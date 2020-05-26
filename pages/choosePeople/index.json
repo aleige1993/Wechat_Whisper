@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-search": "../../components/vant/search/index"
+  },
+  "navigationBarTitleText": "选择一个收话人",
+  "navigationStyle": "default",
+  "navigationBarBackgroundColor": "#EDEDED"
+}

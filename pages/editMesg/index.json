@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "van-uploader": "../../components/vant/uploader/index"
+  },
+  "backgroundColor": "#ffffff",
+  "disableScroll": true
+}

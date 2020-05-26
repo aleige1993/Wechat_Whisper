@@ -1,0 +1,6 @@
+<!--index.wxml-->
+ 
+    <view class="chatRecord">
+        <view class="title">快速搜索聊天内容</view>
+        <view class="button" bindtap="onButtonClick" data-e-tap-so="this">待送达悄悄话</view>
+    </view> 

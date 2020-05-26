@@ -1,0 +1,208 @@
+/* pages/trends/trends/photoAlbum/index.wxss */
+
+.haser{
+  width: 100%;
+  position: relative;
+}
+.filde{
+  background-color: #EDEDED;
+  position: absolute;
+  z-index: 11;
+  width: 100%;
+  left: 0;
+  top: 0;
+  /* height: 130rpx; */
+  height: 180rpx;
+  display: block;
+}
+.buik{
+  color: #000 !important;
+}
+.navpanll{
+  position: fixed;
+  width: 100%;
+  height: 120rpx;
+  z-index: 10;
+}
+.navpanl2{
+  opacity:0;
+}
+.baergeo{
+  position: relative;
+}
+.dsfwee{
+  position:absolute;
+  z-index:1;
+  width: 100%;
+  height:99%;
+  background-color:#000;
+  opacity:0.2;
+}
+.jweq{
+  width: 100%;
+}
+.xiabiao{
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  width: 100%;
+  bottom:-50rpx;
+  right:0;
+  justify-content: flex-end;
+  align-items: center;
+}
+.tiescopor{
+  color: #fff;
+  font-size: 24rpx;
+}
+.xzewq{
+  width: 181rpx;
+  height: 159rpx;
+  margin-top: 20rpx;
+}
+.meitain{
+  position: absolute;
+  width: 100%;
+  z-index:20;
+  display: flex;
+  justify-content:space-between;
+  color: #fff;
+  font-size: 32rpx;
+  margin-top: 104rpx;
+  /* margin-top: 60rpx; */
+  margin-bottom: 20rpx;
+  padding:0 25rpx;
+}
+.fanzhuan1{
+  transform: rotate(180deg);
+  font-size: 38rpx;
+  width: 40rpx;
+  margin-top: -2rpx;
+  display: inline-block;
+}
+.mytitel{
+  margin-left:-50rpx;
+}
+.kongge{
+  width: 100%;
+  height: 120rpx;
+}
+.jintian{
+  display: flex;
+  padding-left: 12rpx;
+  padding-right: 50rpx;
+  box-sizing: border-box;
+  margin-bottom: 54rpx;
+}
+.diyizhao{
+
+}
+.diyi{
+  font-size: 50rpx;
+  color: #1A1A1A;
+  width: 150rpx;
+}
+.hezuo{
+  display: flex;
+  flex: 1;
+}
+.beijw{
+  width: 136rpx;
+  height: 136rpx;
+  text-align: center;
+  background-color: #EDEDED;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.niantext{
+  /* margin-left: 10rpx; */
+  flex: 1;
+  height: 106rpx;
+  width: 100%;
+  font-size: 26rpx;
+  overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-height: 38rpx;
+}
+.zhangshu{
+  font-size: 24rpx;
+  color: #8E8E92;
+}
+.nianzhao{
+  width: 100%;
+  height: 100%;
+}
+.diyizhao{
+  width: 83rpx;
+  height: 64rpx;
+}
+.list_box{
+  display: flex;
+  padding-right: 50rpx;
+  padding-left: 12rpx;
+  margin-bottom:8rpx;
+}
+.diyi  .tian{
+  color: #1A1A1A;
+  font-size: 50rpx;
+  font-weight: 500;
+}
+.yue{
+  font-size: 22rpx;
+  color: #1A1A1A;
+  font-weight: 500;
+}
+.niandu{
+  /* margin-top: 54rpx; */
+}
+.link_nian{
+  background-color: #EDEDED;
+  color: #8E8E92;
+  font-size: 26rpx;
+  line-height: 40rpx;
+  padding-left: 18rpx;
+  margin-top: 96rpx;
+  margin-bottom:54rpx;
+}
+.dier{
+  justify-content: space-between !important;
+}
+.dier image{
+  width:66rpx;
+  height:136rpx;
+}
+.disan {
+  justify-content: space-between;
+}
+.doubel{
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  justify-content: space-between;
+  height: 100%;
+}
+.doubel image{
+  width:66rpx;
+  height:66rpx;
+}
+.disan .kanqwe{
+  height: 136rpx;
+  width: 66rpx;
+}
+.disiwq{
+  justify-content: space-between;
+  align-content: space-between;
+  flex-wrap: wrap;
+}
+.disiwq image{
+  width: 66rpx;
+  height: 66rpx;
+}
+.cqcnian{
+  margin-left: 10rpx;
+  flex: 1;
+}

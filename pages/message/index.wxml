@@ -1,0 +1,252 @@
+<view class="message" id="page">
+	<view class="message-body">
+		<view class="message-body-content">
+			{{systeminfo.windowHeight}}
+			<scroll-view class="message-content addscroll" scroll-into-view="msg-{{state.length}}" style="overflow:{{isShowModal ? 'hidden' : 'scroll'}}">
+				<view wx:for="{{messageList}}" wx:key="{{item.id}}" wx:for-index="index" class="message-content-item {{item.userid == userId?'right':''}}" id="{{'msg-' + index}}">
+					<image bindtap="{{ item.userid == userId?'right':'onItemClickToFriendInfo'}}" data-item="{{item}}" class="message-content-item_img" src="{{item.userid != userId ? item.imgurl : item.userImgurl}}" role="img"></image>
+					<view class="message-content-item_msg">
+						<!-- <view class="triangle"></view> -->
+						<view class="message-content-title">
+							<text class="message-content-time" wx:if="{{item.messagestatus == 1}}">{{item.plantime+'送达该消息'}}</text>
+							<text class="message-content-time" wx:if="{{item.messagestatus == 2}}">{{item.plantime}}</text>
+							<text class="message-content-time" wx:if="{{item.messagestatus == 3}}">{{item.plantime}}</text>
+							<text class="message-content-time" wx:if="{{item.messagestatus == 4}}">{{'该消息超时未接收'}}</text>
+							<text class="message-content-time errmsg" wx:if="{{item.messagestatus == 5}}">{{'该消息送达失败'}}</text>
+						</view>
+						<!-- <view wx:if="{{item.messagetype === 1}}" class="message-content-msg" >
+													{{item.messagecontent}}
+						</view> -->
+						<view wx:if="{{item.messagetype === 2}}" class="message-content-voice" style="width:{{item.voicetime * 7}}px" bindtap="onPlayVoice" data-index="{{index}}" data-item="{{item}}">
+						<!-- /assets/images/common/voice2.png -->
+							<image wx:if="{{item.userid!=userId}}" class="message-content-play" src="{{item.ishooks?'/assets/images/tabs/left_123.gif':'/assets/images/common/voice2.png'}}"></image>
+							<!-- /assets/images/common/voice-right.png -->
+							<image wx:else class="message-content-play" src="{{item.ishooks? '/assets/images/tabs/right_123.gif':'/assets/images/common/voice-right.png'}}"></image>
+							<text class='message-content-length'>{{item.voicetime}}"</text>
+							<!-- 最新记录 -->
+							<view wx:if="{{ item.userid == userId ? false:true && item.messagestatus == 2}}" class="message-content-point"></view>
+						</view>
+						<!-- <view wx:if="{{item.messagetype === 3}}" class="message-content-img">
+							<block wx:for-index="imgIndex" wx:key="{{imgItem}}" wx:for-item="imgItem" wx:for="{{item.messagecontent}}">
+								<image class="message-content-img_img" mode='widthFix' src="{{imgItem}}"></image>
+							</block>
+						</view> -->
+						<view wx:if="{{item.messagetype === 4 && item.messagestr != ''}}" class="fiuer4">
+						<view class="message-content-msg">
+								{{item.messagestr}}
+							</view>
+						</view>
+						<view class="message-content-strimg {{item.messagestr == '' ? 'strimgtop':''}} {{item.messagecontent.length == 4? 'aswha':''}}" wx:if="{{item.messagecontent[0] != '' && item.messagetype === 4}}">
+						<!-- <view bindtap="dwewqewq">{{imagesinfos[30].width}}</view> -->
+							<block wx:for-index="imgIndex"  wx:for-item="imgItem" wx:for="{{item.messagecontent}}" wx:if="{{item.messagecontent.length==1}}" >
+								<view class="derwwaaa"> 
+										<image  bindtap="getShowimgs" bindload="imageLoad"  data-index="{{ index }}"  data-item="{{imgItem}}" data-list="{{item.messagecontent}}" class="moveimges"   src="{{imgItem}}" style="width:{{imagesinfos[index].width}}rpx; height:{{ imagesinfos[index].height}}rpx;"></image> 
+								</view> 
+							</block>
+							<block  wx:if="{{item.messagecontent.length == 4}}" wx:for-index="imgIndex"  wx:for-item="imgItem" wx:for="{{item.messagecontent}}" >  
+											<image bindtap="getShowimgs" wx:if="{{imgItem}}" data-item="{{imgItem}}" data-list="{{item.messagecontent}}" class="moveimgesfweq" mode='aspectFill' src="{{imgItem}}"></image>
+									
+							</block>
+								<block wx:for-index="imgIndex"  wx:for-item="imgItem" wx:for="{{item.messagecontent}}"  wx:if="{{item.messagecontent.length>1 && item.messagecontent.length != 4}}">
+								  <image bindtap="getShowimgs" wx:if="{{imgItem}}" data-item="{{imgItem}}" data-list="{{item.messagecontent}}" class="moveimges addvewimh" mode='aspectFill' src="{{imgItem}}"></image>
+							</block>
+						</view>
+					</view>
+				</view>
+			</scroll-view>
+			<!--{{isFocus?'message-input--focus':''}} " -->
+			<!-- <view class="message-input-speak" bindlongpress="handleRecordStart" bindtouchmove="handleTouchMove" bindtouchend="handleRecordStop" >{{voiceMsgVal}}</view>  -->
+			<!-- <view class="message-input" >
+        <view class="message-input-box">
+          <image bindtap="onSwitchModel" class="message-input-textIcon" src="{{isVoice?'../../assets/images/common/text.png':'/assets/images/common/voice.png'}}"></image>
+          <view wx:if="{{isVoice}}" bindlongpress="handleRecordStart" bindtouchmove="handleTouchMove" bindtouchend="handleRecordStop" class="message-input-speak">
+            {{voiceMsgVal}}
+          </view>
+          <view class="message-input-speak" bindtap="ontextareaViewClick" wx:else> 
+            <block wx:if="{{isShowTextarea}}">
+              <form bindsubmit="onConfirm" report-submit="true" style="width:100%;"> 
+                <textarea wx:if="{{isShowTextarea}}" auto-focus="{{autoFocus}}" cursor-spacing="30"  class='message-input-text' show-confirm-bar="{{true}}" adjust-position="{{true}}" bindfocus="openKeyboard" bindblur="outKeyboard" auto-height style="max-height: 150px"
+                  bindlinechange="onLineChange" bindconfirm="onConfirm" bindinput="onInput" value="{{inputValue}}" maxlength="200">
+                </textarea>
+              </form>
+            </block>
+            <block wx:else>
+              <view calss='message-input-text'>{{inputValue}}</view>
+            </block>
+             <view class="message-input-numBox">
+                <view class="message-input-numBox1">
+                  <view>
+                    <text class="message-input-numBox1-box">{{inputValue.length}}</text>
+                  </view>
+                  <view>200</view>
+                </view>
+              </view>
+          </view>
+          <image bindtap="onShowImage" class="message-input-cameraIcon" data-e-tap-so="this" src="/assets/images/common/camera.png" role="img"></image>
+        </view>
+        <block wx:if="{{isChoose}}">
+          <view class="message-input-choose">
+            <view class="choose-item" bindtap="onImageToolClick" data-flag="album">
+              <view class="choose-item-img">
+                <image src="/assets/images/common/choose_img.png"></image>
+              </view>
+              <view class="choose-item-title">图片</view>
+            </view>
+            <view class="choose-item" bindtap="onImageToolClick" data-flag="camera">
+              <view class="choose-item-img">
+                <image src="/assets/images/common/choose_camera.png"></image>
+              </view>
+              <view class="choose-item-title">拍照</view>
+            </view>
+          </view>
+        </block>
+      </view> -->
+			<!-- 图片 语音输入 -->
+			<view class="msgboxpanl">
+				<view class="boxsa" wx:if="{{msgTypes == 1}}">
+					<view class="juhua">说句悄悄话吧...</view>
+					<view class="msgboximg">
+						<navigator class="huwqe" hover-class="none" data-changes='2' bindtap="changtypesas">
+							<image class="panling1" src="/assets/images/tabs/nyuying.png"></image>
+							<view class="panltext1">语音</view>
+						</navigator>
+						<navigator class="huwqe" hover-class="none" bindtap="onShowImage">
+							<image class="panling1" src="/assets/images/tabs/nzhaoxiang.png"></image>
+							<view class="panltext1">图文</view>
+						</navigator>
+					</view>
+				</view>
+				<!-- 切换 -->
+				<view class="boxsa" wx:if="{{msgTypes == 2}}">
+            <view class="leftcakan"  data-changes='1' bindtap="changtypesas">
+              <icon class="iconfont iconyou addstyeicon"></icon>
+            </view>
+            <view class="rightcakan">
+                <view class="anzhushuo">
+                   <view>{{voiceMsgVal}}</view> 
+									<image class="{{!isShowVoiceA?'':'gifimgwq'}}" bindlongpress="handleRecordStart" bindtouchmove="handleTouchMove" bindtouchend="handleRecordStop"  src="{{!isShowVoiceA?'/assets/images/tabs/nshuruhua.png':'/assets/images/tabs/luying.gif'}}"></image>
+                </view>
+            </view>
+				</view> 
+        	<!-- 切换 -->
+				<view class="boxsa" wx:if="{{msgTypes == 3}}"> 
+					<view class="msgboximg msgt3">
+						<navigator hover-class="none" class="navmsgt3"  data-changes='2' bindtap="changtypesas">
+							<image class="panling1" src="/assets/images/tabs/back123.png"></image>
+							<view class="panltext1">重录</view>
+						</navigator>
+						<!-- <block wx:if="{{isVoiceEnter}}">
+				<view class="messageModal-body-voice" bindtap="playVoice">
+					<image class="messageModal-body-play" src='{{isPlayVoice ? "/assets/images/common/voice_black.gif" : "/assets/images/common/voice2.png"}}'></image>
+					<text class="messageModal-body-length">{{isVoice ? duration: 0}}"</text>
+					<view class="triangle"></view>
+				</view>
+			</block> -->
+						<navigator hover-class="none" class="" bindtap="playVoice">
+              <view class="igmstime">{{duration+'s'}}</view>
+							<image class="panling1" src="{{isPlayVoice?'/assets/images/tabs/shiyingx.gif':'/assets/images/tabs/shiting.png'}}"></image>
+							<view class="panltext1">试听</view>
+						</navigator>
+            <navigator hover-class="none" class="navmsgt3" bindtap="isModalshow">
+							<image class="panling1" src="/assets/images/tabs/wancheng.png"></image>
+							<view class="panltext1">完成</view>
+						</navigator>
+					</view>
+				</view>
+			</view>
+
+
+
+		</view>
+	</view>
+	<view class="messageCover" wx:if="{{ismessageModal}}"></view>
+	<view class="messageModal messgstyle" wx:if="{{ismessageModal}}">
+	<view class="titledwe" wx:if="{{ismessageModal}}">定时送达时间</view>
+		<view class="{{!isDateShow && !isAnimate ? 'messageModal-body' : isAnimate ? 'messageModal-body animate-none' : 'messageModal-body animate-style'}}">
+			<!-- <block wx:if="{{isInputEnter}}">
+				<scroll-view class="messageModal-body-msg" scroll-y="{{true}}">{{inputValue}}</scroll-view>
+			</block> -->
+			<!-- <block wx:if="{{isVoiceEnter}}">
+				<view class="messageModal-body-voice" bindtap="playVoice">
+					<image class="messageModal-body-play" src='{{isPlayVoice ? "/assets/images/common/voice_black.gif" : "/assets/images/common/voice2.png"}}'></image>
+					<text class="messageModal-body-length">{{isVoice ? duration: 0}}"</text>
+					<view class="triangle"></view>
+				</view>
+			</block> -->
+			<!-- <block wx:if="{{isImageEnter}}">
+				<scroll-view scroll-y="{{true}}" class="messageModal-body-msg">
+					<image class="messageModal-body-img" mode="widthFix" src="{{v}}" wx:for="{{imageValue}}" wx:for-item="v" wx:for-index="_anonIdx2"></image>
+				</scroll-view>
+			</block> -->
+			<!-- <block wx:if="{{isMsg4Enter}}">
+				<scroll-view scroll-y="{{true}}" class="messageModal-body-msg">
+					<view>{{msg4_input}}</view>
+					<image class="messageModal-body-img" mode="widthFix" src="{{v}}" wx:for="{{msg4_imgs}}" wx:for-item="v" wx:for-index="_anonIdx2"></image>
+				</scroll-view>
+			</block> -->
+			<!-- <view class="messageModal-body-add">
+				<image bindtap="onChooseFriend" class="messageModal-body-imgurl" data-e-tap-so="this" src="{{imgUrl}}" role="img">
+				</image>
+				<text style="color:rgba(30,39,55,1)">{{friendName}}</text>
+			</view> -->
+			<!-- <view class="messageModal-body-line">
+			</view> -->
+			<!-- <view class="messageModal-body-timeTitle">送达时间</view> -->
+			<!-- bindtap="openCalendar"  -->
+			<view class="messageModal-body-time" bindtap="onSelectDateShow" data-e-tap-so="this">{{year}} 年 {{month}} 月 {{day
+      < 10 ? '0' + day : day}} 日</view>
+			<view class="messageModal-body-time" bindtap="onSelectDateShow" data-e-tap-so="this">{{hh}}:{{mm}}</view>
+			<view class="messageModal-body-timeTitle" bindtap="onSelectDateShow">{{weekDayNew}}</view>
+      <view class="messageModal-body-timeTitle" bindtap="onSelectDateShow">{{luanrText}}</view> 
+			<view class="messageModal-body-line">
+			</view>
+			<view class="messageModal-body-button">
+				<image bindtap="isModalhide" src="/assets/images/common/cancel.png" role="img">
+				</image>
+				<image bindtap="onSendMessage" data-e-tap-so="this" src="/assets/images/common/send.png" role="img">
+				</image>
+			</view>
+		</view>
+		<view class="{{isDateShow && isAnimate ? 'messageModal-body' : isAnimate ? 'messageModal-body animate-style' : 'messageModal-body animate-none'}}">
+    <view class="mesgsdfsa">
+      	<picker-view indicator-class="fwads" indicator-style="height: 40px;font-size:40rpx;" style="width: 70%; height: 140px;" value="{{yearValue}}" bindchange="onChangeYear">
+				<picker-view-column>
+					<view class="picker-view-style" wx:key="item" wx:for="{{years}}" wx:for-item="item" wx:for-index="_anonIdx4">{{item}}年</view>
+				</picker-view-column>
+				<picker-view-column>
+					<view class="picker-view-style" wx:key="item" wx:for="{{months}}" wx:for-item="item" wx:for-index="_anonIdx6">{{item}}月</view>
+				</picker-view-column>
+				<picker-view-column>
+					<view class="picker-view-style" wx:key="item" wx:for="{{days}}" wx:for-item="item" wx:for-index="_anonIdx8">{{item}}日</view>
+				</picker-view-column>
+			</picker-view>
+			<!-- <view class="messageModal-body-line" style="margin: 10px 0"></view> -->
+			<picker-view indicator-style="height: 40px;" style="width:30%; height: 140px;position: relitave;" value="{{timeValue}}" bindchange="onChangeTime">
+				<view class="messageModal-position-time">:</view>
+				<picker-view-column>
+					<view class="picker-view-style" wx:key="item" wx:for="{{hours}}" wx:for-item="item" wx:for-index="_anonIdx10">{{item}}</view>
+				</picker-view-column>
+				<picker-view-column>
+					<view class="picker-view-style" wx:key="item" wx:for="{{minutes}}" wx:for-item="item" wx:for-index="_anonIdx12">{{item}}</view>
+				</picker-view-column>
+			</picker-view>
+    </view> 
+			<view class="messageModal-body-line"></view>
+			<view class="messageModal-body-button">
+				<image bindtap="onShowMessage" src="/assets/images/common/cancel.png" data-e-tap-so="this"></image>
+				<image bindtap="onShowMessage" src="/assets/images/common/enter.png" data-e-tap-so="this"></image>
+			</view>
+		</view>
+	</view>
+</view>
+<wxs module="tools" src="../../utils/tools.wxs" />
+<!-- <wux-calendar id="wux-calendar" /> -->
+<van-popup show="{{isCurDate}}" position="bottom" bind:close="onClose">
+  <van-datetime-picker type="time" value="{{ timeHours }}" bind:confirm="onCurrentDate" bind:cancel="onCurrCel" />
+</van-popup>
+
+<!-- <view class="voice-popup" wx:if="{{isShowVoiceA}}">
+  <image src="/assets/images/common/voice_b.gif"></image>
+</view> -->
+
+  <view class="layers msgyser" wx:if="{{ismessageModal}}" catchtouchmove="preventD"></view>

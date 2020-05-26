@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-switch": "../../components/vant/switch/index"
+  },
+  "navigationBarTitleText": "更多设置",
+  "backgroundColor": "#ededed"
+}

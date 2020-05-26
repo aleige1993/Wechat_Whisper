@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "mp-actionSheet": "../../../components/weui/actionsheet"
+  },
+  "navigationBarBackgroundColor": "#171717",
+  "navigationBarTextStyle":"white",
+  "navigationBarTitleText":"个人头像",
+  "backgroundColor":"#000"
+}

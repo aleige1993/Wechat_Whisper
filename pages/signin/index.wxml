@@ -1,0 +1,59 @@
+<!--pages/signin/index.wxml-->
+    <view class="signin"> 
+        <view class="signin-friends-list" >
+            <!-- <view class="signin-notice">
+                <swiper vertical="{{true}}" circular="{{true}}" autoplay="{{true}}" class="signin-swipper" interval="{{3000}}">
+                    <swiper-item>
+                        <view class="signin-notice-item">
+                            <view class="signin-notice-item-msg">您当前接收条数剩余：{{noticeNumberData.messageNumCount}} 条</view>
+                        </view>
+                    </swiper-item>
+                    <swiper-item>
+                        <view class="signin-notice-item">
+                            <view class="signin-notice-item-msg">您当前未被读取消息条数：{{noticeNumberData.messageCount}} 条</view>
+                        </view>
+                    </swiper-item>
+                </swiper>
+            </view> -->
+            <wux-swipe-action autoClose="{{true}}" right="{{right}}" bindclick="onToolClick" key="{{v.friendid}}" wx:for="{{notTopMessageList}}" wx:for-item="v" wx:for-index="_anonIdx" >
+                <view class="signin-friends-list-item gray" data-item="{{v}}" bindtap="onItemClick">
+                    <view class="img_box">
+                        <image class="list_img" src="{{v.imgurl}}"></image>
+                        <block wx:if="{{v.unReadMessageNum > 0}}">
+                            <view class="list_num">{{v.unReadMessageNum}}</view>
+                        </block>
+                    </view>
+                    <view class="list_msg">
+                        <view class="name">{{v.friendname}}<text class="time">{{v.publishTime}}</text>
+                        </view>
+                         <view class="msg" wx:if="{{v.messageType === 1}}">{{v.lastMessageContent}}</view>
+                          <view class="msg" wx:if="{{v.messageType === 2}}">[语音]</view>
+                           <view class="msg" wx:if="{{v.messageType === 3}}">[图片]</view>
+                           <view class="msg" wx:if="{{v.messageType === 4}}">[图片]</view>
+                        <!-- <view class="msg">{{v.messageType === 1 ? v.lastMessageContent : v.messageType === 2 ? '[语音]' : '[图片]'}}</view> -->
+                    </view>
+                </view>
+            </wux-swipe-action>
+            <!-- <wux-swipe-action autoClose="{{true}}" right="{{right}}" bindclick="onToolClick" key="{{v.$original.friendid}}" wx:for="{{loopArray1}}" wx:for-item="v" wx:for-index="_anonIdx4" __fn_onClick="{{true}}" data-e-click-so="this" data-e-click-a-a="{{v.$original}}">
+                <view class="signin-friends-list-item" bindtap="onItemClick" data-e-tap-so="this" data-e-tap-a-a="{{v.$original}}">
+                    <view class="img_box">
+                        <image class="list_img" src="{{v.$original.imgurl}}"></image>
+                        <block wx:if="{{v.$original.unReadMessageNum > 0}}">
+                            <view class="list_num">{{v.$original.unReadMessageNum}}</view>
+                        </block>
+                    </view>
+                    <view class="list_msg">
+                        <view class="name">{{v.$original.friendname}}<text class="time">{{v.$loopState__temp9}}</text>
+                        </view>
+                        <view class="msg">{{v.$original.messageType === 1 ? v.$original.lastMessageContent : v.$original.messageType === 2 ? '[语音]' : '[图片]'}}</view>
+                    </view>
+                </view>
+            </wux-swipe-action> -->
+        </view>
+        <!-- <custom-tab-bar className="sign-tabbar">
+            <form report-submit="{{true}}" bindsubmit="onSubmit" class="sign-tabbar-form" data-e-submit-so="this">
+                <button form-type="submit" class="btn"></button>
+            </form>
+            <at-tab-bar compid="{{$compid__1}}"></at-tab-bar>
+        </custom-tab-bar> -->
+    </view>

@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "wux-cell-group": "../../components/wux/cell-group/index",
+    "wux-cell": "../../components/wux/cell/index",
+    "van-datetime-picker": "../../components/vant/datetime-picker/index",
+    "van-popup": "../../components/vant/popup/index"
+  },
+  "navigationBarTitleText": "",
+  "backgroundColor": "#ffffff",
+  "navigationBarBackgroundColor": "#ffffff"
+}

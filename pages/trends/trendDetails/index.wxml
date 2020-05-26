@@ -1,0 +1,107 @@
+<!--pages/trends/dynamic/index.wxml-->
+<!--pages/trends/trends/photoAlbum/index.wxml-->
+<scroll-view scroll-y style="height:100vh" scroll-top="{{50}}" bindscroll="bainse">
+ 
+	<!-- 空间 -->
+	<view class='kongjian'> 
+		<view class="listmo">
+			<view class="useimg">
+				<image class="uingg1" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
+			</view>
+			<view class="mesgbox">
+				<view class="mnama">花花</view>
+				<view class="mcenter">阿达萨达是的大萨达所多所奥术大师大所阿达的</view>
+				<!-- <view class="imgpanl">
+           <image bindload="imageLoad" src="/assets/images/tabs/jiaren.png"></image>
+        </view> -->
+				<!-- <view class="imgpanl addmoves">
+           <image   src="/assets/images/tabs/jiaren.png"></image>
+           <image   src="/assets/images/tabs/jiaren.png"></image>
+           <image   src="/assets/images/tabs/jiaren.png"></image>
+           <image   src="/assets/images/tabs/jiaren.png"></image>
+           <image   src="/assets/images/tabs/jiaren.png"></image>
+            <image   src="/assets/images/tabs/jiaren.png"></image>
+           <image   src="/assets/images/tabs/jiaren.png"></image>
+           <image   src="/assets/images/tabs/jiaren.png"></image> 
+        </view> -->
+				<view class="imgpanl addmoves furrs">
+					<image src="/assets/images/tabs/jiaren.png"></image>
+					<image src="/assets/images/tabs/jiaren.png"></image>
+					<image src="/assets/images/tabs/jiaren.png"></image>
+					<image src="/assets/images/tabs/jiaren.png"></image>
+				</view>
+				<view class="mdizhi">北京市不知道哪个地方</view>
+				<view class="actione">
+					<view class="tiems1">2020年4月5日 下午5:55 <text class="delmrsa">删除</text></view>
+					<view class="acdtst">
+						<image class="diandian1" src="/assets/images/tabs/diandian1.png"></image>
+						<view class="anniu showanniu">
+							<view class="zanbox">
+								<image mode="aspectFill" src="/assets/images/tabs/xin.png" class="xin1"></image>
+								<view>赞</view>
+							</view>
+							<view class="lind12"></view>
+							<view class="zanbox">
+								<image src="/assets/images/tabs/commit.png" class="pinglu"></image>
+								<view>评论</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			
+
+			</view>
+		</view>
+  	<!-- 评论 -->
+    <view class="detailcommit">
+      	<view class="commitepanl">
+					<view class="dianzanpanl">
+						<image class="dixina" src="/assets/images/tabs/dixin.png"></image>
+						<view class="moveimg">
+              <image mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
+              <image mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
+              <image mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
+            </view>
+					</view>
+					<view class="huifuxinxi">
+              <view class="iconcommt">
+                <image class="commt123" src="/assets/images/tabs/commt123.png"></image>
+              </view>
+              <view class="df2asad">
+                 <view class="list_modf">
+                  <view class="weqw">
+                    <image src="/assets/images/tabs/jiaren.png" mode="aspectFill" class="jren1"></image>
+                    <view class="yjaj">
+                      <view class="yanj">
+                        <text class="geres">花花绿绿</text>
+                        <text class="tiem1">4月5日 下午5:55</text>
+                      </view>
+                      <view class="huidssa">
+                        回复<text class="geres">花花绿绿：</text>不撒大大大声道群翁群不撒大大大声道群翁群不撒大大大声道群翁群不撒大大大声道群翁群
+                      </view>
+                    </view>
+                  </view>
+              </view>
+               <view class="list_modf">
+                  <view class="weqw">
+                    <image src="/assets/images/tabs/jiaren.png" mode="aspectFill" class="jren1"></image>
+                    <view class="yjaj">
+                      <view class="yanj">
+                        <text class="geres">花花绿绿</text>
+                        <text class="tiem1">4月5日 下午5:55</text>
+                      </view>
+                      <view class="huidssa">
+                        回复<text class="geres">花花绿绿：</text>不撒大大大声道群翁群不撒大大大声道群翁群不撒大大大声道群翁群不撒大大大声道群翁群
+                      </view>
+                    </view>
+                  </view>
+              </view>
+              </view> 
+					</view>
+
+				</view>
+    </view>
+			
+	</view>
+
+</scroll-view>

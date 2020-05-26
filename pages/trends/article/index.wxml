@@ -1,0 +1,31 @@
+<!--pages/trends/article/index.wxml-->
+<view>
+	<view class="title_hd">
+		<view class="oncol" bindtap="oncloes">取消</view>
+		<!-- <view>预览</view> {{isDone? 'stlylv' : 'stlyhui'}} -->
+		<view class="onDoen stlylv " bindtap="onDoen">发表</view>
+	</view>
+	<view class="edit_commen">
+		<view class="textareStr">
+			<textarea focus="{{true}}" auto-height class="textpand" placeholder-style="color:#B4B4B4" maxlength="{{800}}" placeholder="悄悄说个事..." value="{{strInput}}" bindinput="contionsInout"></textarea>
+			<!-- <text class="maxstr">{{strNum}}/200</text> -->
+		</view>
+
+		<view class="move_img">
+			<van-uploader multiple="{{true}}" file-list="{{ fileList }}" bind:delete="delImgs" bind:after-read="afterRead" max-count="9" image-fit="aspectFill">
+        <view class="paizhaov">
+          <image class="imgpaizhao" src="/assets/images/tabs/paizhao.png"></image>
+        </view>
+      </van-uploader>
+		</view>
+	</view>
+</view>
+<view class="weizhi">
+  <view class="msdfw" bindtap="getlocaltion">
+    <view class="mewqw1">
+      <image src="/assets/images/tabs/weizhi.png" class="timges"></image>
+      <view class="tweszhi">{{localhost?localhost:'所在位置'}}</view>
+    </view> 
+    <view class="iconfont iconyou adayou"></view>
+  </view>
+</view>

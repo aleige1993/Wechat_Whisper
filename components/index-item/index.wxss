@@ -1,0 +1,11 @@
+.wux-index-item__hd {
+  background: #ECEDEE;
+  font-size:24rpx;
+  color:rgba(118,119,120,1);
+  width: 100%;
+  padding: 0 30rpx;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 64rpx;
+  line-height: 64rpx
+}

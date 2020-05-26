@@ -1,0 +1,6 @@
+<view class="wux-class wux-index-item">
+    <view class="wux-index-item__hd">{{ name }}</view>
+    <view class="wux-index-item__bd">
+        <slot></slot>
+    </view>
+</view>

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "悄悄话昵称",
+  "navigationBarBackgroundColor": "#f2f2f2",
+  "usingComponents": {
+    "van-field": "../../components/vant/field/index"
+  }
+}

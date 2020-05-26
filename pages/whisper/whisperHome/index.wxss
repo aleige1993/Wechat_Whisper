@@ -1,0 +1,153 @@
+/* pages/whisper/whisperHome/index.wxss */
+.whisper-panl{
+  /* padding-bottom: 100rpx; */
+}
+page{
+  background-color: #EDEDED;
+}
+.iconyou,.iconweibiaoti35{
+  color: #B3B3B3;
+  font-size: 34rpx;
+}
+.list_item1{
+  width: 100%;
+  background-color: #fff;
+  height: 100rpx;
+  margin-bottom: 20rpx;
+  /* margin-bottom: 20rpx; */
+  display: flex;
+  padding: 30rpx 20rpx 30rpx 52rpx;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  position: relative;
+}
+.iconimg{
+  width: 40rpx;
+  height: 40rpx;
+}
+.showconte{
+  width: 56rpx;
+  height: 56rpx;
+  margin-top:10rpx;
+}
+.tites{
+  margin-left: 40rpx;
+  font-weight: 500;
+  font-size: 30rpx;
+  margin-right: 15rpx;
+}
+.tipa{
+  display: inline-block;
+  width: 34rpx;
+  height: 34rpx;
+  border-radius: 100%;
+  background-color: #E75E58;
+  color: #fff;
+  text-align: center;
+  line-height: 34rpx;
+  font-size: 26rpx;
+}
+.changeimg1{
+  width: 44rpx !important;
+}
+.imgtite{
+  flex: 1;
+  text-align: right;
+  border-radius:6rpx;
+  margin-right:20rpx;
+  position: relative;
+}
+.tipst{
+  position: absolute;
+  top: 5rpx;
+  right: -5rpx;
+  width: 15rpx;
+  height: 15rpx;
+  border-radius:100%;
+  background-color: #E75E58;
+}
+.userimg{
+  width: 87rpx;
+  height: 87rpx;
+  margin-right: 20rpx;
+  border-radius: 6rpx;
+}
+.haoyoupanl{
+  height: 124rpx;
+  padding: 20rpx 30rpx;
+  /* border-bottom: 1rpx solid #F7F7F7; */
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+.linkadd{
+  position: absolute;
+  height: 2rpx;
+  background-color:#C9C9CB;
+  bottom:0;
+  right: 0;
+  width: 84%;
+}
+.datlke{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.topcla{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.name{
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #282828;
+}
+.date{
+  font-size: 22rpx;
+  color: #ccc;
+}
+.botcla{
+  color: #B3B3B3;
+  font-size: 26rpx;
+}
+.clerbot{
+  margin-bottom: 0 !important;
+}
+.addwith{
+  width: 48rpx !important;
+}
+.addtitle{
+  margin-left: 32rpx !important;
+}
+.showItmeAll{
+  min-height:66vh;
+  overflow-y: scroll;
+}
+.macouar{
+  height: 62rpx !important;
+}
+.item-hd{
+  width: 100%;
+  height: 62rpx;
+  padding-left: 60rpx;
+  line-height:62rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+.additemimg{
+  width: 30rpx;
+  height: 30rpx;
+  margin-top: 16rpx;
+}
+.item_filxed{
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100%;
+  height:162rpx;
+  z-index: 3;
+  background-color: #EDEDED;
+}

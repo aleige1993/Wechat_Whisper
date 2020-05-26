@@ -1,0 +1,12 @@
+/* pages/friendInformation/move.wxss */
+@import '/pages/friendInformation/index.wxss';
+.colorred{
+  color: #E75E58 !important;
+}
+.weqdxz{
+  margin-top: 38rpx;
+}
+.dweqwa{
+  border-top: 1px solid #C9C9CB;
+
+}

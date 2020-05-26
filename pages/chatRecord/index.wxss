@@ -1,0 +1,21 @@
+page {
+  background: #ededed;
+}
+
+.chatRecord .title {
+  font-weight: 400;
+  color: #b2b2b2;
+  font-size: 28rpx;
+  text-align: center;
+  margin-top: 94rpx;
+}
+
+.chatRecord .button {
+  width: 192rpx;
+  height: 44rpx;
+  font-size: 32rpx;
+  font-weight: 400;
+  color: #586c95;
+  line-height: 44rpx;
+  margin: 54rpx auto 0;
+}

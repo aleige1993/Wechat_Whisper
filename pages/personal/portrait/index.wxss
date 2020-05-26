@@ -1,0 +1,15 @@
+/* pages/personal/portrait/index.wxss */
+.impanl{
+  width:100%;
+}
+page{
+  background: #000;
+}
+.panlimgs{
+  margin-top:30%;
+}
+.changimg{
+  text-align: center;
+  color: #fff;
+  margin-top: 12%;
+}

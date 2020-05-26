@@ -1,0 +1,11 @@
+    <view class="login">
+        <image class="logimg" src="/assets/images/common/login2.jpg"></image>
+        <view class="loginame">定时悄悄话</view>
+        <view class="texstle">定时发送，定时接收</view>
+        <!-- <view class="login-line"></view>
+        <view class="login-msg">登陆后开发者将会获取一些权限</view>
+        <view class="login-msg2">· 获取的的公开信息（昵称、头像等）</view> -->
+        <button class="login-button" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" >登录</button>
+        <view class="qxdeng">取消登录</view>
+        <!-- <navigator class="quit" openType="exit" target="miniProgram">取消登录</navigator> -->
+    </view>

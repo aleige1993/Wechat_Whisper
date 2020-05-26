@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "wux-index": "../../components/index/index",
+    "wux-index-item": "../../components/index-item/index",
+    "van-index-bar": "../../components/vant/index-bar/index",
+    "van-index-anchor": "../../components/vant/index-anchor/index",
+    "mp-tabbar": "../../components/weui/index",
+    "mp-indexlist": "../../components/index-list/index"
+  },
+  "navigationBarTitleText": "收话人",
+  "backgroundColor": "#ededed"
+}

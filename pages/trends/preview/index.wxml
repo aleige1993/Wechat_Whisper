@@ -1,0 +1,56 @@
+<!--pages/trends/preview/index.wxml--> 
+<view class="swiper_panl"> 
+   <swiper class="zdyweb">
+        <block>
+          <swiper-item>
+            <view class="tupiandax"   bindlongtap="ismodeimges">
+              <image mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
+            </view>
+          </swiper-item>
+        </block>
+        <block>
+          <swiper-item>
+            <view class="tupiandax" bindlongtap="ismodeimges">
+              <image mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
+            </view>
+          </swiper-item>
+        </block>
+        <block>
+          <swiper-item>
+            <view class="tupiandax" bindlongtap="ismodeimges">
+              <image mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+</view>
+<view class="tlets">
+    <view>
+      <image class="imd1" src="/assets/images/tabs/xin.png"></image>
+      <text>4</text>
+    </view>
+    <view>
+      <image class="imd2" src="/assets/images/tabs/commit.png"></image>
+      <text>4</text>
+    </view>
+</view>
+
+
+<view class="weui-demo-dialog {{isClearOpened ? 'weui-demo-dialog_show' : ''}}">
+	<view class="weui-mask" bindtap="onActionClose"></view>
+	<view class="weui-actionsheet {{isClearOpened ? 'weui-actionsheet_toggle' : ''}}" catchtap="stopEvent">
+  	<view class="weui-actionsheet__menu">
+			<view class="weui-actionsheet__cell " bindtap="deletebaocun">
+				保存图片
+			</view>
+		</view>
+		<view class="weui-actionsheet__menu">
+			<view class="weui-actionsheet__cell weui-actionsheet__cell_warn tushang" bindtap="deleteimges">
+				删除
+			</view>
+		</view>
+		<view class="weui-actionsheet__action">
+			<view class="weui-actionsheet__cell" bindtap="onActionClose">取消</view>
+		</view>
+	</view>
+</view>

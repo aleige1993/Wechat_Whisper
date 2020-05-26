@@ -1,0 +1,14 @@
+var timed = (function (item, time) {
+  var timeStr = time + '';
+  var timeA = timeStr.slice(0, 4) + '年' + timeStr.slice(4, 6) + '月' + timeStr.slice(6, 8) + '日 ' + timeStr.slice(8, 10) + ':' + timeStr.slice(10, 12);
+  if (item.messagestatus === 5) {
+    return '该消息送达失败';
+  }
+  if (item.messagestatus === 1) {
+    return '将于'+timeA+'送达该消息'
+  }
+  return timeA
+})
+module.exports = ({
+  tool_timed: timed,
+});

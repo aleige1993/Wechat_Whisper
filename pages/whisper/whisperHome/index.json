@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "wux-swipe-action-group": "../../components/wux/swipe-action-group/index",
+    "wux-swipe-action": "../../components/wux/swipe-action/index",
+    "wux-animation-group": "../../components/wux/animation-group/index"
+  },
+  "navigationBarTitleText": "定时悄悄话",
+  "backgroundColor": "#ededed",
+  "disableScroll": true
+}

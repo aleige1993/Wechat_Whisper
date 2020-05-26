@@ -1,0 +1,194 @@
+/* pages/trends/dynamic/index.wxss */
+@import '/pages/trends/photoAlbum/index.wxss';
+.diqu{
+  width: 100%;
+  height: 214rpx;
+  justify-content: center;
+  align-content: flex-end;
+  display: flex;
+}
+.pyd1{
+  display: flex;
+  /* display: inline-block; */
+  background-color:#333333;
+  color: #fff;
+  border-radius:6rpx;
+  padding: 10rpx;
+  height: 55rpx;
+  margin-top:120rpx;
+}
+.uses1{
+  display:flex;
+}
+.uses1{
+  height: 52rpx;
+}
+.pyd1 text{
+  margin-left:55rpx;
+  margin-right:80rpx;
+  display: inline-block;
+  font-size: 24rpx;
+  height: 52rpx;
+  line-height: 52rpx;
+}
+.touxiang{
+  width: 52rpx;
+  height: 52rpx;
+  border-radius:4rpx;
+}
+.listmo{
+  display: flex;
+  width: 100%;
+  padding:25rpx 40rpx 20rpx 36rpx;
+  box-sizing: border-box;
+  border-top: 1px solid #C9C9CB;
+  
+}
+.showanniu{
+  display:none !important;
+}
+.useimg{
+  /* width: 80rpx; */
+}
+.uingg1{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 6rpx;
+  margin-right: 10rpx;
+}
+.mesgbox{
+  width:86%;
+}
+.mnama{
+  font-size: 30rpx;
+  color: #576B95;
+}
+.mcenter{
+  font-size: 30rpx;
+}
+.imgpanl{
+  margin-top: 20rpx;
+}
+.imgpanl{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.addmoves image{
+  width: 160rpx;
+  height: 160rpx;
+  margin-right:10rpx;
+  margin-bottom: 10rpx;
+}
+.mdizhi{
+  font-size: 24rpx;
+  color: #B3B3B3;
+}
+.actione{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tiems1{
+  /* width: 70%; */
+  flex: 1;
+  font-size: 24rpx;
+  color: #B3B3B3;
+}
+.diandian1{
+  width: 56rpx;
+  height:34rpx;
+}
+.acdtst{
+  position: relative;
+}
+.anniu{
+  position: absolute;
+  z-index: 5;
+  width:300rpx;
+  height: 68rpx;
+  display: flex;
+  left:-320rpx;
+  background-color: #4C4C4C;
+  color: #fff;
+  border-radius:6rpx;
+  bottom: -1rpx;
+}
+.xin1{
+  width: 23rpx;
+  height: 21rpx;
+}
+.pinglu{
+  width: 26rpx;
+  height: 22rpx;
+}
+.zanbox{
+  width: 50%;
+  font-size: 24rpx;
+  color: #fff;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.zanbox image{
+  margin-right: 10rpx;
+}
+.lind12{
+  width:1px;
+  background-color: #393939;
+  height: 40rpx;
+margin-top: 14rpx;
+}
+.furrs{
+  width:65% !important;
+}
+.dixina{
+ width:22rpx;
+ height: 20rpx;
+}
+.commitepanl{
+  background-color: #F7F7F7;
+}
+.dianzanpanl{
+  padding:10rpx 20rpx;
+  box-sizing: border-box;
+  border-bottom: 1px solid #C9C9CB;
+  color: #576B95;
+  font-size: 26rpx;
+}
+.gernse{
+  color: #576B95;
+}
+.listxinxi{
+  font-size: 26rpx;
+}
+.huifuxinxi{
+  padding:10rpx 0 10rpx 20rpx;
+  box-sizing: border-box;
+}
+.listxinxi{
+  line-height:50rpx;
+}
+.delmrsa{
+  color: #576B95;
+  margin-left: 16rpx;
+}
+.inpmodel{
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.ipmoput{
+  padding:20rpx;
+  border-radius: 5rpx;
+  background-color: #F7F7F7;
+}
+.dunpaml{
+  padding-bottom:120rpx;
+}

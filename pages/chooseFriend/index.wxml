@@ -1,0 +1,48 @@
+<block>
+  <view class="tells2">
+    <view class="tells2-search">
+      <block wx:if="{{isShowBg}}">
+        <view class="tells2-search_cover"></view>
+      </block>
+      <block wx:if="{{isTopArr.length !== 0}}">
+        <view class="tells2-top">
+          <view class="tells2-top-title">置顶收话人</view>
+          <view class="tells2-list-item" wx:key="friendid" bindtap="onItemClick" data-item="{{v}}" wx:for="{{isTopArr}}" wx:for-item="v" wx:for-index="_anonIdx2" data-e-tap-so="this" data-e-tap-a-a="{{v}}">
+            <image class="list_img" src="{{v.imgurl}}"></image>
+            <view class="list_msg">{{v.friendname}}</view>
+          </view>
+        </view>
+      </block>
+      <block>
+        <van-index-bar height="100vh" scroll-top="{{ scrollTop }}" z-index="10" select="onScrolls" highlight-color="#07c160"  index-list="{{ indexList }}">
+          <view wx:key="{{item.title}}" wx:for="{{list}}" wx:for-index="index">
+            <van-index-anchor index="{{item.title}}" />
+            <van-cell wx:key="ii" wx:for="{{item.items}}" wx:for-item="vi" wx:for-index="ii">
+              <view class="tells-list-item">
+                <image class="list_img" bindtap="onItemClick" data-item="{{vi}}" src="{{vi.imgurl}}"></image>
+                <view class="list_msg" bindtap="onItemClick" data-item="{{vi}}">{{vi.remarkname||vi.friendname}}</view>
+              </view>
+            </van-cell>
+          </view>
+        </van-index-bar>
+        <!-- <wux-index height="100vh">
+                    <wux-index-item key="{{v.title}}" name="{{v.title}}" wx:for="{{list}}" wx:for-item="v" wx:for-index="_anonIdx4">
+                        <view class="tells2-list-item" wx:key="ii" data-item="{{vi}}" bindtap="onItemClick" wx:for="{{v.items}}" wx:for-item="vi" wx:for-index="ii" >
+                            <image class="list_img" src="{{vi.imgurl}}"></image>
+                            <view class="list_msg">{{vi.friendname}}</view>
+                        </view>
+                    </wux-index-item>
+                </wux-index> -->
+      </block>
+      <!-- <block wx:if="{{isSearch}}">
+                <view class="tells2-search-isSearch">
+                    <view class="tells2-search-isSearch-title">搜索结果</view>
+                    <view class="tells2-list-item" bindtap="onItemClick" wx:key="id" wx:for="{{searchData}}" wx:for-item="v" wx:for-index="_anonIdx6" data-e-tap-so="this" data-e-tap-a-a="{{v}}">
+                        <image class="list_img" src="{{v.imgurl}}"></image>
+                        <view class="list_msg">{{v.friendname}}</view>
+                    </view>
+                </view>
+            </block> -->
+    </view>
+  </view>
+</block>

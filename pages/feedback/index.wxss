@@ -1,0 +1,131 @@
+.feedback {
+  height: 100vh;
+  width: 100%;
+  background: #ededed;
+}
+
+.feedback-textarea, .feedback-top {
+  height: 660rpx;
+  background: #fff;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 28rpx;
+}
+
+.feedback-textarea {
+  height: 400rpx;
+  border-radius: 8rpx;
+  border: 2rpx solid #ddd;
+  padding: 24rpx;
+  position: relative;
+}
+
+.feedback-phone input, .feedback-textarea textarea {
+  line-height: 48rpx;
+  color: #aeaeae;
+  font-size: 28rpx;
+}
+
+.feedback-textarea text {
+  position: absolute;
+  bottom: 20rpx;
+  right: 20rpx;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.feedback-image-title {
+  margin-top: 28rpx;
+  color: #666;
+  font-size: 28rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.feedback-image-box, .feedback-phone {
+  margin-top: 28rpx;
+  height: 120rpx;
+}
+
+.feedback-phone {
+  height: 112rpx;
+  background: #fff;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 42rpx 28rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.feedback-phone input {
+  height: 28rpx;
+  line-height: 28rpx;
+  margin-left: 28rpx;
+}
+
+.feedback-phone-title {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.feedback-msg {
+  color: #aeaeae;
+  font-size: 24rpx;
+  margin-top: 32rpx;
+  padding-left: 28rpx;
+}
+
+.feedback-button {
+  width: 540rpx;
+  height: 72rpx;
+  background: #09bb07;
+  border-radius: 8rpx;
+  margin: 80rpx auto;
+  font-size: 28rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 72rpx;
+}
+
+.feedback .at-image-picker__flex-box {
+  padding: 0;
+}
+
+.feedback .at-image-picker__flex-item {
+  margin-right: 20rpx;
+  margin-left: 0;
+  width: 120rpx;
+  height: 120rpx;
+  -webkit-box-flex: 0;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+}
+
+.feedback .at-image-picker__item {
+  width: 120rpx;
+}
+
+.feedback .at-image-picker__choose-btn .add-bar {
+  width: 40rpx;
+}
+.van-uploader__upload{
+  width: 120rpx !important;
+  height: 120rpx !important;
+}
+.van-uploader__preview-image{
+  width: 120rpx !important;
+  height: 120rpx !important;
+}

@@ -1,0 +1,27 @@
+<!--pages/friendInformation/setCommon.wxml-->
+<view class="ownStlye">
+      <view class="openTions">
+        <view class="aewq" bindtap="changhuifu">恢复</view>
+        <!-- <view>设置备注</view>   {{isDone?'stlylv':'stlyhui'}}  -->
+        <view class="onDoen stlylv" bindtap="okCommt">完成</view>
+    </view>
+     <!-- <view class="titels">备注名</view> -->
+      <view class="commoText borber2">
+      <!-- <view class="daw">
+        <text  class="casda">微信昵称</text>
+        <image class="imgew" src="/assets/images/tabs/zhixianw.png"></image>
+      </view> -->
+      <van-field
+       input-class="setladra"
+        value="{{commVal}}"
+        placeholder=""
+        border="{{ false }}"
+        focus = "{{true}}"
+        clearable= "{{true}}"
+        bind:input="changComm"
+        bind:clear = "changclear"
+        maxlength="10" 
+      />
+        <!-- <input maxlength="15" focus="{{true}}"  placeholder="请输入备注信息" value="{{commVal}}" bindinput="changComm"></input> -->
+      </view>
+    </view> 

@@ -1,0 +1,74 @@
+/* pages/personal/openvip/index.wxss */
+
+page{
+  background-color: #EDEDED;
+}
+view,text,button{
+  font-size: 30rpx;
+}
+.vip-panl{
+  padding:30rpx;
+}
+.vip-lis{
+  background-color: #fff;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  border-radius:6rpx; 
+}
+.title-t{
+  color: #999;
+  padding: 30rpx;
+  font-size: 24rpx;
+}
+.header-info{
+  display: flex;
+
+}
+.levael{
+  flex: 1;
+}
+.change-lev{
+  display: flex;
+  justify-content: right;
+  margin-bottom: 20rpx;
+}
+.change-lev view{
+  margin-left: 30rpx;
+  padding: 6rpx 20rpx;
+  border: 1px solid #EDEDED;
+  border-radius:4rpx; 
+  font-size: 24rpx;
+}
+.foot-info{
+  position: relative;
+  border-top:1px dotted #EDEDED; 
+  font-size: 26rpx;
+  color: #777;
+  padding:30rpx 20rpx;
+}
+.foot-info text{
+  font-size: 26rpx;
+}
+.left_y,.right_y{
+  position: absolute;
+  z-index: 2;
+  top: -25rpx;
+  width: 50rpx;
+  height: 50rpx;
+  border-radius:100%;
+  background-color: #EDEDED; 
+}
+.left_y{
+  left: -50rpx;
+}
+.right_y{
+  right: -50rpx;
+}
+.open-b{
+  color: #ff976a;
+  border-color:#ff976a !important; 
+}
+.open-c{
+  color: #07c160;
+  border-color:#07c160 !important; 
+}

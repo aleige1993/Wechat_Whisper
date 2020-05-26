@@ -1,0 +1,77 @@
+/* pages/editMesg/index.wxss */
+@import '../message/index.wxss';
+page{
+  background-color: #fff;
+}
+.title_hd{
+  padding: 30rpx;
+  display: flex;
+  justify-content:space-between;
+  background-color: #EDEDED;
+  align-items: center;
+}
+.onDoen{
+  padding: 6rpx 25rpx; 
+  border-radius:10rpx; 
+}
+.edit_commen{
+  /* margin: 30rpx; */
+  /* padding:30rpx 20rpx 20rpx 20rpx; */
+  margin-top:0; 
+  /* border-top: 1rpx solid #eee;  */
+}
+.oncol{
+  color: #282828;
+  font-size: 30rpx;
+}
+.edit_commen textarea{
+  width: 100%;
+  color: #282828;
+  max-height: 240rpx;
+  border-bottom: 1px solid #C9C9CB;
+  min-height: 100rpx; 
+  font-size: 32rpx;
+}
+.stlylv{
+background-color: #07C160;
+color: #fff
+}
+.stlyhui{
+background-color: #ccc;
+color: #999;
+}
+.van-uploader__upload{
+  background-color: #EDEDED !important;
+  width:200rpx !important;
+  height: 200rpx !important;
+}
+.move_img{
+  margin-top: 20rpx;
+  padding-left: 50rpx;
+  padding-right: 10rpx;
+}
+.van-uploader__preview-image{
+  width:200rpx !important;
+  height: 200rpx !important;
+  border-radius: 0 !important;
+}
+.van-uploader__upload{
+  border-radius:0 !important;
+}
+.textareStr{
+  position: relative;
+  background-color: #fff;
+  padding:30rpx 50rpx;
+  /* min-height: 240rpx; */
+}
+.maxstr{
+  position: absolute;
+  z-index: 2;
+  bottom: 10rpx;
+  right: 10rpx;
+  color: #ccc;
+  font-size: 22rpx;
+}
+.textpand{
+  /* padding:20rpx 0 60rpx 0; */
+}

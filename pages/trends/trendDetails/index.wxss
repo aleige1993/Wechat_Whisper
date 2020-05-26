@@ -1,0 +1,73 @@
+/* pages/trends/trendDetails/index.wxss */
+@import '/pages/trends/dynamic/index.wxss';
+
+.detailcommit{
+  padding:0 40rpx 0 36rpx;
+  box-sizing: border-box;
+}
+.moveimg image{
+  width: 64rpx;
+  height: 64rpx;
+  margin-right: 10rpx;
+  border-radius:6rpx;
+}
+.dianzanpanl{
+  display: flex;
+  align-items: center;
+}
+.dixina{
+  margin-right:20rpx;
+}
+.iconcommt{
+  width: 42rpx;
+}
+.commt123{
+  width: 22rpx;
+  height: 18rpx;
+
+}
+.huifuxinxi{
+  display: flex;
+  /* margin-right: 20rpx; */
+}
+.list_modf{
+  flex: 1;
+  padding-right: 20rpx;
+  border-bottom: 1px solid #C9C9CB;
+  padding-top:10rpx;
+  padding-bottom: 10rpx;
+}
+.jren1{
+  width: 64rpx;
+  height: 64rpx;
+  border-radius:6rpx;
+}
+.weqw{
+  display: flex;
+}
+.yjaj{
+  flex: 1;
+  margin-left: 10rpx;
+}
+.yanj{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.geres{
+  font-size: 26rpx;
+  color: #576B95;
+}
+.tiem1{
+  font-size: 24rpx;
+  color: #767676;
+}
+.huidssa{
+  font-size: 26rpx;
+}
+.df2asad{
+  flex: 1;
+}
+.df2asad .list_modf:last-child{
+  border-bottom: none !important;
+}

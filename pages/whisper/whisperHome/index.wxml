@@ -1,0 +1,93 @@
+<!--pages/whisper/whisperHome/index.wxml-->
+<view class="whisper-panl">
+	<view class="item-hd">
+          <image class="additemimg" src="/assets/images/tabs/additem.png"></image>
+			<button open-type='share' class="btn-cover macouar"></button>
+		</view> 
+	<navigator>
+		<view class="list_item1 border2">
+			<image class="iconimg changeimg1" src='/assets/images/tabs/pyqs.png'></image>
+			<view class="tites">悄悄说</view> <text class="tipa">1</text>
+			<view class="imgtite">
+				<image class="showconte" src="/assets/images/tabs/addpeper.png"></image>
+				<text class="tipst"></text>
+			</view>
+			<view class="hadericont icontitle iconfont iconyou"></view>
+		</view>
+	</navigator> 
+	<!-- <navigator>
+		<view class="list_item1 border2">
+			<image class="iconimg addwith" src='/assets/images/tabs/renadd.png'></image>
+			<view class="tites addtitle">添加收话人</view>
+			<view class="imgtite"></view>
+			<view class="hadericont icontitle iconfont iconyou"></view>
+       <button open-type='share' class="btn-cover"></button>
+		</view>
+	</navigator> -->
+	<navigator bindtap="onShowPyq">
+		<view class="list_item1 clerbot border2">
+			<image class="iconimg" src='/assets/images/tabs/xiaxo.png'></image>
+			<view class="tites">往来消息</view>
+			<view class="imgtite">
+			</view>
+			<view wx:if="{{isshow}}" class="hadericont icontitle iconfont iconweibiaoti35"></view>
+			<view wx:else class="hadericont icontitle iconfont iconyou"></view>
+		</view>
+	</navigator>
+	<view class="showItmeAll" wx:if="{{isshow}}">
+		<!-- <scroll-view scroll-y="{{true}}"> -->
+			<wux-animation-group wux-class="example" in="{{true}}" type="fadeIn" duration="{{1000}}" exit="{{true}}" enter="{{true}}"> 
+		<wux-swipe-action-group>
+			<wux-swipe-action  right="{{ right1 }}" bind:click="onClick">
+				<view class="haoyoupanl">
+					<image class="userimg" src="/assets/images/tabs/jiaren.png"></image>
+					<view class="datlke">
+						<view class="topcla">
+							<view class="name">name</view>
+							<view class="date">2020/05/20 2:55</view>
+						</view>
+						<view class="botcla">
+							你好鸭，好鸭好鸭
+						</view>
+					</view>
+          <view class="linkadd"></view>
+				</view>
+			</wux-swipe-action>
+			<wux-swipe-action   right="{{ right2 }}" bind:click="onClick">
+				<view class="haoyoupanl">
+					<image class="userimg" src="/assets/images/tabs/jiaren.png"></image>
+					<view class="datlke">
+						<view class="topcla">
+							<view class="name">name</view>
+							<view class="date">2020/05/20 2:55</view>
+						</view>
+						<view class="botcla">
+							你好鸭，好鸭好鸭
+						</view>
+					</view>
+           <view class="linkadd"></view>
+				</view>
+			</wux-swipe-action>
+			<wux-swipe-action   right="{{ right3 }}" bind:click="onClick">
+				<view class="haoyoupanl">
+					<image class="userimg" src="/assets/images/tabs/jiaren.png"></image>
+					<view class="datlke">
+						<view class="topcla">
+							<view class="name">name</view>
+							<view class="date">2020/05/20 2:55</view>
+						</view>
+						<view class="botcla">
+							你好鸭，好鸭好鸭
+						</view>
+					</view>
+           <view class="linkadd"></view>
+				</view>
+			</wux-swipe-action> 
+		</wux-swipe-action-group> 
+	</wux-animation-group>
+		
+		<!-- </scroll-view>  -->
+	</view> 
+
+</view>
+<tab-bar index="{{'2'}}"></tab-bar>

@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "",
+  "backgroundColor": "#ededed",
+  "usingComponents": {
+    "van-switch": "../../components/vant/switch/index",
+    "van-popup": "../../components/vant/popup/index",
+    "van-transition": "../../components/vant/transition/index"
+  }
+}
