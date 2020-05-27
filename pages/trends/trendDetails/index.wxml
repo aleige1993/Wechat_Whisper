@@ -32,7 +32,7 @@
 				</view>
 				<view class="mdizhi">北京市不知道哪个地方</view>
 				<view class="actione">
-					<view class="tiems1">2020年4月5日 下午5:55 <text class="delmrsa">删除</text></view>
+					<view class="tiems1">2020-4-5 5:55 <text class="delmrsa">删除</text></view>
 					<view class="acdtst">
 						<image class="diandian1" src="/assets/images/tabs/diandian1.png"></image>
 						<view class="anniu showanniu">

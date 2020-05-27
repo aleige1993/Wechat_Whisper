@@ -218,7 +218,7 @@ Page({
     var hour = now.getHours();
     var minute = now.getMinutes();
     var second = now.getSeconds();
-    return year + "年" + month + "月" + date + "日 " + hour + ":" + minute;
+    return year + "年" + month + "月" + date + "日 " + (hour>9?hour:'0'+hour) + ":" + (minute>9?minute:'0'+minute);
   },
   queryMessageList() {
     let _this = this

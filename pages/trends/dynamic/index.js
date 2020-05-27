@@ -5,11 +5,33 @@ Page({
    * 页面的初始数据
    */
   data: {
-    scrollTop:50,
+    scrollTop:100,
     iscorlor:false,
     isfocus:false,
-    reasonHeight:0
-
+    reasonHeight:0,
+    ishuifu:false,
+    motai:false,
+    windowHeight:0
+  },
+  gobank(){
+    wx.navigateBack({
+      delta: 1
+    })
+  },
+  gosend(){
+    wx.navigateTo({
+      url: '/pages/trends/article/index',
+    })
+  },
+  gotonewmsg(){
+    wx.navigateTo({
+      url: '/pages/trends/trendDetails/index',
+    })
+  },
+  calerAll(){
+   this.setData({
+    motai:false
+   })
   },
   bindfocusDialog(event) {
     let vm = this;
@@ -44,23 +66,30 @@ Page({
 //         imagesinfos:image
 //      })
 //  },
-  bainse(ev){
-    let top = ev.detail.scrollTop
-    if(top > 150){
-      this.setData({
-        iscorlor:true
-      })
-    }else{
-      this.setData({
-        iscorlor:false
-      })
-    }
-  },
+  // bainse(ev){
+  //   let top = ev.detail.scrollTop
+  //   if(top > 150){
+  //     this.setData({
+  //       iscorlor:true
+  //     })
+  //   }else{
+  //     this.setData({
+  //       iscorlor:false
+  //     })
+  //   }
+  // },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let _this = this;
+    wx.getSystemInfo({
+      success:function (res){
+        _this.setData({
+          windowHeight:res.windowHeight
+        })
+      }
+    })
   },
 
   /**

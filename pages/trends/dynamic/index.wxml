@@ -1,28 +1,31 @@
 <!--pages/trends/dynamic/index.wxml-->
 <!--pages/trends/trends/photoAlbum/index.wxml-->
-<scroll-view scroll-y  class="dunpaml" style="height:100vh" scroll-top="{{50}}" bindscroll="bainse">
+<scroll-view scroll-y  class="dunpaml"   scroll-y style="height:{{windowHeight}}px" scroll-top="{{scrollTop}}" scroll-with-animation="{{true}}">
   <view class="haser">
-  <view class="navpanll">
+  <!-- <view class="navpanll">
     <view class="filde {{iscorlor?'':'navpanl2'}}"></view>
     <view class="meitain">
         <view class="iconfont iconyou fanzhuan1 {{iscorlor?'buik':''}}" bindtap="gobank"></view>
         <view class="mytitel {{iscorlor?'buik':''}}">我的昵称</view>
         <view class="fanzhuan1"></view>
     </view>
-  </view>
+  </view> -->
+   <view class="chiyaonm">
+    	<view class="iconfont iconyou fanzhuan1" bindtap="gobank"></view>
+    </view>
   <view  class="baergeo">
     <view class="dsfwee"></view>
-    <image class="jweq" mode="widthFix" src="/assets/images/tabs/jiaren.png"> </image>
+    <image class="jweq" mode="widthFix" src="/assets/images/tabs/aaa.jpg"> </image>
     <view class="xiabiao">
       <view class="tiescopor">有什么想说的，就在这里说吧</view>
-      <image   class="xzewq" src="/assets/images/tabs/zhaoxiangjia.png"></image>
+      <image  bindtap="gosend" class="xzewq" src="/assets/images/tabs/zhaoxiangjia.png"></image>
     </view>
   </view>
 </view>
 <!-- 空间 -->
 <view class='kongjian'>
   <view class="diqu">
-      <view class="pyd1">
+      <view class="pyd1" bindtap="gotonewmsg">
           <view class="uses1">
               <image mode="aspectFill"  class="touxiang" src="/assets/images/tabs/jiaren.png"></image> 
           </view>
@@ -61,7 +64,8 @@
           <view class="tiems1">四分钟前</view>
           <view class="acdtst">
               <image class="diandian1" src="/assets/images/tabs/diandian1.png"></image>
-              <view class="anniu showanniu">
+             <!-- showanniu -->
+              <view class="anniu ">
                   <view class="zanbox">
                     <image  mode="aspectFill" src="/assets/images/tabs/xin.png" class="xin1"></image>
                     <view>赞</view>
@@ -72,6 +76,12 @@
                     <view>评论</view>
                   </view>
               </view>
+               <!-- <view class="dangehuif showanniu"> 
+                  <view class="zanbox">
+                    <image src="/assets/images/tabs/commit.png" class="pinglu"></image>
+                    <view>回复</view>
+                  </view>
+              </view> -->
           </view>
         </view> 
         <!-- 评论 -->
@@ -104,7 +114,7 @@
         <!-- <view class="imgpanl">
            <image bindload="imageLoad" src="/assets/images/tabs/jiaren.png"></image>
         </view> -->
-        <!-- <view class="imgpanl addmoves">
+        <view class="imgpanl addmoves">
            <image   src="/assets/images/tabs/jiaren.png"></image>
            <image   src="/assets/images/tabs/jiaren.png"></image>
            <image   src="/assets/images/tabs/jiaren.png"></image>
@@ -113,19 +123,14 @@
             <image   src="/assets/images/tabs/jiaren.png"></image>
            <image   src="/assets/images/tabs/jiaren.png"></image>
            <image   src="/assets/images/tabs/jiaren.png"></image> 
-        </view> -->
-        <view class="imgpanl addmoves furrs">
-           <image   src="/assets/images/tabs/jiaren.png"></image>
-           <image   src="/assets/images/tabs/jiaren.png"></image>
-           <image   src="/assets/images/tabs/jiaren.png"></image>
-           <image   src="/assets/images/tabs/jiaren.png"></image>
         </view>
+         
         <view class="mdizhi">北京市不知道哪个地方</view>
         <view class="actione">
           <view class="tiems1">4分钟前</view>
           <view class="acdtst">
               <image class="diandian1" src="/assets/images/tabs/diandian1.png"></image>
-              <view class="anniu showanniu">
+              <!-- <view class="anniu showanniu">
                   <view class="zanbox">
                     <image  mode="aspectFill" src="/assets/images/tabs/xin.png" class="xin1"></image>
                     <view>赞</view>
@@ -134,6 +139,13 @@
                   <view class="zanbox">
                     <image src="/assets/images/tabs/commit.png" class="pinglu"></image>
                     <view>评论</view>
+                  </view>
+              </view> -->
+              <!-- showanniu -->
+                <view class="dangehuif "> 
+                  <view class="zanbox">
+                    <image src="/assets/images/tabs/commit.png" class="pinglu"></image>
+                    <view>回复</view>
                   </view>
               </view>
           </view>
@@ -164,6 +176,6 @@
  <!-- adjust-position  -->
   <input class="ipmoput"   maxlength="800"  value="{{}}" cursor-spacing="{{40}}"  adjust-position  placeholder="@回复谁？" focus="{{isfocus}}" bindblur="hideinpout" confirm-type="send"></input>
 </view>
-
+<view class="motai" bindtap="calerAll" wx:if="{{motai}}"></view>
 
 

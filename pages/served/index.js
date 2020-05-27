@@ -81,10 +81,10 @@ timestampToTime(timestamp){
    let Y = date.getFullYear() + '年';
   let M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '月';
   let D = date.getDate() + '日';
-  let  h = date.getHours() + ':';
+  let  h = date.getHours();
   let  m = date.getMinutes();
   let  s = date.getSeconds();
-    return "将于" + Y + M + D +" "+ h + m + "送达消息" ;//时分秒可以根据自己的需求加上
+    return "将于" + Y + M + D +" "+ (h> 9?h:'0'+h)+ ":"+ (m>9?m:"0"+m) + "送达" ;//时分秒可以根据自己的需求加上
 
   },
   //处理时间

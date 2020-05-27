@@ -38,7 +38,7 @@ Page({
           longitude:longitude,
           success: function(suc){
             _this.setData({
-              localhost:suc.name
+              localhost:suc.address
             })
             console.log(suc)
           },

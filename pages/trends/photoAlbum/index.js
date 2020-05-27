@@ -5,8 +5,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    scrollTop:50,
-    iscorlor:false
+    scrollTop:100,
+    iscorlor:false,
+    windowHeight:0
+  },
+  addwenz(){
+    wx.navigateTo({
+      url: '/pages/trends/article/index',
+    })
+  },
+  godetail(){
+    wx.navigateTo({
+      url: '/pages/trends/trendDetails/index',
+    })
   },
   chakantupian(){
     wx.previewImage({
@@ -19,18 +30,18 @@ Page({
       delta: 1
     })
   },
-  bainse(ev){
-    let top = ev.detail.scrollTop
-    if(top > 150){
-      this.setData({
-        iscorlor:true
-      })
-    }else{
-      this.setData({
-        iscorlor:false
-      })
-    }
-  },
+  // bainse(ev){
+  //   let top = ev.detail.scrollTop
+  //   if(top > 150){
+  //     this.setData({
+  //       iscorlor:true
+  //     })
+  //   }else{
+  //     this.setData({
+  //       iscorlor:false
+  //     })
+  //   }
+  // },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -41,7 +52,14 @@ Page({
     // })
   },
   onLoad: function (options) {
-
+    let _this = this;
+    wx.getSystemInfo({
+      success:function (res){
+        _this.setData({
+          windowHeight:res.windowHeight
+        })
+      }
+    })
   },
 
   /**
@@ -55,7 +73,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let _this = this
+    setTimeout(()=>{
+      _this.setData({
+        scrollTop:100
+      })
+    })
+   
   },
 
   /**

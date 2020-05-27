@@ -4,7 +4,7 @@
 					<image bindtap="{{ item.userid == userId?'right':'onItemClickToFriendInfo'}}" data-item="{{item}}" class="message-content-item_img" src="{{item.userid != userId ? item.imgurl : item.userImgurl}}" role="img"></image>
 					<view class="message-content-item_msg">
 						<view class="message-content-title">
-							<text class="message-content-time" wx:if="{{item.messagestatus == 1}}">{{item.plantime+'送达该消息'}}</text>
+							<text class="message-content-time" wx:if="{{item.messagestatus == 1}}">{{item.plantime}}</text>
 							<text class="message-content-time" wx:if="{{item.messagestatus == 2}}">{{item.plantime}}</text>
 							<text class="message-content-time" wx:if="{{item.messagestatus == 3}}">{{item.plantime}}</text>
 							<text class="message-content-time" wx:if="{{item.messagestatus == 4}}">{{'该消息超时未接收'}}</text>

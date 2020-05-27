@@ -29,7 +29,11 @@ Page({
       // url: "/pages/chatRecord/index"
     });
   },
-
+  gotopyqxc(){
+    wx.navigateTo({
+      url: '/pages/trends/photoAlbum/index',
+    })
+  },
   onLoad: function (options) {
     console.log(options);
     if (options){

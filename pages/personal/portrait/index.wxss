@@ -6,10 +6,10 @@ page{
   background: #000;
 }
 .panlimgs{
-  margin-top:30%;
+  margin-top:45%;
 }
 .changimg{
   text-align: center;
   color: #fff;
-  margin-top: 12%;
+  margin-top: 22%;
 }

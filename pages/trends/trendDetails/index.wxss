@@ -5,6 +5,10 @@
   padding:0 40rpx 0 36rpx;
   box-sizing: border-box;
 }
+.moveimg{
+  display: flex;
+  align-items: center;
+}
 .moveimg image{
   width: 64rpx;
   height: 64rpx;
@@ -33,7 +37,7 @@
 .list_modf{
   flex: 1;
   padding-right: 20rpx;
-  border-bottom: 1px solid #C9C9CB;
+  border-bottom: 1px solid #f2f2f2;
   padding-top:10rpx;
   padding-bottom: 10rpx;
 }
@@ -41,6 +45,7 @@
   width: 64rpx;
   height: 64rpx;
   border-radius:6rpx;
+  margin-top: 6rpx;
 }
 .weqw{
   display: flex;

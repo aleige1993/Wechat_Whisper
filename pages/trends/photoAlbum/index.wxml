@@ -1,126 +1,129 @@
-<!--pages/trends/trends/photoAlbum/index.wxml-->
-<scroll-view scroll-y style="height:100vh" scroll-top="{{50}}" bindscroll="bainse">
-  <view class="haser">
-  <view class="navpanll">
-    <view class="filde {{iscorlor?'':'navpanl2'}}"></view>
-    <view class="meitain">
-        <view class="iconfont iconyou fanzhuan1 {{iscorlor?'buik':''}}" bindtap="gobank"></view>
-        <view class="mytitel {{iscorlor?'buik':''}}">我的昵称</view>
-        <view class="fanzhuan1"></view>
+<!--pages/trends/photoAlbum/index.wxml-->
+<scroll-view scroll-y style="height:{{windowHeight}}px" scroll-top="{{scrollTop}}" scroll-with-animation="{{true}}" >
+	<view class="haser">
+		<!-- <view class="navpanll">
+			<view class="filde {{iscorlor?'':'navpanl2'}}"></view>
+			<view class="meitain">
+				<view class="iconfont iconyou fanzhuan1 {{iscorlor?'buik':''}}" bindtap="gobank"></view>
+				<view class="mytitel {{iscorlor?'buik':''}}">我的昵称</view>
+				<view class="fanzhuan1"></view>
+			</view>
+		</view> -->
+    <view class="chiyaonm" bindtap="gobank">
+    	<view class="iconfont iconyou fanzhuan1 {{iscorlor?'buik':''}}"></view>
     </view>
-  </view>
-  <view  class="baergeo">
-    <view class="dsfwee"></view>
-    <image class="jweq" mode="widthFix" src="/assets/images/tabs/jiaren.png"> </image>
-    <!-- <view class="xiabiao">
+		<view class="baergeo">
+			<view class="dsfwee"></view>
+			<image class="jweq" mode="widthFix" src="/assets/images/tabs/aaa.jpg"> </image>
+			<!-- <view class="xiabiao">
       <view class="tiescopor">有什么想说的，就在这里说吧</view>
       <image   class="xzewq" src="/assets/images/tabs/zhaoxiangjia.png"></image>
     </view> -->
-  </view>
-</view>
-<!-- 空间 -->
-<view class='kongjian'>
-  <view class="kongge"></view>
-  <view class="jintian">
-    <view class="diyi">今天</view>
-    <view class="hezuo">
-      <view class="beijw">
-        <image class="diyizhao" src="/assets/images/tabs/xince1.png"></image>
-      </view>
-    </view>
-  </view>
-  <!-- 每年 -->
-  <view class="niandu">
-    <view class="list_box">
-        <view class="diyi">
-          <text class="tian">10</text>
-          <text class="yue">5月</text>
-        </view>
-        <view class="hezuo">
-        <!-- 一张 -->
-          <view class="beijw">
-            <image bindtap="chakantupian" class="nianzhao" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
-          </view>
-          <view class="cqcnian">
-              <view class="niantext">
-                感恩的心，感谢有你，伴我一生，让我感恩的心
-              </view>
-              <!-- <view class="zhangshu">共3张</view> -->
-            </view>
-        </view>
-    </view>
-    <view class="list_box">
-        <view class="diyi">
-          <text class="tian">10</text>
-          <text class="yue">5月</text>
-        </view>
-        <view class="hezuo">
-         <!-- 二张 -->
-          <view bindtap="chakantupian" class="dier beijw">
-            <image class="" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
-            <image class="" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
-          </view>
-            <view class="cqcnian">
-              <view class="niantext">
-                感恩的心，感谢有你，伴我一生，让我感恩的心
-              </view>
-              <view class="zhangshu">共3张</view>
-            </view>
-        </view>
-    </view>
-    <view class="link_nian">
-      2020年
-    </view>
-  </view>
-  <view class="niandu">
-    <view class="list_box">
-        <view class="diyi">
-          <text class="tian">10</text>
-          <text class="yue">5月</text>
-        </view>
-        <view class="hezuo">
-           <!-- 第三 -->
-          <view bindtap="chakantupian" class="disan beijw">
-            <image class="kanqwe" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
-            <view class="doubel">
-               <image class="" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
-               <image class="" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
-            </view>
-          </view>
-          <view class="cqcnian">
-              <view class="niantext">
-                  感恩的心，感谢有你，伴我一生，让我感恩的心伴我一生，让我感恩的心
-              </view>
-              <view class="zhangshu">共3张</view>
-            </view>
-        </view>
-    </view>
-    <view class="list_box">
-        <view class="diyi">
-          <text class="tian">10</text>
-          <text class="yue">5月</text>
-        </view>
-        <view  class="hezuo">
-          <!-- 第四 -->
-          <view bindtap="chakantupian" class="disiwq beijw">
-              <image class="kanqwe" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image> 
-               <image class="" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
-               <image class="" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
-               <image class="" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
-          </view>
-          <view class="cqcnian">
-              <view class="niantext">
-                感恩的心，感谢有你，伴我一生，让我感恩的心 感恩的心，感谢有你，伴我一生，让我感恩的心 感恩的心，感谢有你，伴我一生，让我感恩的心 感恩的心，感谢有你，伴我一生，让我感恩的心 感恩的心，感谢有你，伴我一生，让我感恩的心
-              </view>
-              <view class="zhangshu">共3张</view>
-            </view>
-        </view>
-    </view>
-    <view class="link_nian">
-      2020年
-    </view>
-  </view>
+		</view>
+	</view>
+	<!-- 空间 -->
+	<view class='kongjian'>
+		<view class="kongge"></view>
+		<view class="jintian">
+			<view class="diyi">今天</view>
+			<view class="hezuo">
+				<view class="beijw" bindtap="addwenz">
+					<image class="diyizhao" src="/assets/images/tabs/xince1.png"></image>
+				</view>
+			</view>
+		</view>
+		<!-- 每年 -->
+		<view class="niandu">
+			<view class="list_box">
+				<view class="diyi">
+					<text class="tian">10</text>
+					<text class="yue">5月</text>
+				</view>
+				<view class="hezuo">
+					<!-- 一张 -->
+					<view class="beijw">
+						<image bindtap="chakantupian" class="nianzhao" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
+					</view>
+					<view class="cqcnian" bindtap="godetail">
+						<view class="niantext">
+							感恩的心，感谢有你，伴我一生，让我感恩的心
+						</view>
+						<!-- <view class="zhangshu">共3张</view> -->
+					</view>
+				</view>
+			</view>
+			<view class="list_box">
+				<view class="diyi">
+					<text class="tian">10</text>
+					<text class="yue">5月</text>
+				</view>
+				<view class="hezuo">
+					<!-- 二张 -->
+					<view bindtap="chakantupian" class="dier beijw">
+						<image class="" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
+						<image class="" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
+					</view>
+					<view class="cqcnian" bindtap="godetail">
+						<view class="niantext">
+							感恩的心，感谢有你，伴我一生，让我感恩的心
+						</view>
+						<view class="zhangshu">共3张</view>
+					</view>
+				</view>
+			</view>
+			<view class="link_nian">
+				2020年
+			</view>
+		</view>
+		<view class="niandu">
+			<view class="list_box">
+				<view class="diyi">
+					<text class="tian">10</text>
+					<text class="yue">5月</text>
+				</view>
+				<view class="hezuo">
+					<!-- 第三 -->
+					<view bindtap="chakantupian" class="disan beijw">
+						<image class="kanqwe" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
+						<view class="doubel">
+							<image class="" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
+							<image class="" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
+						</view>
+					</view>
+					<view class="cqcnian" bindtap="godetail">
+						<view class="niantext">
+							感恩的心，感谢有你，伴我一生，让我感恩的心伴我一生，让我感恩的心
+						</view>
+						<view class="zhangshu">共3张</view>
+					</view>
+				</view>
+			</view>
+			<view class="list_box">
+				<view class="diyi">
+					<text class="tian">10</text>
+					<text class="yue">5月</text>
+				</view>
+				<view class="hezuo">
+					<!-- 第四 -->
+					<view bindtap="chakantupian" class="disiwq beijw">
+						<image class="kanqwe" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
+						<image class="" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
+						<image class="" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
+						<image class="" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
+					</view>
+					<view class="cqcnian" bindtap="godetail">
+						<view class="niantext">
+							感恩的心，感谢有你，伴我一生，让我感恩的心 感恩的心，感谢有你，伴我一生，让我感恩的心 感恩的心，感谢有你，伴我一生，让我感恩的心 感恩的心，感谢有你，伴我一生，让我感恩的心 感恩的心，感谢有你，伴我一生，让我感恩的心
+						</view>
+						<view class="zhangshu">共3张</view>
+					</view>
+				</view>
+			</view>
+			<view class="link_nian">
+				2020年
+			</view>
+		</view>
 
-</view>
+	</view>
 
 </scroll-view>

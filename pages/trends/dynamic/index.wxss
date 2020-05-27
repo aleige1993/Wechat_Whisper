@@ -41,7 +41,7 @@
   width: 100%;
   padding:25rpx 40rpx 20rpx 36rpx;
   box-sizing: border-box;
-  border-top: 1px solid #C9C9CB;
+  border-top: 1px solid #f2f2f2;
   
 }
 .showanniu{
@@ -153,7 +153,7 @@ margin-top: 14rpx;
 .dianzanpanl{
   padding:10rpx 20rpx;
   box-sizing: border-box;
-  border-bottom: 1px solid #C9C9CB;
+  border-bottom: 1px solid #f2f2f2;
   color: #576B95;
   font-size: 26rpx;
 }
@@ -191,4 +191,29 @@ margin-top: 14rpx;
 }
 .dunpaml{
   padding-bottom:120rpx;
+}
+.dangehuif{
+position: absolute;
+z-index: 5;
+width: 150rpx;
+height: 68rpx;
+display: flex;
+left: -170rpx;
+background-color: #4C4C4C;
+color: #fff;
+border-radius: 6rpx;
+bottom: -1rpx; 
+}
+.dangehuif .zanbox{
+  width: 100%;
+}
+.motai{
+  position: fixed;
+  z-index:8;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  opacity: 0;
+  left: 0;
+  top: 0;
 }

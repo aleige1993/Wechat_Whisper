@@ -135,6 +135,11 @@ Page({
     msg4_input: "",
     msg4_imgs: []
   },
+  gomyqqs(){
+    wx.navigateTo({
+      url: '/pages/trends/photoAlbum/index',
+    })
+  },
   updataTime() {
     let date = new Date();
     let hh = date.getHours();

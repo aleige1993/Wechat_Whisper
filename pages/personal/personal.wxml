@@ -35,7 +35,7 @@
           </view>
         </view> -->
       <!-- </view> --> 
-      <navigator class="tiaozhuanpyq border2">
+      <navigator class="tiaozhuanpyq border2"  bindtap="gomyqqs">
         <view class="title">
            悄悄说
         </view>

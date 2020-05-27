@@ -6,7 +6,7 @@
   height: 200rpx;
   background-color:#F7F7F7;
   text-align: center; 
-  line-height: 200rpx;
+  line-height: 230rpx;
 }
 .imgpaizhao{
   width: 70rpx;
@@ -17,14 +17,15 @@
 }
 .weizhi{
   padding:50rpx;
+  padding-right:70rpx;
 }
 .msdfw{
-  border-bottom: 1px solid #C9C9CB;
-  border-top: 1px solid #C9C9CB;
+  border-bottom: 1px solid #f2f2f2;
+  border-top: 1px solid #f2f2f2;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding:30rpx 0;
+  padding: 30rpx 0;
 }
 .timges{
   width: 29rpx;

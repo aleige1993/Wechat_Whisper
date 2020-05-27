@@ -5,7 +5,7 @@
 			<button open-type='share' class="btn-cover macouar"></button>
 		</view> 
 	<navigator>
-		<view class="list_item1 border2">
+		<view class="list_item1 border2" bindtap="gotopyq">
 			<image class="iconimg changeimg1" src='/assets/images/tabs/pyqs.png'></image>
 			<view class="tites">悄悄说</view> <text class="tipa">1</text>
 			<view class="imgtite">
@@ -25,7 +25,7 @@
 		</view>
 	</navigator> -->
 	<navigator bindtap="onShowPyq">
-		<view class="list_item1 clerbot border2">
+		<view class="list_item1 clerbot {{isshow?'':'weqwe'}}">
 			<image class="iconimg" src='/assets/images/tabs/xiaxo.png'></image>
 			<view class="tites">往来消息</view>
 			<view class="imgtite">
@@ -34,9 +34,9 @@
 			<view wx:else class="hadericont icontitle iconfont iconyou"></view>
 		</view>
 	</navigator>
-	<view class="showItmeAll" wx:if="{{isshow}}">
+	<view class="showItmeAll " wx:if="{{isshow}}">
 		<!-- <scroll-view scroll-y="{{true}}"> -->
-			<wux-animation-group wux-class="example" in="{{true}}" type="fadeIn" duration="{{1000}}" exit="{{true}}" enter="{{true}}"> 
+			<wux-animation-group wux-class="example {{isshow?'cmix':''}}" in="{{true}}" type="fadeIn" duration="{{1000}}" exit="{{true}}" enter="{{true}}"> 
 		<wux-swipe-action-group>
 			<wux-swipe-action  right="{{ right1 }}" bind:click="onClick">
 				<view class="haoyoupanl">

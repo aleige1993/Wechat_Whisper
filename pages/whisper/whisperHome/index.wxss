@@ -21,6 +21,10 @@ page{
   box-sizing: border-box;
   align-items: center;
   position: relative;
+  border-top:1px solid #C9C9CB;
+}
+.cmix{
+  border-bottom: 1px solid #C9C9CB;
 }
 .iconimg{
   width: 40rpx;
@@ -84,11 +88,14 @@ page{
 }
 .linkadd{
   position: absolute;
-  height: 2rpx;
+  height: 1rpx;
   background-color:#C9C9CB;
-  bottom:0;
+  top:1rpx;
   right: 0;
   width: 84%;
+}
+.weqwe{
+  border-bottom:1px solid #C9C9CB;
 }
 .datlke{
   display: flex;
@@ -123,7 +130,7 @@ page{
   margin-left: 32rpx !important;
 }
 .showItmeAll{
-  min-height:66vh;
+  min-height:74vh;
   overflow-y: scroll;
 }
 .macouar{

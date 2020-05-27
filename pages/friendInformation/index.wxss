@@ -254,7 +254,7 @@ width: 96%;
 
 }
 .onDoen{
-  padding: 4rpx 30rpx; 
+  padding: 6rpx 20rpx; 
   border-radius:10rpx; 
 }
 .commoText{

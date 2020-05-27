@@ -8,7 +8,7 @@
 					<view class="message-content-item_msg">
 						<!-- <view class="triangle"></view> -->
 						<view class="message-content-title">
-							<text class="message-content-time" wx:if="{{item.messagestatus == 1}}">{{item.plantime+'送达该消息'}}</text>
+							<text class="message-content-time" wx:if="{{item.messagestatus == 1}}">将于{{item.plantime+'送达'}}</text>
 							<text class="message-content-time" wx:if="{{item.messagestatus == 2}}">{{item.plantime}}</text>
 							<text class="message-content-time" wx:if="{{item.messagestatus == 3}}">{{item.plantime}}</text>
 							<text class="message-content-time" wx:if="{{item.messagestatus == 4}}">{{'该消息超时未接收'}}</text>
@@ -193,11 +193,11 @@
 			</view> -->
 			<!-- <view class="messageModal-body-timeTitle">送达时间</view> -->
 			<!-- bindtap="openCalendar"  -->
-			<view class="messageModal-body-time" bindtap="onSelectDateShow" data-e-tap-so="this">{{year}} 年 {{month}} 月 {{day
+			<view class="messageModal-body-time cnmp" bindtap="onSelectDateShow" data-e-tap-so="this">{{year}} 年 {{month}} 月 {{day
       < 10 ? '0' + day : day}} 日</view>
-			<view class="messageModal-body-time" bindtap="onSelectDateShow" data-e-tap-so="this">{{hh}}:{{mm}}</view>
+			<view class="messageModal-body-time cnmp2" bindtap="onSelectDateShow" data-e-tap-so="this">{{hh}}:{{mm}}</view>
 			<view class="messageModal-body-timeTitle" bindtap="onSelectDateShow">{{weekDayNew}}</view>
-      <view class="messageModal-body-timeTitle" bindtap="onSelectDateShow">{{luanrText}}</view> 
+      <view class="messageModal-body-timeTitle quxuao" bindtap="onSelectDateShow">{{luanrText}}</view> 
 			<view class="messageModal-body-line">
 			</view>
 			<view class="messageModal-body-button">
@@ -209,7 +209,7 @@
 		</view>
 		<view class="{{isDateShow && isAnimate ? 'messageModal-body' : isAnimate ? 'messageModal-body animate-style' : 'messageModal-body animate-none'}}">
     <view class="mesgsdfsa">
-      	<picker-view indicator-class="fwads" indicator-style="height: 40px;font-size:40rpx;" style="width: 70%; height: 140px;" value="{{yearValue}}" bindchange="onChangeYear">
+      	<picker-view indicator-class="fwads" indicator-style="height: 40px;font-size:40rpx;" style="width: 70%; height: 200px;" value="{{yearValue}}" bindchange="onChangeYear">
 				<picker-view-column>
 					<view class="picker-view-style" wx:key="item" wx:for="{{years}}" wx:for-item="item" wx:for-index="_anonIdx4">{{item}}年</view>
 				</picker-view-column>
@@ -221,7 +221,7 @@
 				</picker-view-column>
 			</picker-view>
 			<!-- <view class="messageModal-body-line" style="margin: 10px 0"></view> -->
-			<picker-view indicator-style="height: 40px;" style="width:30%; height: 140px;position: relitave;" value="{{timeValue}}" bindchange="onChangeTime">
+			<picker-view indicator-style="height: 40px;" style="width:30%; height: 200px;position: relitave;" value="{{timeValue}}" bindchange="onChangeTime">
 				<view class="messageModal-position-time">:</view>
 				<picker-view-column>
 					<view class="picker-view-style" wx:key="item" wx:for="{{hours}}" wx:for-item="item" wx:for-index="_anonIdx10">{{item}}</view>
