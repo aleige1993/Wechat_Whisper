@@ -175,11 +175,11 @@ margin-top: 14rpx;
   font-size: 26rpx;
 }
 .huifuxinxi{
-  padding:10rpx 0 10rpx 20rpx;
+  padding:4rpx 0 4rpx 20rpx;
   box-sizing: border-box;
 }
 .listxinxi{
-  line-height:50rpx;
+  line-height:48rpx;
 }
 .delmrsa{
   color: #576B95;
@@ -199,6 +199,9 @@ margin-top: 14rpx;
   padding:20rpx;
   border-radius: 5rpx;
   background-color: #F7F7F7;
+  width: 100%;
+  height: 80rpx;
+  box-sizing: border-box;
 }
 .dunpaml{
   padding-bottom:60rpx;

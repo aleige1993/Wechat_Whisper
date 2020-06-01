@@ -9,6 +9,14 @@ var timed = (function (item, time) {
   }
   return timeA
 })
+var sub = function(val) {
+  return val.substring(0, 2);
+}
+var sub2 = function(val) {
+  return val.substring(3, 5);
+}
 module.exports = ({
   tool_timed: timed,
+  sub:sub,
+  sub2:sub2
 });

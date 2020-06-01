@@ -26,7 +26,7 @@ Page({
   },
   onSearchMessage() {
     wx.navigateTo({
-      url: '/pages/served/index?friendid=' + this.data.friendid
+      url: '/pages/served/index?friendid=' + this.data.userid
       // url: "/pages/chatRecord/index"
     });
   },

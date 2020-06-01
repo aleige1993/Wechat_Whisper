@@ -507,7 +507,7 @@ Page({
               successNum++;
               if (JSON.parse(uploadRes.data).code === 0) {
                 const url = JSON.parse(uploadRes.data).url
-                urlArr.push(`${API_HOST.replace('api', '')}/${url}`)
+                urlArr.push(`${url}`)
               }
             },
             complete: () => {
@@ -763,7 +763,7 @@ Page({
               }, 500);
               var url = JSON.parse(uploadRes.data).url;
               _this.setData({
-                voiceValue: API_HOST.replace('api', '') + "/" + url,
+                voiceValue: url,
                 isVoiceEnter: true,
                 isMsg4Enter: false,
                 isInputEnter: false,
@@ -935,7 +935,7 @@ Page({
           let data = JSON.parse(res.data)
           const { feedbackimg = [], fileList = [] } = _this.data;
           fileList.push({ ...item})
-          feedbackimg.push(`${API_HOST.replace('api', '')}${data.url}`);
+          feedbackimg.push(`${data.url}`);
           _this.setData({
             feedbackimg,
             isDone: true,

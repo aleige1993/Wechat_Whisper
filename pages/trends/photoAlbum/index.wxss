@@ -229,3 +229,30 @@
 .fanzhuan1{
   color: #fff !important;
 }
+.lien_o{
+  width: 100%;
+  height: 20rpx;
+  text-align: center;
+  position:relative;
+  margin-top:60rpx;
+  margin-bottom:10rpx;
+}
+.csnim{
+  flex: 1;
+}
+.xian1{
+  height:2rpx;
+  background-color: #ccc;
+  width:60%;
+  margin-left:20%;
+}
+.dian1{
+  display: inline-block;
+  background-color: #fff;
+  padding:5rpx;
+  position:absolute;
+  left:50%;
+  color: #ccc;
+  bottom:2rpx;
+  font-size:16rpx;
+}

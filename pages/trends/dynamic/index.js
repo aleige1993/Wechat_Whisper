@@ -26,7 +26,10 @@ Page({
     strInput:'',
     isClearOpened:false,
     pageNum: 1,
-    pageSize:1000
+    pageSize:1000,
+    inputname:'',
+    inputNO:1,
+    comlist:''
   },
   gobank(){
     wx.navigateBack({
@@ -211,8 +214,11 @@ Page({
     let _this = this;
     let index = e.currentTarget.dataset.indx
     let id = e.currentTarget.dataset.item
+    let list = e.currentTarget.dataset.list
     let key = `list[${index}].isshowA`
+    let inputname = `评论${list.friendRemarkName?list.friendRemarkName:list.friendName}:`
     this.setData({
+      inputname: inputname,
       isinpout:true,
       dynamicId:id,
       pinglunid:id,
@@ -226,9 +232,13 @@ Page({
     let _this = this;
     let index = e.currentTarget.dataset.indx
     let id = e.currentTarget.dataset.item
+    let list = _this.data.comlist
+    console.log(list)
     let key = `list[${index}].isshowA`
     let key2 = `list[${index}].isshowB`
+    let inputname = `回复${list.commentUserRemarkName?list.commentUserRemarkName:list.commentUserName}:`
     this.setData({
+      inputname: inputname,
       isinpout:true,
       pinglunid:id,
       dynamicId:id,
@@ -253,11 +263,14 @@ Page({
   gethuofu(e){
     let i =  e.currentTarget.dataset.index
     let id = e.currentTarget.dataset.comid
+    let list = e.currentTarget.dataset.list
+    console.log('gethuofu', list)
     let key = `list[${i}].isshowB`
     this.setData({
       [key]:true,
       motai:true,
-      commentUserId:id
+      commentUserId:id,
+      comlist:list
     })
   },
   //发送
@@ -347,8 +360,20 @@ Page({
         })
       }
     })
+    setTimeout(()=>{
+      wx.pageScrollTo({ 
+        scrollTop:100,
+        duration: 300
+       })
+    },800)
   },
-
+  onItemClickToFriendInfo(e) {
+    let item = e.currentTarget.dataset.item
+    console.log('onItemClickToFriendInfo', item)
+    wx.navigateTo({
+      url: `/pages/friendInformation/index?userAdmin=1&userid=${item.userId}&id=0&friendid=${item.friendId}&imgurl=${item.friendAvatar}&friendname=${item.friendName}&remarkname=${item.friendRemarkName}&sex=${item.sex}&istop=${item.istop}&isreject=${item.isreject}&intimate=${item.intimate}&intimateid=${item.intimateid}&itemlist=${JSON.stringify(item)}`
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -359,12 +384,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    setTimeout(()=>{
-      wx.pageScrollTo({ 
-        scrollTop:100,
-        duration: 300
-       })
-    },2000)
     this.getDynamicList()
     this.noNoticeTotal()
   },
@@ -391,7 +410,7 @@ Page({
     this.noNoticeTotal()
     setTimeout(()=>{
       wx.stopPullDownRefresh() 
-    },3000)
+    },1000)
   },
 
   /**

@@ -45,16 +45,16 @@
         <view class="icontitle iconfont iconyou"></view>
       </navigator> 
       <view class="gongzhpanl  ifguzhu border2">
-         <navigator class="tiaozhuanpyq">
+         <navigator bindtap="gowebvv" class="{{isguanzhu == 1?'tiaozhuanpyq11':'tiaozhuanpyq'}}">
             <view class="title">
               公众号
             </view>
             <view class="guanzhu">
-              <text>未关注，点击关注</text>
+              <text>{{isguanzhu == 1 ? "已关注，点击前往":"未关注，点击关注"}}</text>
             </view>
             <view class="icontitle iconfont iconyou"></view>
           </navigator>
-        <view class="title_guz">关注后，定时接收好友悄悄话。</view>
+        <view class="title_guz" wx:if="{{isguanzhu == 0}}">关注后，定时接收好友悄悄话。</view>
       </view>
       
 

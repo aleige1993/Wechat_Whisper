@@ -235,6 +235,7 @@ page {
 }
 .madqwe{
   margin-left: 28rpx;
+  color: #576B95;
 }
 .tells .at-tab-bar .at-tab-bar__icon {
   font-size: 28rpx;

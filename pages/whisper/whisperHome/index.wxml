@@ -40,11 +40,11 @@
 		<wux-swipe-action-group>
 		<!-- right="{{ right1 }}"  -->
 			<wux-swipe-action  wx:for="{{messageList}}" right="{{ item.right}}" autoClose="{{autoClose}}"  wx:index="{{index}}"  data-item="{{item}}" data-index="{{index}}"  bind:click="onClick" bind:close="onCloses">
-				<view class="haoyoupanl" data-item="{{item}}" bindtap="onButtonClick">
+				<view class="haoyoupanl {{item.istop == 1? 'haoyoupanlactive':''}}" data-item="{{item}}" bindtap="onButtonClick">
 					<image class="userimg" src="{{item.imgurl}}"></image>
 					<view class="datlke">
 						<view class="topcla">
-							<view class="name">{{item.friendname}}</view>
+							<view class="name">{{item.remarkname?item.remarkname:item.friendname}}</view>
 							<view class="date">{{item.publishTime}}</view>
 						</view>
 						<view class="botcla">

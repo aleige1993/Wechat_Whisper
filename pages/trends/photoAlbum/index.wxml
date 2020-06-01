@@ -1,4 +1,5 @@
 <!--pages/trends/photoAlbum/index.wxml-->
+<wxs src="../../../utils/tools.wxs" module="tools" />
 <scroll-view scroll-y style="height:{{windowHeight}}px" scroll-top="{{scrollTop}}" scroll-with-animation="{{true}}" >
 	<view class="haser">
 		<!-- <view class="navpanll">
@@ -23,45 +24,51 @@
 	</view>
 	<!-- 空间 -->
 	<view class='kongjian'>
-		<view class="kongge"></view>
+		<!-- <view class="kongge"></view> -->
 		<view class="jintian">
-			<view class="diyi">今天</view>
+			<!-- <view class="diyi">今天</view>
 			<view class="hezuo">
 				<view class="beijw" bindtap="addwenz">
 					<image class="diyizhao" src="/assets/images/tabs/xince1.png"></image>
 				</view>
-			</view>
+			</view> -->
 		</view>
 		<!-- 每年 -->
 		<view class="niandu" wx:for="{{xclist}}" wx:for-item="llist"  wx:for-index='key'>
-			<view class="list_box" wx:for="{{llist}}" wx:key="img">
+			<view class="link_nian" wx:if="{{key}}">
+				{{key}}
+			</view>
+			<view class="list_box" wx:for="{{llist}}" wx:for-item="ilist" wx:for-index='key2' wx:key="img">
 				<view class="diyi">
-					<text class="tian">{{item.day}}</text>
-					<text class="yue">{{item.month}}月</text>
+					<text class="tian">{{tools.sub(key2)}}</text>
+					<text class="yue">{{tools.sub2(key2)}}月</text>
 				</view>
-				<view class="hezuo">
-					<view bindtap="chakantupian"  class="beijw" data-item="{{item.picUrlList}}" wx:if="{{item.picUrlList.length==1}}">
-						<image wx:for="{{item.picUrlList}}" class="nianzhao" mode="aspectFill" wx:for-item="imgindex" src="{{imgindex}}"></image>
+				<view class="csnim">
+						<view class="hezuo" wx:for="{{ilist}}" wx:for-item="v">
+					<view bindtap="chakantupian"  class="beijw" data-item="{{v.picUrlList}}" wx:if="{{v.picUrlList.length==1}}">
+						<image wx:for="{{v.picUrlList}}" class="nianzhao" mode="aspectFill" wx:for-item="imgindex" src="{{imgindex}}"></image>
 					</view>
-					<view bindtap="chakantupian"  class="beijw dier" data-item="{{item.picUrlList}}" wx:if="{{item.picUrlList.length==2}}">
-						<image wx:for="{{item.picUrlList}}"  class="nianzhao" mode="aspectFill" wx:for-item="imgindex" src="{{imgindex}}"></image>
+					<view bindtap="chakantupian"  class="beijw dier" data-item="{{v.picUrlList}}" wx:if="{{v.picUrlList.length==2}}">
+						<image wx:for="{{v.picUrlList}}"  class="nianzhao" mode="aspectFill" wx:for-item="imgindex" src="{{imgindex}}"></image>
 					</view>
-					<view bindtap="chakantupian"  class="beijw disan" data-item="{{item.picUrlList}}"  wx:if="{{item.picUrlList.length==3}}">
-						<image wx:for="{{item.picUrlList}}"  class="nianzhao" mode="aspectFill" wx:for-item="imgindex" src="{{imgindex}}"></image>
+					<view bindtap="chakantupian"  class="beijw disan" data-item="{{v.picUrlList}}"  wx:if="{{v.picUrlList.length==3}}">
+						<image wx:for="{{v.picUrlList}}"  class="nianzhao" mode="aspectFill" wx:for-item="imgindex" src="{{imgindex}}"></image>
 					</view>
-					<view bindtap="chakantupian"  class="beijw disiwq" data-item="{{item.picUrlList}}" wx:if="{{item.picUrlList.length >= 4}}">
-						<image wx:for="{{item.picUrlList}}" wx:for-index="imginxd"  wx:if="{{imginxd<4}}" class="nianzhao" mode="aspectFill" wx:for-item="imgindex" src="{{imgindex}}"></image>
+					<view bindtap="chakantupian"  class="beijw disiwq" data-item="{{v.picUrlList}}" wx:if="{{v.picUrlList.length >= 4}}">
+						<image wx:for="{{v.picUrlList}}" wx:for-index="imginxd"  wx:if="{{imginxd<4}}" class="nianzhao" mode="aspectFill" wx:for-item="imgindex" src="{{imgindex}}"></image>
 					</view>
 					<!-- <view bindtap="chakantupian"  class="beijw" data-item="{{item.picUrlList}}" wx:if="{{item.picUrlList.lenght>4}}">
 						<image wx:for="{{item.picUrlList}}"  class="nianzhao" mode="aspectFill" src="item.picUrlList[0]"></image>
 					</view> -->
-					<view class="cqcnian" data-item="{{item.dynamicId}}" bindtap="godetail">
+					<view class="cqcnian" data-item="{{v.dynamicId}}" bindtap="godetail">
 						<view class="niantext">
-						{{item.content?item.content:''}}
+						{{v.content?v.content:''}}
 						</view>
-						<view class="zhangshu" wx:if="{{item.picUrlList.length>1}}">共{{item.picUrlList.length}}张</view>
+						<view class="zhangshu" wx:if="{{v.picUrlList.length>1}}">共{{v.picUrlList.length}}张</view>
 					</view>
 				</view>
+				</view>
+			
 			</view>
 			<!-- <view class="list_box">
 				<view class="diyi">
@@ -80,10 +87,11 @@
 						<view class="zhangshu">共3张</view>
 					</view>
 				</view>
-			</view> -->
-			<view class="link_nian">
-				{{key}}
-			</view>
+			</view> --> 
+		</view>
+		<view class="lien_o">
+			 <view class="xian1"></view>
+			 <view class="dian1">●</view>
 		</view>
 		<!-- <view class="niandu">
 			<view class="list_box">

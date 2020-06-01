@@ -16,7 +16,10 @@ Page({
     isfocus:false,
     commentUserId:'',
     strInput:'',
-    isClearOpened:false
+    isClearOpened:false,
+    inputname:'',
+    inputNO:1,
+    comlist:''
   },
 
   /**
@@ -133,8 +136,11 @@ Page({
     let _this = this;
     let index = e.currentTarget.dataset.indx
     let id = e.currentTarget.dataset.item
+    let list = e.currentTarget.dataset.list
     let key = `list[${index}].isshowA`
+    let inputname = `评论${list.friendRemarkName?list.friendRemarkName:list.friendName}:`
     this.setData({
+      inputname: inputname,
       isinpout:true,
       pinglunid:id,
       [key]:false,
@@ -146,10 +152,14 @@ Page({
   dianhuifu(e){
     let _this = this;
     let index = e.currentTarget.dataset.indx
-    let id = e.currentTarget.dataset.item
+    let id = e.currentTarget.dataset.itemhuifu
+    let list = _this.data.comlist
     let key = `list[${index}].isshowA`
     let key2 = `list[${index}].isshowB`
+    let inputname = `回复${list.commentUserRemarkName?list.commentUserRemarkName:list.commentUserName}:`
     this.setData({
+      inputname: inputname,
+      inputNO:2,
       isinpout:true,
       pinglunid:id,
       [key]:false,
@@ -173,11 +183,13 @@ Page({
   gethuofu(e){
     let i =  e.currentTarget.dataset.index
     let id = e.currentTarget.dataset.comid
+    let list = e.currentTarget.dataset.list
     let key = `list[${i}].isshowB`
     this.setData({
       [key]:true,
       motai:true,
-      commentUserId:id
+      commentUserId:id,
+      comlist:list
     })
   },
   //发送

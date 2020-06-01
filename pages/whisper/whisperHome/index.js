@@ -371,7 +371,7 @@ right3: [{
    */
   onShareAppMessage(){
     return {
-      title: "定时悄悄话，沟通更温暖",
+      title: "收话人添加邀请",
       path: "/pages/whisper/whisperHome/index?userId=" + wx.getStorageSync('userId'),
       imageUrl: "/assets/images/common/logo7.png",
     };

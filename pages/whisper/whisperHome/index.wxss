@@ -77,6 +77,12 @@ page{
   margin-right: 20rpx;
   border-radius: 6rpx;
 }
+.weui-actionsheet{
+  bottom: 120rpx !important;
+}
+.haoyoupanlactive{
+  background-color: #f7f7f7 !important;
+}
 .haoyoupanl{
   height: 124rpx;
   padding: 20rpx 30rpx;

@@ -294,6 +294,7 @@ Page({
   },
   onPlayVoice(e) {
     let item = e.currentTarget.dataset.item
+    console.log(item)
     let index = e.currentTarget.dataset.index
     let list = this.data.messageList
     let self = this
@@ -506,8 +507,8 @@ Page({
             success: uploadRes => {
               successNum++;
               if (JSON.parse(uploadRes.data).code === 0) {
-                const url = JSON.parse(uploadRes.data).url
-                urlArr.push(`${API_HOST.replace('api', '')}/${url}`)
+                // const url = JSON.parse(uploadRes.data).url
+                urlArr.push(`${url}`)
               }
             },
             complete: () => {
@@ -757,8 +758,9 @@ Page({
                 wx.hideLoading();
               }, 500);
               var url = JSON.parse(uploadRes.data).url;
+              console.log('uploadRes',url)
               _this.setData({
-                voiceValue: API_HOST.replace('api', '') + "/" + url,
+                voiceValue: url,
                 isVoiceEnter: true,
                 isMsg4Enter: false,
                 isInputEnter: false,

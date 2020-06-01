@@ -135,12 +135,32 @@ Page({
     msg4_input: "",
     msg4_imgs: [],
     dynamelist:'',
-    ToalNumberData:''
+    ToalNumberData:'',
+    isguanzhu:0
   },
   gomyqqs(){
     wx.navigateTo({
       url: '/pages/trends/photoAlbum/index?userid='+ this.data.userId,
     })
+  },
+  isGuanzhu(){
+    let _this = this
+    wx.request({
+      url: `${API_HOST}/user/judgeIsFollow`,
+      method: "POST",
+      header: {
+        token: wx.getStorageSync('token')
+      },
+      success: function success(res) {
+        if(res.data.code == 0){
+          _this.setData({
+            isguanzhu: res.data.data
+          })
+        }
+      },
+      fail: function fail() {
+      }
+    });
   },
   updataTime() {
     let date = new Date();
@@ -731,6 +751,11 @@ Page({
       url: '/pages/intimate/index',
     })
   },
+  gowebvv(){
+    wx.navigateTo({
+      url: '/pages/webView/index',
+    })
+  },
   onVersionClick(){
     wx.navigateTo({
       url: '/pages/feedback/index',
@@ -836,6 +861,7 @@ Page({
   onShow: function () {
     let _this = this;
     // this.getNoticeToal()
+    this.isGuanzhu()
     if (typeof this.getTabBar === 'function' &&
     this.getTabBar()) {
     this.getTabBar().setData({

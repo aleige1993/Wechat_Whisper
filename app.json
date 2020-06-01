@@ -1,26 +1,27 @@
 {
   "pages": [
     "pages/whisper/whisperHome/index",
+    "pages/personal/personal",
+    "pages/trends/trendDetails/index",
+    "pages/trends/photoAlbum/index",
     "pages/tellsPeople/index",
     "pages/editMesg/index",
     "pages/trends/article/index",
-    "pages/trends/photoAlbum/index",
     "pages/trends/dynamic/index",
-    "pages/trends/trendDetails/index",
     "pages/message/index",
     "pages/personal/portrait/index",
     "pages/trends/preview/index",
     "pages/friendInformation/move",
     "pages/friendInformation/setCommon",
     "pages/friendInformation/index",
-    "pages/personal/personal",
     "pages/login/index",
     "pages/chooseFriend/index",
     "pages/signin/index",
     "pages/served/index",
     "pages/choosePeople/index",
     "pages/feedback/index",
-    "pages/chatRecord/index"
+    "pages/chatRecord/index",
+    "pages/webView/index"
   ],
   "permission": {
     "scope.userLocation": {
@@ -28,7 +29,7 @@
     }
   },
   "tabBar": {
-    "custom": false,
+    "custom": true,
     "color": "#000000",
     "selectedColor": "#07C160",
     "borderStyle": "white",

@@ -35,10 +35,10 @@
 
 		<view class="listmo" wx:for="{{list}}" wx:for-item="llist" wx:for-index="lindex" wx:key="A">
 			<view class="useimg">
-				<image class="uingg1" mode="aspectFill" src="{{llist.friendAvatar}}"></image>
+				<image data-item="{{llist}}" bindtap="onItemClickToFriendInfo" class="uingg1" mode="aspectFill" src="{{llist.friendAvatar}}"></image>
 			</view>
 			<view class="mesgbox">
-				<view class="mnama">{{llist.friendName}}</view>
+				<view class="mnama">{{llist.friendRemarkName?llist.friendRemarkName:llist.friendName}}</view>
 				<view class="mcenter">{{llist.content?llist.content:''}}</view>
 				<view class="imgpanl" wx:if="{{llist.dynamicImageList.length == 1}}">
 					<image class="pyqdiyiz" bindtap="chakantupian" data-index="{{i}}" data-item="{{llist.dynamicImageList}}" wx:for-index="i" bindload="imageLoad" mode="widthFix" wx:for="{{llist.dynamicImageList}}" wx:for-item="imglist" src="{{imglist}}"></image>
@@ -61,13 +61,13 @@
 								<view>{{llist.isFabulous == 1?'取消':'赞'}}</view>
 							</view>
 							<view class="lind12"></view>
-							<view class="zanbox" data-indx="{{lindex}}" data-item="{{llist.dynamicId}}" bindtap="dianpinglun">
+							<view class="zanbox" data-indx="{{lindex}}" data-item="{{llist.dynamicId}}" data-list="{{llist}}"  bindtap="dianpinglun">
 								<image src="/assets/images/tabs/commit.png" class="pinglu"></image>
 								<view>评论</view>
 							</view>
 						</view>
 						<view class="dangehuif {{llist.isshowB?'':'showanniu'}}">
-							<view class="zanbox" data-indx="{{lindex}}" data-item="{{llist.dynamicId}}" bindtap="dianhuifu">
+							<view class="zanbox" data-indx="{{lindex}}" data-item="{{llist.dynamicId}}" data-list="{{llist}}"  bindtap="dianhuifu">
 								<image src="/assets/images/tabs/commit.png" class="pinglu"></image>
 								<view>回复</view>
 							</view>
@@ -80,11 +80,11 @@
 						<text wx:for="{{llist.fabulousNameList}}" wx:for-item="textlist" wx:for-index="i">{{llist.fabulousNameList.length-1 == i ?textlist:textlist+', '}}</text>
 					</view>
 					<view class="huifuxinxi" bindtap="clickshowinput" wx:for="{{llist.commentList}}" wx:for-item="comlist">
-						<view class="listxinxi" wx:if="{{comlist.isReply == 0}}" data-index="{{lindex}}" data-comid="{{comlist.commentUserId}}" bindtap="gethuofu">
-							<text class="gernse">{{comlist.commentUserName}}：</text> <text>{{comlist.commentContent}}</text>
+						<view class="listxinxi" wx:if="{{comlist.isReply == 0}}" data-index="{{lindex}}" data-comid="{{comlist.commentUserId}}" data-list="{{comlist}}" bindtap="gethuofu">
+							<text class="gernse">{{comlist.commentUserRemarkName?comlist.commentUserRemarkName:comlist.commentUserName}}：</text> <text>{{comlist.commentContent}}</text>
 						</view>
-						<view class="listxinxi" wx:if="{{comlist.isReply == 1}}" data-index="{{lindex}}" data-comid="{{comlist.commentUserId}}" bindtap="gethuofu">
-							<text class="gernse">{{comlist.commentUserName}}</text>回复<text class="gernse">{{comlist.replyUserName}}</text><text>{{comlist.commentContent}}</text>
+						<view class="listxinxi" wx:if="{{comlist.isReply == 1}}" data-index="{{lindex}}" data-comid="{{comlist.commentUserId}}" data-list="{{comlist}}" bindtap="gethuofu">
+							<text class="gernse">{{comlist.commentUserRemarkName?comlist.commentUserRemarkName:comlist.commentUserName}}</text>回复<text class="gernse">{{comlist.replyUserRemarkName?comlist.replyUserRemarkName:comlist.replyUserName}}</text><text>{{comlist.commentContent}}</text>
 						</view>
 					</view>
 				</view>
@@ -97,6 +97,6 @@
 <!-- wx:if="{{isfocus}}" -->
 <view class="inpmodel" wx:if="{{isinpout}}">
 	<!-- adjust-position  -->
-	<input class="ipmoput" maxlength="800" cursor-spacing="{{40}}" adjust-position placeholder="输入回复的内容" focus="{{isfocus}}" bindblur="hideinpout" value="{{strInput}}" bindinput="contionsInout" confirm-type="send" bindconfirm="sendcomit"></input>
+	<textarea class="ipmoput" bindblur="hideinpout"  maxlength="140"  fixed="{{true}}"  cursor-spacing="{{40}}"  adjust-position  placeholder="{{inputname}}" focus="{{isfocus}}"    value="{{strInput}}" bindinput="contionsInout" confirm-type="send" bindconfirm="sendcomit"></textarea>
 </view>
 <view class="motai" bindtap="calerAll" wx:if="{{motai}}"></view>
