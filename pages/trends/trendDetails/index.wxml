@@ -1,51 +1,47 @@
 <!--pages/trends/dynamic/index.wxml-->
 <!--pages/trends/trends/photoAlbum/index.wxml-->
-<scroll-view scroll-y style="height:100vh" scroll-top="{{50}}" bindscroll="bainse">
+<scroll-view scroll-y  scroll-top="{{50}}" bindscroll="bainse">
  
 	<!-- 空间 -->
-	<view class='kongjian'> 
+	<view class='kongjian' wx:for="{{list}}" wx:for-item="llist" wx:for-index="lindex"  wx:key="A"> 
 		<view class="listmo">
 			<view class="useimg">
-				<image class="uingg1" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
+				<image class="uingg1" mode="aspectFill" src="{{llist.friendAvatar}}"></image>
 			</view>
 			<view class="mesgbox">
-				<view class="mnama">花花</view>
-				<view class="mcenter">阿达萨达是的大萨达所多所奥术大师大所阿达的</view>
-				<!-- <view class="imgpanl">
-           <image bindload="imageLoad" src="/assets/images/tabs/jiaren.png"></image>
-        </view> -->
-				<!-- <view class="imgpanl addmoves">
-           <image   src="/assets/images/tabs/jiaren.png"></image>
-           <image   src="/assets/images/tabs/jiaren.png"></image>
-           <image   src="/assets/images/tabs/jiaren.png"></image>
-           <image   src="/assets/images/tabs/jiaren.png"></image>
-           <image   src="/assets/images/tabs/jiaren.png"></image>
-            <image   src="/assets/images/tabs/jiaren.png"></image>
-           <image   src="/assets/images/tabs/jiaren.png"></image>
-           <image   src="/assets/images/tabs/jiaren.png"></image> 
-        </view> -->
-				<view class="imgpanl addmoves furrs">
-					<image src="/assets/images/tabs/jiaren.png"></image>
-					<image src="/assets/images/tabs/jiaren.png"></image>
-					<image src="/assets/images/tabs/jiaren.png"></image>
-					<image src="/assets/images/tabs/jiaren.png"></image>
+				<view class="mnama">{{llist.friendName}}</view>
+				<view class="mcenter">{{llist.content?llist.content:''}}</view>
+				<view class="imgpanl"   wx:if="{{llist.dynamicImageList.length == 1}}">
+           <image  class="pyqdiyiz" bindtap="chakantupian" data-index="{{i}}" data-item="{{llist.dynamicImageList}}" wx:for-index="i" bindload="imageLoad" mode="widthFix" wx:for="{{llist.dynamicImageList}}" wx:for-item="imglist" src="{{imglist}}"></image>
+        </view>
+				<view class="imgpanl addmoves" wx:if="{{llist.dynamicImageList.length != 1 && llist.dynamicImageList.length != 4}}"> 
+         <image bindtap="chakantupian" data-index="{{i}}" data-item="{{llist.dynamicImageList}}" wx:for-index="i"  bindload="imageLoad" mode="aspectFill" wx:for="{{llist.dynamicImageList}}" wx:for-item="imglist" src="{{imglist}}"></image>
+        </view>
+				<view class="imgpanl addmoves furrs" wx:if="{{llist.dynamicImageList.length == 4}}">
+				  <image bindtap="chakantupian" data-index="{{i}}" data-item="{{llist.dynamicImageList}}" wx:for-index="i"  bindload="imageLoad" mode="aspectFill" wx:for="{{llist.dynamicImageList}}" wx:for-item="imglist" src="{{imglist}}"></image>
 				</view>
-				<view class="mdizhi">北京市不知道哪个地方</view>
+				<view class="mdizhi">{{llist.address?llist.address:''}}</view>
 				<view class="actione">
-					<view class="tiems1">2020-4-5 5:55 <text class="delmrsa">删除</text></view>
+					<view class="tiems1">{{llist.createTime}} <text class="delmrsa" data-id="{{llist.dynamicId}}" bindtap="huanqicel">删除</text></view>
 					<view class="acdtst">
-						<image class="diandian1" src="/assets/images/tabs/diandian1.png"></image>
-						<view class="anniu showanniu">
-							<view class="zanbox">
+						<image class="diandian1" data-indx="{{lindex}}" bindtap="showIsA" src="/assets/images/tabs/diandian1.png"></image>
+						<view class="anniu {{llist.isshowA?'':'showanniu'}}">
+							<view class="zanbox" data-indx="{{lindex}}" data-item="{{llist.dynamicId}}" bindtap="dianzhan">
 								<image mode="aspectFill" src="/assets/images/tabs/xin.png" class="xin1"></image>
-								<view>赞</view>
+								<view>{{llist.isFabulous == 1?'取消':'赞'}}</view>
 							</view>
 							<view class="lind12"></view>
-							<view class="zanbox">
+							<view class="zanbox" data-indx="{{lindex}}" data-item="{{llist.dynamicId}}" bindtap="dianpinglun">
 								<image src="/assets/images/tabs/commit.png" class="pinglu"></image>
 								<view>评论</view>
 							</view>
 						</view>
+            <view class="dangehuif {{llist.isshowB?'':'showanniu'}}"> 
+                  <view class="zanbox" data-indx="{{lindex}}" data-item="{{llist.dynamicId}}" bindtap="dianhuifu">
+                    <image src="/assets/images/tabs/commit.png" class="pinglu"></image>
+                    <view>回复</view>
+                  </view>
+              </view>
 					</view>
 				</view>
 			
@@ -55,20 +51,37 @@
   	<!-- 评论 -->
     <view class="detailcommit">
       	<view class="commitepanl">
-					<view class="dianzanpanl">
+					<view class="dianzanpanl" wx:if="{{llist.fabulousAvatarList.length>0}}">
 						<image class="dixina" src="/assets/images/tabs/dixin.png"></image>
 						<view class="moveimg">
-              <image mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
-              <image mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
-              <image mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
+              <image wx:for="{{llist.fabulousAvatarList}}" wx:for-item="imglist" mode="aspectFill" src="{{imglist}}"></image>
+              <!-- <image mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
+              <image mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image> -->
             </view>
 					</view>
-					<view class="huifuxinxi">
+					<view class="huifuxinxi" wx:if="{{llist.commentList.length>0}}">
               <view class="iconcommt">
                 <image class="commt123" src="/assets/images/tabs/commt123.png"></image>
               </view>
               <view class="df2asad">
-                 <view class="list_modf">
+                 <view class="list_modf" wx:for="{{llist.commentList}}" wx:for-item="comlist">
+                  <view class="weqw">
+                    <image src="{{comlist.commentUserAvatar}}" mode="aspectFill" class="jren1"></image>
+                    <view class="yjaj">
+                      <view class="yanj">
+                        <text class="geres">{{comlist.commentUserName}}</text>
+                        <text class="tiem1">{{comlist.createTime}}</text>
+                      </view>
+                       <view class="huidssa" wx:if="{{comlist.isReply == 0}}" data-index="{{lindex}}" data-comid="{{comlist.commentUserId}}" bindtap="gethuofu">
+                        {{comlist.commentContent}}
+                      </view>
+                      <view class="huidssa" wx:if="{{comlist.isReply == 1}}" data-index="{{lindex}}" data-comid="{{comlist.commentUserId}}" bindtap="gethuofu">
+                        回复<text class="geres">{{comlist.replyUserName}}</text>{{comlist.commentContent}}
+                      </view>
+                    </view>
+                  </view>
+              </view>
+               <!-- <view class="list_modf">
                   <view class="weqw">
                     <image src="/assets/images/tabs/jiaren.png" mode="aspectFill" class="jren1"></image>
                     <view class="yjaj">
@@ -81,21 +94,7 @@
                       </view>
                     </view>
                   </view>
-              </view>
-               <view class="list_modf">
-                  <view class="weqw">
-                    <image src="/assets/images/tabs/jiaren.png" mode="aspectFill" class="jren1"></image>
-                    <view class="yjaj">
-                      <view class="yanj">
-                        <text class="geres">花花绿绿</text>
-                        <text class="tiem1">4月5日 下午5:55</text>
-                      </view>
-                      <view class="huidssa">
-                        回复<text class="geres">花花绿绿：</text>不撒大大大声道群翁群不撒大大大声道群翁群不撒大大大声道群翁群不撒大大大声道群翁群
-                      </view>
-                    </view>
-                  </view>
-              </view>
+              </view> -->
               </view> 
 					</view>
 
@@ -105,3 +104,22 @@
 	</view>
 
 </scroll-view>
+<!-- wx:if="{{isfocus}}" -->
+ <view class="inpmodel"  wx:if="{{isinpout}}">
+ <!-- adjust-position  -->
+  <input class="ipmoput"   maxlength="800"   cursor-spacing="{{40}}"  adjust-position  placeholder="输入回复的内容" focus="{{isfocus}}" bindblur="hideinpout" value="{{strInput}}" bindinput="contionsInout" confirm-type="send" bindconfirm="sendcomit"></input>
+</view>
+<view class="motai" bindtap="calerAll" wx:if="{{motai}}"></view>
+<view class="weui-demo-dialog {{isClearOpened ? 'weui-demo-dialog_show' : ''}}">
+	<view class="weui-mask" bindtap="onActionClose"></view>
+	<view class="weui-actionsheet {{isClearOpened ? 'weui-actionsheet_toggle' : ''}}" catchtap="stopEvent">
+		<view class="weui-actionsheet__menu">
+			<view class="weui-actionsheet__cell weui-actionsheet__cell_warn" bindtap="delmrsa">
+				确定删除
+			</view>
+		</view>
+		<view class="weui-actionsheet__action">
+			<view class="weui-actionsheet__cell" bindtap="onActionClose">取消</view>
+		</view>
+	</view>
+</view>

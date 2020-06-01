@@ -640,7 +640,7 @@ display: inline-block;
   margin: auto;
   z-index: 10;
   width: 630rpx;
-  height:520rpx;
+  height:620rpx;
   /* min-height: 786rpx;
   max-height: 1040rpx; */
   background: white;
@@ -688,7 +688,7 @@ display: inline-block;
   margin-top: -30rpx;
 background-color: #fff;
 border-radius: 10rpx;
-height:304rpx;
+height:600rpx;
 }
 
 .messageModal-body-msg {
@@ -855,7 +855,7 @@ height:304rpx;
   margin:34rpx 0 20rpx 0;
 }
 .messageModal-body-button {
-  margin-top: 38rpx;
+  padding-top: 38rpx;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

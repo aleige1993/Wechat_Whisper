@@ -36,7 +36,33 @@ right3: [{
   },
   topMessageList: [],
   notTopMessageList: [],
-  userId:''
+  userId:'',
+  messageList:[],
+  autoClose:true,
+  isClearOpened:false,
+  friendid:'',
+  ToalNumberData:''
+  },
+  onButtonClick(e) {
+    console.log(e)
+    let item = e.currentTarget.dataset.item
+    wx.navigateTo({
+      url: `/pages/message/index?friendID=${item.friendid}&friendName=${item.friendname}&imgUrl=${item.imgurl}&sex=${item.sex}&remarkname=${item.remarkname}&itemlist=${JSON.stringify(item)}`
+    })
+  },
+  onActionClose() {
+    this.setData({
+      isClearOpened: false
+    })
+  },
+  PDtype(t){
+    if(t.includes('.mp3')){
+      return '[语音]'
+    }else if(t.includes('.png') || t.includes('.jpg') || t.includes('.gif') ||t.includes('.jpeg')){
+      return '[图片]'
+    }else{
+      return t
+    }
   },
   gotopyq(){
     wx.navigateTo({
@@ -49,8 +75,103 @@ right3: [{
     isshow: !this.data.isshow
    }) 
   },
+  onCloses(e){
+    console.log('onCloses', e)
+    let _this = this
+    // let typs = e.detail.value.text
+    let indx = e.currentTarget.dataset.index
+    let item = e.currentTarget.dataset.item
+    let list = this.data.messageList
+    let right = "messageList["+ indx +"].right"
+    _this.setData({
+      [right]: item.istop == 1? _this.data.right1:_this.data.right3
+    })
+  },
+  deleteMessage(){
+    let _this =  this
+    wx.request({
+      url: `${API_HOST}/deleteMessage`,
+      method: "POST",
+      header: {
+        token: wx.getStorageSync('token')
+      },
+      data:{
+        friendID: _this.data.friendid
+      },
+      success: res => {
+        if(res.data.code == 0){ 
+          _this.queryUserMessage()
+          _this.setData({
+            isClearOpened: false
+          })
+        }
+      }
+    })
+  },
   onClick(e){
-    console.log('onClick', e.detail)
+    console.log('onClick', e)
+    let _this = this
+    let typs = e.detail.value.text
+    let indx = e.currentTarget.dataset.index
+    let item = e.currentTarget.dataset.item
+    let list = this.data.messageList
+    if(typs ==  '取消置顶'){
+      wx.request({
+        url: `${API_HOST}/friend/cancelTop`,
+        method: "POST",
+        header: {
+          token: wx.getStorageSync('token')
+        },
+        data:{
+          id:item.friendid
+        },
+        success: res => {
+          if(res.data.code == 0){
+            console.log(res)
+            _this.queryUserMessage()
+          }
+        }
+      })
+    }else if(typs ==  '置顶消息'){
+      wx.request({
+        url: `${API_HOST}/friend/topFriend`,
+        method: "POST",
+        header: {
+          token: wx.getStorageSync('token')
+        },
+        data:{
+          id:item.friendid
+        },
+        success: res => {
+          if(res.data.code == 0){
+            _this.queryUserMessage()
+          }
+        }
+      })
+    }else if(typs ==  '删除'){
+      let key = "messageList["+ indx +"].istop"
+      let right = "messageList["+ indx +"].right"
+      _this.setData({
+        isClearOpened:true,
+        friendid:item.friendid
+      })
+    }else if(typs ==  '确定删除'){
+      wx.request({
+        url: `${API_HOST}/deleteMessage`,
+        method: "POST",
+        header: {
+          token: wx.getStorageSync('token')
+        },
+        data:{
+          friendID:item.friendid
+        },
+        success: res => {
+          if(res.data.code == 0){ 
+            _this.queryUserMessage()
+          }
+        }
+      })
+    }
   },
   onItemClick(e) {
     let item = e.currentTarget.dataset.item;
@@ -78,20 +199,20 @@ right3: [{
       },
       success: function success(res) {
         if (res.data.code == 0) {
-          var topMessageList = [];
-          var notTopMessageList = [];
           var messageList = res.data.messageList;
           messageList.forEach(function (v) {
-            v.publishTime =  _this.formatDate(v.publishTime) 
-            if (v.isTop) {
-              topMessageList.push(v);
-            } else {
-              notTopMessageList.push(v);
-            }
+            v.publishTime =  _this.timed(v.publishTime)
+            v.lastMessageContent = _this.PDtype(v.lastMessageContent)
+             if(v.istop == 1){
+               v.right = _this.data.right1
+             }else if(v.istop == 2){
+              v.right = _this.data.righ2
+             }else{
+               v.right = _this.data.right3
+             }
           });
           _this.setData({
-            topMessageList: topMessageList,
-            notTopMessageList: notTopMessageList
+            messageList
           });
         }else{
           _this.showLoginModal()
@@ -107,6 +228,11 @@ right3: [{
         })
       }
     });
+  },
+  //处理时间
+  timed(time) {
+    var timeStr = time + '';
+    return timeStr.slice(0, 4) + '年' + timeStr.slice(4, 6) + '月' + timeStr.slice(6, 8) + '日 ' + timeStr.slice(8, 10) + ':' + timeStr.slice(10, 12);
   },
   queryNotice() {
     var _this = this;
@@ -155,6 +281,24 @@ right3: [{
       }
     });
   },
+  getNoticeToal(){
+    let _this = this;
+    wx.request({
+      url: API_HOST + "/dynamic/queryNoticeTotal",
+      method: "GET",
+      header: {
+        token:wx.getStorageSync('token')
+      },
+      success: function success(res) {
+        console.log(res)
+        if (res.data.code == 0) {
+          _this.setData({
+            ToalNumberData: res.data.data
+          });
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -174,18 +318,24 @@ right3: [{
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    let _this = this;
+    // this.getNoticeToal()
+    // this.getTabBar().setData({
+    //   ToalNumberData: _this.data.ToalNumberData
+    // })
     if (typeof this.getTabBar === 'function' &&
     this.getTabBar()) {
     this.getTabBar().setData({
       selected: 1
+      // ToalNumberData: _this.data.ToalNumberData
     })
   }
-  let _this = this;
   this.setData({
     userId: wx.getStorageSync('userId')
   }, () => {
     _this.queryUserMessage();
   })
+  _this.getNoticeToal()
   },
 
   /**
@@ -222,7 +372,7 @@ right3: [{
   onShareAppMessage(){
     return {
       title: "定时悄悄话，沟通更温暖",
-      path: "/pages/tellsPeople/index?userId=" + wx.getStorageSync('userId'),
+      path: "/pages/whisper/whisperHome/index?userId=" + wx.getStorageSync('userId'),
       imageUrl: "/assets/images/common/logo7.png",
     };
   }

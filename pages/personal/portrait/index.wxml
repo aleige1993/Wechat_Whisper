@@ -1,6 +1,6 @@
 <!--pages/personal/portrait/index.wxml-->
 <view class="impanl">
-  <image  mode="aspectFill"  class="panlimgs" style="width:{{imgwidth}}px;height:{{imgwidth}}px" src="{{tempFilePaths}}"></image>
+  <image  mode="aspectFill"  class="panlimgs" style="width:{{imgwidth}}px;height:{{imgwidth}}px" src="{{avatarurl}}"></image>
 </view>
 <view class="changimg" bindtap="changimg" wx:if="{{ischange}}" >
   点击更换

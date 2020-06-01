@@ -40,7 +40,6 @@ Page({
             _this.setData({
               localhost:suc.address
             })
-            console.log(suc)
           },
           fail:function(es){
             console.log(es)
@@ -102,7 +101,7 @@ Page({
           let data = JSON.parse(res.data)
           const { feedbackimg = [], fileList = [] } = _this.data;
           fileList.push({ ...item})
-          feedbackimg.push(`${API_HOST.replace('api', '')}${data.url}`);
+          feedbackimg.push(`${data.url}`);
           _this.setData({
             feedbackimg,
             isDone: true,
@@ -137,28 +136,59 @@ Page({
   },
   onDoen(){
     let _this = this;
-    var pages = getCurrentPages();
-    var prevPage = pages[pages.length -2];
-    if(_this.data.isDone){
-      _this.setData({
-        msg4_input: _this.data.strInput,
-        msg4_imgs: _this.data.feedbackimg,
-        ismessageModal:true,
-        isMsg4Enter:true,
-        isTells:false,
-        isVoice:true,
-        inputValue:'',
-        isInputEnter: false, // 是否是文字
-        isVoiceEnter: false, // 是否是音频
-        isImageEnter: false, // 是否是图片 
-      },()=>{
-        _this.isModalshow()
-        // wx.navigateBack({
-        //   delta: 1
-        // })
+    if(_this.data.strInput != '' || _this.data.feedbackimg.length != 0){
+      wx.request({
+        url: `${API_HOST}/dynamic/save`,
+        method:'POST',
+        header: {
+          token: wx.getStorageSync('token')
+        },
+        data:{
+          "address": _this.data.localhost,
+          "content": _this.data.strInput,
+          "imageList": _this.data.feedbackimg
+        },
+        success:function(res){
+          console.log(res.data)
+          if(res.data.code == 0){
+            wx.navigateBack({
+              delta: 1
+            })
+          }
+        },
+        fail(err){
+          console.log(err)
+        }
       })
-    }else{ 
+    }else{
+      wx.showToast({
+        title: '请表达你想说的',
+        icon:'none'
+      })
     }
+
+    // var pages = getCurrentPages();
+    // var prevPage = pages[pages.length -2];
+    // if(_this.data.isDone){
+    //   _this.setData({
+    //     msg4_input: _this.data.strInput,
+    //     msg4_imgs: _this.data.feedbackimg,
+    //     ismessageModal:true,
+    //     isMsg4Enter:true,
+    //     isTells:false,
+    //     isVoice:true,
+    //     inputValue:'',
+    //     isInputEnter: false, // 是否是文字
+    //     isVoiceEnter: false, // 是否是音频
+    //     isImageEnter: false, // 是否是图片 
+    //   },()=>{
+    //     _this.isModalshow()
+    //     // wx.navigateBack({
+    //     //   delta: 1
+    //     // })
+    //   })
+    // }else{ 
+    // }
   }, 
   //取消
   oncloes(){

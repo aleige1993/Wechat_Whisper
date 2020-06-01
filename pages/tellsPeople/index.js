@@ -933,11 +933,32 @@ Page({
     }
 
   },
-  onShow:async function (){ 
+  getNoticeToal(){
+    let _this = this;
+    wx.request({
+      url: API_HOST + "/dynamic/queryNoticeTotal",
+      method: "GET",
+      header: {
+        token:wx.getStorageSync('token')
+      },
+      success: function success(res) {
+        console.log('ToalNumberData', res)
+        if (res.data.code == 0) {
+          _this.setData({
+            ToalNumberData: res.data.data
+          });
+        }
+      }
+    })
+  },
+  onShow:async function (){
+    let _this = this;
+      // this.getNoticeToal()
       if (typeof this.getTabBar === 'function' &&
         this.getTabBar()) {
         this.getTabBar().setData({
           selected: 0
+          // ToalNumberData: _this.data.ToalNumberData
         })
       }
     if (!wx.getStorageSync('token')){
@@ -1034,7 +1055,7 @@ Page({
     },
   onShareAppMessage(){
     return {
-      title: "定时悄悄话，沟通更温暖",
+      title: "收话人添加邀请",
       path: "/pages/tellsPeople/index?userId=" + wx.getStorageSync('userId'),
       imageUrl: "/assets/images/common/logo7.png",
     };

@@ -34,7 +34,7 @@
 .coajisa{
   border-bottom: 1px solid #C9C9CB;
 }
-.tiaozhuanpyq{
+.tiaozhuanpyq,.tiaozhuanpyq11{
   margin-top: 20rpx !important;
 }
 .information-msg {

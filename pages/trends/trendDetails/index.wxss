@@ -76,3 +76,6 @@
 .df2asad .list_modf:last-child{
   border-bottom: none !important;
 }
+.kongjian{
+  padding-bottom:40rpx;
+}

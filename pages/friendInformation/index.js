@@ -21,7 +21,8 @@ Page({
     count: 0,
     isOpens: false,
     commVal:'',
-    isDone:false
+    isDone:false,
+    dynamelist:''
   },
   onSearchMessage() {
     wx.navigateTo({
@@ -31,13 +32,44 @@ Page({
   },
   gotopyqxc(){
     wx.navigateTo({
-      url: '/pages/trends/photoAlbum/index',
+      url: '/pages/trends/photoAlbum/index?userid='+ this.data.friendid,
+    })
+  },
+  queryMicroDynamic(){
+    let _this = this
+    wx.request({
+      url: `${API_HOST}/dynamic/queryMicroDynamic`,
+      method: "POST",
+      header: {
+        token: wx.getStorageSync('token')
+      },
+      data:{
+        userId: _this.data.friendid
+      },
+      success: function success(res) {
+        if(res.data.code == 0){
+          if(res.data.data.isOwn == 1){
+            _this.setData({
+              userAdmin:3
+            })
+          }
+          _this.setData({
+            dynamelist:res.data.data
+          })
+        }
+          console.log(res)
+      },
+      fail:function(err){
+
+      }
     })
   },
   onLoad: function (options) {
     console.log(options);
+    let _this = this;
     if (options){
       this.setData({
+        userAdmin:options.userAdmin,
         userid: options.userid,
         friendid: options.friendid,
         friendname: options.friendname,
@@ -52,6 +84,8 @@ Page({
         commVal: options.remarkname != "null" ? options.remarkname : '',
         itemlist: JSON.parse(options.itemlist)  ,
         options: JSON.stringify(options)
+      },()=>{
+        _this.queryMicroDynamic()
       }) 
     }
     
@@ -362,5 +396,8 @@ Page({
 
       })
     }
-  }
+  },
+  onShow(){
+    this.queryMicroDynamic()
+  },
 })

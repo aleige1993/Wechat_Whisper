@@ -133,11 +133,13 @@ Page({
     bidisplayTime: '',
     ismessageModal: false,
     msg4_input: "",
-    msg4_imgs: []
+    msg4_imgs: [],
+    dynamelist:'',
+    ToalNumberData:''
   },
   gomyqqs(){
     wx.navigateTo({
-      url: '/pages/trends/photoAlbum/index',
+      url: '/pages/trends/photoAlbum/index?userid='+ this.data.userId,
     })
   },
   updataTime() {
@@ -227,7 +229,7 @@ Page({
   },
   goPortrait(){
     wx.navigateTo({
-      url: '/pages/personal/portrait/index',
+      url: '/pages/personal/portrait/index?avatarurl='+ this.data.avatarUrl,
     })
   },
   isModalhide() {
@@ -707,6 +709,8 @@ Page({
               username, 
               gender,
               avatarUrl
+            },()=>{
+              _this.queryMicroDynamic()
             })
           } else {
            wx.navigateTo({
@@ -777,17 +781,61 @@ Page({
        }
     })
   },
+  // POST /api/dynamic/queryMicroDynamic
+  queryMicroDynamic(){
+    let _this = this
+    wx.request({
+      url: `${API_HOST}/dynamic/queryMicroDynamic`,
+      method: "POST",
+      header: {
+        token: wx.getStorageSync('token')
+      },
+      data:{
+        userId: _this.data.userId
+      },
+      success: function success(res) {
+        if(res.data.code == 0){
+          _this.setData({
+            dynamelist:res.data.data
+          })
+        }
+          console.log(res)
+      },
+      fail:function(err){
+
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
 
   },
-
+  getNoticeToal(){
+    let _this = this;
+    wx.request({
+      url: API_HOST + "/dynamic/queryNoticeTotal",
+      method: "GET",
+      header: {
+        token:wx.getStorageSync('token')
+      },
+      success: function success(res) {
+        console.log(res)
+        if (res.data.code == 0) {
+          _this.setData({
+            ToalNumberData: res.data.data
+          });
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    let _this = this;
+    // this.getNoticeToal()
     if (typeof this.getTabBar === 'function' &&
     this.getTabBar()) {
     this.getTabBar().setData({
@@ -796,6 +844,7 @@ Page({
   }
     this.getUser()
     this.updataTime()
+    this.queryMicroDynamic()
   },
 
   /**
@@ -831,6 +880,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: "有什么想说的 可以悄悄说了",
+      path: "/pages/whisper/whisperHome/index?userId=" + wx.getStorageSync('userId'),
+      imageUrl: "/assets/images/common/logo7.png",
+    };
   }
 })

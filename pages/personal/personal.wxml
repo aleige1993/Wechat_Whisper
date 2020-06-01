@@ -35,12 +35,12 @@
           </view>
         </view> -->
       <!-- </view> --> 
-      <navigator class="tiaozhuanpyq border2"  bindtap="gomyqqs">
+      <navigator class="{{dynamelist.dynamicImageList.length == 0 ? 'tiaozhuanpyq11': 'tiaozhuanpyq'}} border2"  bindtap="gomyqqs">
         <view class="title">
            悄悄说
         </view>
         <view class="imgbox">
-          <image wx:for="{{[1,2,3,4,5]}}"  wx:key="a" src="/assets/images/tabs/jiaren.png"></image>
+          <image wx:for="{{dynamelist.dynamicImageList}}"  mode="aspectFill" wx:key="a" src="{{item}}"></image>
         </view>
         <view class="icontitle iconfont iconyou"></view>
       </navigator> 

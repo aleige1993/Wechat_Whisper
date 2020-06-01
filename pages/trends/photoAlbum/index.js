@@ -1,4 +1,5 @@
 // pages/trends/trends/photoAlbum/index.js
+import { API_HOST} from '../../../utils/config.js' 
 Page({
 
   /**
@@ -7,22 +8,52 @@ Page({
   data: {
     scrollTop:100,
     iscorlor:false,
-    windowHeight:0
+    windowHeight:0,
+    userId:'',
+    xclist:[]
+  },
+  getQueryAmon(id){
+    let _this = this;
+    wx.request({
+      url: `${API_HOST}/dynamic/queryAlbum`,
+      method: "POST",
+      header: {
+        token: wx.getStorageSync('token')
+      },
+      data: {
+        userId:id
+      },
+      success:function(res){
+        console.log(typeof res.data.data)
+        
+        _this.setData({
+          xclist:res.data.data
+        })
+      },
+      fail:function(err){
+        console.log(err)
+      }
+    })
   },
   addwenz(){
     wx.navigateTo({
       url: '/pages/trends/article/index',
     })
   },
-  godetail(){
+  godetail(e){
+    console.log(e)
+    let id = e.currentTarget.dataset.item
+
     wx.navigateTo({
-      url: '/pages/trends/trendDetails/index',
+      url: '/pages/trends/trendDetails/index?dynamicId='+id+'&tite=1',
     })
   },
-  chakantupian(){
+  chakantupian(e){
+    console.log(e)
+    let  list = e.currentTarget.dataset.item
     wx.previewImage({
-      current: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1590426806548&di=0111502a62b9985af40d703cf594eb2d&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201804%2F25%2F20180425223308_8XyXV.thumb.700_0.jpeg',  
-      urls: ['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1590426806548&di=0111502a62b9985af40d703cf594eb2d&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201804%2F25%2F20180425223308_8XyXV.thumb.700_0.jpeg','http://a1.att.hudong.com/05/00/01300000194285122188000535877.jpg','https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1933773253,1879936497&fm=26&gp=0.jpg']
+      current: list[0],  
+      urls: list
     })
   },
   gobank(){
@@ -52,6 +83,11 @@ Page({
     // })
   },
   onLoad: function (options) {
+    // setTimeout(()=>{
+    //   _this.setData({
+    //     scrollTop:100
+    //   })
+    // })
     let _this = this;
     wx.getSystemInfo({
       success:function (res){
@@ -60,6 +96,13 @@ Page({
         })
       }
     })
+    if(options){
+      let id = options.userid
+      this.setData({
+        userId:id
+      })
+      this.getQueryAmon(id)
+    }
   },
 
   /**
@@ -74,11 +117,9 @@ Page({
    */
   onShow: function () {
     let _this = this
-    setTimeout(()=>{
-      _this.setData({
-        scrollTop:100
-      })
-    })
+    if(this.data.userId){
+      this.getQueryAmon(this.data.userId)
+    }
    
   },
 
@@ -114,6 +155,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: "有什么想说的 可以悄悄说了",
+      path: "/pages/whisper/whisperHome/index?userId=" + wx.getStorageSync('userId'),
+      imageUrl: "/assets/images/common/logo7.png",
+    };
   }
 })

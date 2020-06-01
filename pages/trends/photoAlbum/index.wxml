@@ -33,32 +33,42 @@
 			</view>
 		</view>
 		<!-- 每年 -->
-		<view class="niandu">
-			<view class="list_box">
+		<view class="niandu" wx:for="{{xclist}}" wx:for-item="llist"  wx:for-index='key'>
+			<view class="list_box" wx:for="{{llist}}" wx:key="img">
 				<view class="diyi">
-					<text class="tian">10</text>
-					<text class="yue">5月</text>
+					<text class="tian">{{item.day}}</text>
+					<text class="yue">{{item.month}}月</text>
 				</view>
 				<view class="hezuo">
-					<!-- 一张 -->
-					<view class="beijw">
-						<image bindtap="chakantupian" class="nianzhao" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
+					<view bindtap="chakantupian"  class="beijw" data-item="{{item.picUrlList}}" wx:if="{{item.picUrlList.length==1}}">
+						<image wx:for="{{item.picUrlList}}" class="nianzhao" mode="aspectFill" wx:for-item="imgindex" src="{{imgindex}}"></image>
 					</view>
-					<view class="cqcnian" bindtap="godetail">
+					<view bindtap="chakantupian"  class="beijw dier" data-item="{{item.picUrlList}}" wx:if="{{item.picUrlList.length==2}}">
+						<image wx:for="{{item.picUrlList}}"  class="nianzhao" mode="aspectFill" wx:for-item="imgindex" src="{{imgindex}}"></image>
+					</view>
+					<view bindtap="chakantupian"  class="beijw disan" data-item="{{item.picUrlList}}"  wx:if="{{item.picUrlList.length==3}}">
+						<image wx:for="{{item.picUrlList}}"  class="nianzhao" mode="aspectFill" wx:for-item="imgindex" src="{{imgindex}}"></image>
+					</view>
+					<view bindtap="chakantupian"  class="beijw disiwq" data-item="{{item.picUrlList}}" wx:if="{{item.picUrlList.length >= 4}}">
+						<image wx:for="{{item.picUrlList}}" wx:for-index="imginxd"  wx:if="{{imginxd<4}}" class="nianzhao" mode="aspectFill" wx:for-item="imgindex" src="{{imgindex}}"></image>
+					</view>
+					<!-- <view bindtap="chakantupian"  class="beijw" data-item="{{item.picUrlList}}" wx:if="{{item.picUrlList.lenght>4}}">
+						<image wx:for="{{item.picUrlList}}"  class="nianzhao" mode="aspectFill" src="item.picUrlList[0]"></image>
+					</view> -->
+					<view class="cqcnian" data-item="{{item.dynamicId}}" bindtap="godetail">
 						<view class="niantext">
-							感恩的心，感谢有你，伴我一生，让我感恩的心
+						{{item.content?item.content:''}}
 						</view>
-						<!-- <view class="zhangshu">共3张</view> -->
+						<view class="zhangshu" wx:if="{{item.picUrlList.length>1}}">共{{item.picUrlList.length}}张</view>
 					</view>
 				</view>
 			</view>
-			<view class="list_box">
+			<!-- <view class="list_box">
 				<view class="diyi">
 					<text class="tian">10</text>
 					<text class="yue">5月</text>
 				</view>
-				<view class="hezuo">
-					<!-- 二张 -->
+				<view class="hezuo"> 
 					<view bindtap="chakantupian" class="dier beijw">
 						<image class="" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
 						<image class="" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
@@ -70,19 +80,18 @@
 						<view class="zhangshu">共3张</view>
 					</view>
 				</view>
-			</view>
+			</view> -->
 			<view class="link_nian">
-				2020年
+				{{key}}
 			</view>
 		</view>
-		<view class="niandu">
+		<!-- <view class="niandu">
 			<view class="list_box">
 				<view class="diyi">
 					<text class="tian">10</text>
 					<text class="yue">5月</text>
 				</view>
 				<view class="hezuo">
-					<!-- 第三 -->
 					<view bindtap="chakantupian" class="disan beijw">
 						<image class="kanqwe" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
 						<view class="doubel">
@@ -104,7 +113,6 @@
 					<text class="yue">5月</text>
 				</view>
 				<view class="hezuo">
-					<!-- 第四 -->
 					<view bindtap="chakantupian" class="disiwq beijw">
 						<image class="kanqwe" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
 						<image class="" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
@@ -122,7 +130,7 @@
 			<view class="link_nian">
 				2020年
 			</view>
-		</view>
+		</view> -->
 
 	</view>
 

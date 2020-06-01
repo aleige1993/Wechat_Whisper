@@ -392,10 +392,16 @@ Page({
       })
     }
   },
+    // onItemClickToFriendInfo(e) {
+  //   let item = e.currentTarget.dataset.item;
+  //   wx.navigateTo({
+  //     url: `/pages/friendInformation/index?userid=${item.userid}&id=${item.id}&friendid=${item.friendid}&imgurl=${item.imgurl}&friendname=${item.friendname}&remarkname=${item.remarkname}&sex=${item.sex}&istop=${item.istop}&isreject=${item.isreject}&intimate=${item.intimate}&intimateid=${item.intimateid}&itemlist=${JSON.stringify(item)}`
+  //   })
+  // },
   onItemClickToFriendInfo(e) {
     let item = this.data.itemlist;
     wx.navigateTo({
-      url: `/pages/friendInformation/index?userid=${item.userid}&id=${item.id}&friendid=${item.friendid}&imgurl=${item.imgurl}&friendname=${item.friendname}&remarkname=${item.remarkname}&sex=${item.sex}&istop=${item.istop}&isreject=${item.isreject}&intimate=${item.intimate}&intimateid=${item.intimateid}&itemlist=${JSON.stringify(this.data.itemlist)}`
+      url: `/pages/friendInformation/index?userAdmin=2&userid=${item.userid}&id=${item.id}&friendid=${item.friendid}&imgurl=${item.imgurl}&friendname=${item.friendname}&remarkname=${item.remarkname}&sex=${item.sex}&istop=${item.istop}&isreject=${item.isreject}&intimate=${item.intimate}&intimateid=${item.intimateid}&itemlist=${JSON.stringify(this.data.itemlist)}`
     })
   },
   // input聚焦时触发
@@ -789,9 +795,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
     let NavigationBarTitle = options.friendName
-    if (options.remarkname && options.remarkname != 'null') {
+    if (options.remarkname && options.remarkname != 'null' && options.remarkname != 'undefined') {
       NavigationBarTitle = options.remarkname
     }
     wx.setNavigationBarTitle({
@@ -881,7 +887,11 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: "有什么想说的 可以悄悄说了",
+      path: "/pages/whisper/whisperHome/index?userId=" + wx.getStorageSync('userId'),
+      imageUrl: "/assets/images/common/logo7.png",
+    };
   },
   changtypesas(e){
     console.log(e)

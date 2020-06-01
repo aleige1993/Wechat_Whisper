@@ -1,8 +1,8 @@
 <!--pages/trends/dynamic/index.wxml-->
 <!--pages/trends/trends/photoAlbum/index.wxml-->
-<scroll-view scroll-y  class="dunpaml"   scroll-y style="height:{{windowHeight}}px" scroll-top="{{scrollTop}}" scroll-with-animation="{{true}}">
-  <view class="haser">
-  <!-- <view class="navpanll">
+<!-- <scroll-view scroll-y class="dunpaml" scroll-y style="height:{{windowHeight}}px" scroll-top="{{scrollTop}}" scroll-with-animation="{{true}}"> -->
+	<view class="haser">
+		<!-- <view class="navpanll">
     <view class="filde {{iscorlor?'':'navpanl2'}}"></view>
     <view class="meitain">
         <view class="iconfont iconyou fanzhuan1 {{iscorlor?'buik':''}}" bindtap="gobank"></view>
@@ -10,172 +10,93 @@
         <view class="fanzhuan1"></view>
     </view>
   </view> -->
-   <view class="chiyaonm">
-    	<view class="iconfont iconyou fanzhuan1" bindtap="gobank"></view>
-    </view>
-  <view  class="baergeo">
-    <view class="dsfwee"></view>
-    <image class="jweq" mode="widthFix" src="/assets/images/tabs/aaa.jpg"> </image>
-    <view class="xiabiao">
-      <view class="tiescopor">有什么想说的，就在这里说吧</view>
-      <image  bindtap="gosend" class="xzewq" src="/assets/images/tabs/zhaoxiangjia.png"></image>
-    </view>
-  </view>
-</view>
-<!-- 空间 -->
-<view class='kongjian'>
-  <view class="diqu">
-      <view class="pyd1" bindtap="gotonewmsg">
-          <view class="uses1">
-              <image mode="aspectFill"  class="touxiang" src="/assets/images/tabs/jiaren.png"></image> 
-          </view>
-           <text>1条新消息</text>
-      </view>
-  </view>
-  
-  <view class="listmo">
-      <view class="useimg">
-        <image class="uingg1" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
-      </view>
-      <view class="mesgbox"> 
-        <view class="mnama">花花</view>
-        <view class="mcenter">阿达萨达是的大萨达所多所奥术大师大所阿达的</view>
-        <!-- <view class="imgpanl">
-           <image bindload="imageLoad" src="/assets/images/tabs/jiaren.png"></image>
-        </view> -->
-        <!-- <view class="imgpanl addmoves">
-           <image   src="/assets/images/tabs/jiaren.png"></image>
-           <image   src="/assets/images/tabs/jiaren.png"></image>
-           <image   src="/assets/images/tabs/jiaren.png"></image>
-           <image   src="/assets/images/tabs/jiaren.png"></image>
-           <image   src="/assets/images/tabs/jiaren.png"></image>
-            <image   src="/assets/images/tabs/jiaren.png"></image>
-           <image   src="/assets/images/tabs/jiaren.png"></image>
-           <image   src="/assets/images/tabs/jiaren.png"></image> 
-        </view> -->
-        <view class="imgpanl addmoves furrs">
-           <image   src="/assets/images/tabs/jiaren.png"></image>
-           <image   src="/assets/images/tabs/jiaren.png"></image>
-           <image   src="/assets/images/tabs/jiaren.png"></image>
-           <image   src="/assets/images/tabs/jiaren.png"></image>
-        </view>
-        <view class="mdizhi">北京市不知道哪个地方</view>
-        <view class="actione">
-          <view class="tiems1">四分钟前</view>
-          <view class="acdtst">
-              <image class="diandian1" src="/assets/images/tabs/diandian1.png"></image>
-             <!-- showanniu -->
-              <view class="anniu ">
-                  <view class="zanbox">
-                    <image  mode="aspectFill" src="/assets/images/tabs/xin.png" class="xin1"></image>
-                    <view>赞</view>
-                  </view>
-                  <view class="lind12"></view>
-                  <view class="zanbox">
-                    <image src="/assets/images/tabs/commit.png" class="pinglu"></image>
-                    <view>评论</view>
-                  </view>
-              </view>
-               <!-- <view class="dangehuif showanniu"> 
-                  <view class="zanbox">
-                    <image src="/assets/images/tabs/commit.png" class="pinglu"></image>
-                    <view>回复</view>
-                  </view>
-              </view> -->
-          </view>
-        </view> 
-        <!-- 评论 -->
-        <view class="commitepanl">
-          <view class="dianzanpanl">
-            <image  class="dixina" src="/assets/images/tabs/dixin.png"></image>
-            花花绿绿，齐齐信息，不不不
-          </view>
-          <view class="huifuxinxi" bindtap="clickshowinput">
-            <view class="listxinxi">
-              <text class="gernse">花花绿绿：</text> <text>你什么都不知道！</text>
-            </view>
-            <view class="listxinxi" bindtap="clickshowinput">
-              <text class="gernse">花花绿绿</text>回复<text class="gernse">花花绿绿：</text><text>你什么都不知道！</text>
-            </view>
-          </view>
-        
-        </view>
+		<view class="chiyaonm">
+			<view class="iconfont iconyou fanzhuan1" bindtap="gobank"></view>
+		</view>
+		<view class="baergeo">
+			<view class="dsfwee"></view>
+			<image class="jweq" mode="widthFix" src="/assets/images/tabs/aaa.jpg"> </image>
+			<view class="xiabiao">
+				<view class="tiescopor">有什么想说的，就在这里说吧</view>
+				<image bindtap="gosend" class="xzewq" src="/assets/images/tabs/zhaoxiangjia.png"></image>
+			</view>
+		</view>
+	</view>
+	<!-- 空间 -->
+	<view class='kongjian'>
+		<view class="{{total.total>0?'diqu':'diqubian'}}">
+			<view class="pyd1" wx:if="{{total.total>0}}" data-id="{{total.dynamicIds}}" bindtap="gotonewmsg">
+				<view class="uses1">
+					<image mode="aspectFill" class="touxiang" src="{{total.avatar}}"></image>
+				</view>
+				<text>{{total.total}}条新消息</text>
+			</view>
+		</view>
 
-      </view>
-  </view>
+		<view class="listmo" wx:for="{{list}}" wx:for-item="llist" wx:for-index="lindex" wx:key="A">
+			<view class="useimg">
+				<image class="uingg1" mode="aspectFill" src="{{llist.friendAvatar}}"></image>
+			</view>
+			<view class="mesgbox">
+				<view class="mnama">{{llist.friendName}}</view>
+				<view class="mcenter">{{llist.content?llist.content:''}}</view>
+				<view class="imgpanl" wx:if="{{llist.dynamicImageList.length == 1}}">
+					<image class="pyqdiyiz" bindtap="chakantupian" data-index="{{i}}" data-item="{{llist.dynamicImageList}}" wx:for-index="i" bindload="imageLoad" mode="widthFix" wx:for="{{llist.dynamicImageList}}" wx:for-item="imglist" src="{{imglist}}"></image>
+				</view>
+				<view class="imgpanl addmoves" wx:if="{{llist.dynamicImageList.length != 1 && llist.dynamicImageList.length != 4}}">
+					<image bindtap="chakantupian" data-index="{{i}}" data-item="{{llist.dynamicImageList}}" wx:for-index="i" bindload="imageLoad" mode="aspectFill" wx:for="{{llist.dynamicImageList}}" wx:for-item="imglist" src="{{imglist}}"></image>
+				</view>
+				<view class="imgpanl addmoves furrs" wx:if="{{llist.dynamicImageList.length == 4}}">
+					<image bindtap="chakantupian" data-index="{{i}}" data-item="{{llist.dynamicImageList}}" wx:for-index="i" bindload="imageLoad" mode="aspectFill" wx:for="{{llist.dynamicImageList}}" wx:for-item="imglist" src="{{imglist}}"></image>
+				</view>
+				<view class="mdizhi">{{llist.address?llist.address:''}}</view>
+				<view class="actione">
+					<view class="tiems1">{{llist.createTime}} </view>
+					<view class="acdtst">
+						<image class="diandian1" data-indx="{{lindex}}" bindtap="showIsA" src="/assets/images/tabs/diandian1.png"></image>
+						<!-- showanniu -->
+						<view class="anniu {{llist.isshowA?'':'showanniu'}}">
+							<view class="zanbox" data-indx="{{lindex}}" data-item="{{llist.dynamicId}}" bindtap="dianzhan">
+								<image mode="aspectFill" src="/assets/images/tabs/xin.png" class="xin1"></image>
+								<view>{{llist.isFabulous == 1?'取消':'赞'}}</view>
+							</view>
+							<view class="lind12"></view>
+							<view class="zanbox" data-indx="{{lindex}}" data-item="{{llist.dynamicId}}" bindtap="dianpinglun">
+								<image src="/assets/images/tabs/commit.png" class="pinglu"></image>
+								<view>评论</view>
+							</view>
+						</view>
+						<view class="dangehuif {{llist.isshowB?'':'showanniu'}}">
+							<view class="zanbox" data-indx="{{lindex}}" data-item="{{llist.dynamicId}}" bindtap="dianhuifu">
+								<image src="/assets/images/tabs/commit.png" class="pinglu"></image>
+								<view>回复</view>
+							</view>
+						</view>
+					</view>
+				</view>
+				<view class="commitepanl">
+					<view class="dianzanpanl" wx:if="{{llist.fabulousNameList.length>0}}">
+						<image class="dixina" src="/assets/images/tabs/dixin.png"></image>
+						<text wx:for="{{llist.fabulousNameList}}" wx:for-item="textlist" wx:for-index="i">{{llist.fabulousNameList.length-1 == i ?textlist:textlist+', '}}</text>
+					</view>
+					<view class="huifuxinxi" bindtap="clickshowinput" wx:for="{{llist.commentList}}" wx:for-item="comlist">
+						<view class="listxinxi" wx:if="{{comlist.isReply == 0}}" data-index="{{lindex}}" data-comid="{{comlist.commentUserId}}" bindtap="gethuofu">
+							<text class="gernse">{{comlist.commentUserName}}：</text> <text>{{comlist.commentContent}}</text>
+						</view>
+						<view class="listxinxi" wx:if="{{comlist.isReply == 1}}" data-index="{{lindex}}" data-comid="{{comlist.commentUserId}}" bindtap="gethuofu">
+							<text class="gernse">{{comlist.commentUserName}}</text>回复<text class="gernse">{{comlist.replyUserName}}</text><text>{{comlist.commentContent}}</text>
+						</view>
+					</view>
+				</view>
+			</view>
+			<!-- 评论 -->
 
-  <view class="listmo">
-      <view class="useimg">
-        <image class="uingg1" mode="aspectFill" src="/assets/images/tabs/jiaren.png"></image>
-      </view>
-      <view class="mesgbox"> 
-        <view class="mnama">花花</view>
-        <view class="mcenter">阿达萨达是的大萨达所多所奥术大师大所阿达的</view>
-        <!-- <view class="imgpanl">
-           <image bindload="imageLoad" src="/assets/images/tabs/jiaren.png"></image>
-        </view> -->
-        <view class="imgpanl addmoves">
-           <image   src="/assets/images/tabs/jiaren.png"></image>
-           <image   src="/assets/images/tabs/jiaren.png"></image>
-           <image   src="/assets/images/tabs/jiaren.png"></image>
-           <image   src="/assets/images/tabs/jiaren.png"></image>
-           <image   src="/assets/images/tabs/jiaren.png"></image>
-            <image   src="/assets/images/tabs/jiaren.png"></image>
-           <image   src="/assets/images/tabs/jiaren.png"></image>
-           <image   src="/assets/images/tabs/jiaren.png"></image> 
-        </view>
-         
-        <view class="mdizhi">北京市不知道哪个地方</view>
-        <view class="actione">
-          <view class="tiems1">4分钟前</view>
-          <view class="acdtst">
-              <image class="diandian1" src="/assets/images/tabs/diandian1.png"></image>
-              <!-- <view class="anniu showanniu">
-                  <view class="zanbox">
-                    <image  mode="aspectFill" src="/assets/images/tabs/xin.png" class="xin1"></image>
-                    <view>赞</view>
-                  </view>
-                  <view class="lind12"></view>
-                  <view class="zanbox">
-                    <image src="/assets/images/tabs/commit.png" class="pinglu"></image>
-                    <view>评论</view>
-                  </view>
-              </view> -->
-              <!-- showanniu -->
-                <view class="dangehuif "> 
-                  <view class="zanbox">
-                    <image src="/assets/images/tabs/commit.png" class="pinglu"></image>
-                    <view>回复</view>
-                  </view>
-              </view>
-          </view>
-        </view> 
-        <!-- 评论 -->
-        <view class="commitepanl">
-          <view class="dianzanpanl">
-            <image  class="dixina" src="/assets/images/tabs/dixin.png"></image>
-            花花绿绿，齐齐信息，不不不
-          </view>
-          <view class="huifuxinxi">
-            <view class="listxinxi" bindtap="clickshowinput">
-              <text class="gernse">花花绿绿：</text>你什么都不知道！
-            </view>
-            <view class="listxinxi" bindtap="clickshowinput">
-              <text class="gernse">花花绿绿</text>回复<text class="gernse">花花绿绿：</text>你什么都不知道！
-            </view>
-          </view>
-        
-        </view>
-
-      </view>
-  </view> 
-</view>
-</scroll-view>
+		</view>
+	</view>
+<!-- </scroll-view> -->
 <!-- wx:if="{{isfocus}}" -->
- <view class="inpmodel" >
- <!-- adjust-position  -->
-  <input class="ipmoput"   maxlength="800"  value="{{}}" cursor-spacing="{{40}}"  adjust-position  placeholder="@回复谁？" focus="{{isfocus}}" bindblur="hideinpout" confirm-type="send"></input>
+<view class="inpmodel" wx:if="{{isinpout}}">
+	<!-- adjust-position  -->
+	<input class="ipmoput" maxlength="800" cursor-spacing="{{40}}" adjust-position placeholder="输入回复的内容" focus="{{isfocus}}" bindblur="hideinpout" value="{{strInput}}" bindinput="contionsInout" confirm-type="send" bindconfirm="sendcomit"></input>
 </view>
 <view class="motai" bindtap="calerAll" wx:if="{{motai}}"></view>
-
-

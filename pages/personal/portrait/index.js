@@ -1,10 +1,12 @@
 // pages/personal/portrait/index.js
+import { API_HOST, API_CUSTOM_LIST, API_USER_INFO, API_FIND_FRIEND, API_BIND_FRIEND, API_QUERY_MESSAGE_LIST, API_UPLOAD_FILE, API_INSTER_MESSAGE } from '../../../utils/config.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    avatarurl:'',
     imgwidth:0,
     ischange:true,
     showActionsheet:true,
@@ -17,7 +19,7 @@ Page({
       value:2
     }
   ],
-  tempFilePaths:'/assets/images/tabs/jiaren.png'
+  tempFilePaths:''
   },
   chooseImage(sourceType){
     let _this = this;
@@ -27,9 +29,32 @@ Page({
       sourceType: [sourceType],
       success:(res)=>{
         const tempFilePaths = res.tempFilePaths
-        console.log(tempFilePaths)
         _this.setData({
-          tempFilePaths:tempFilePaths[0]
+          avatarurl:tempFilePaths[0]
+        })
+        wx.uploadFile({
+          url: `${API_HOST}` + "/uploadFile",
+          filePath: tempFilePaths[0],
+          name: 'file',
+          header: {
+            token: wx.getStorageSync('token')
+          },
+          success: function success(uploadRes) {
+            var url = JSON.parse(uploadRes.data).url;
+            wx.request({
+              url: `${API_HOST}` + "/user/update",
+              method: "POST",
+              data:{
+                avatarUrl:url
+              },
+              header: {
+                token: wx.getStorageSync('token')
+              },
+              success:function(res){
+                console.log(res)
+              }
+            })
+          }
         })
       },
       fail:(err)=>{
@@ -65,8 +90,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options.avatarurl)
+    let avatarurl = options.avatarurl
     this.setData({
-      imgwidth: wx.getSystemInfoSync().windowWidth
+      imgwidth: wx.getSystemInfoSync().windowWidth,
+      avatarurl:avatarurl
     })
   },
 

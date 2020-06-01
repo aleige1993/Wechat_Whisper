@@ -6,6 +6,6 @@
       <cover-view class="tabtext" style="color: {{selected === index ? selectedColor : color}}">{{item.text}}</cover-view>
      
     </cover-view> 
-     <cover-view wx:if="{{index == 1 && hot>0}}" class="topmsg" >{{hot}}</cover-view>
+     <!-- <cover-view wx:if="{{index == 1 && ToalNumberData.total>0}}" class="topmsg" >{{ToalNumberData.total}}</cover-view> -->
   </cover-view>
 </cover-view>

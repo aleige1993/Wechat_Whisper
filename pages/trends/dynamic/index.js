@@ -1,17 +1,32 @@
 // pages/trends/dynamic/index.js
+import { API_HOST} from '../../../utils/config.js' 
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    scrollTop:100,
+    total:'',
+    // scrollTop:200,
     iscorlor:false,
     isfocus:false,
     reasonHeight:0,
     ishuifu:false,
     motai:false,
-    windowHeight:0
+    windowHeight:0,
+    list:[],
+    dynamicId:'',
+    isinpout:false,
+    motai:false,
+    Aindex:0,
+    Bindex:0,
+    pinglunid:'',
+    isfocus:false,
+    commentUserId:'',
+    strInput:'',
+    isClearOpened:false,
+    pageNum: 1,
+    pageSize:1000
   },
   gobank(){
     wx.navigateBack({
@@ -23,9 +38,10 @@ Page({
       url: '/pages/trends/article/index',
     })
   },
-  gotonewmsg(){
+  gotonewmsg(e){
+    let id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '/pages/trends/trendDetails/index',
+      url: '/pages/trends/trendDetails/index?dynamicId='+id,
     })
   },
   calerAll(){
@@ -81,6 +97,247 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  getDynamicList(){
+      let _this = this;
+      wx.request({
+        url: `${API_HOST}/dynamic/list`,
+        method: "POST",
+        header: {
+          token: wx.getStorageSync('token')
+        },
+        data: {
+          pageNum:  _this.data.pageNum,
+          pageSize: _this.data.pageSize
+        },
+        success:function(res){
+          let _data = res.data.data
+          _data.map((item,index)=>{ 
+              item.isshowA = false; 
+              item.isshowB = false;
+          })
+          _this.setData({
+            list: _data
+          },()=>{
+            console.log('执行了')
+          })
+        },
+        fail:function(err){
+          console.log(err)
+        }
+      })
+  },
+  //未读通知  
+  noNoticeTotal(){
+    let _this = this;
+    wx.request({
+      url: `${API_HOST}/dynamic/queryNoticeTotal`,
+      method: "GET",
+      header: {
+        token: wx.getStorageSync('token')
+      },
+      success:function(res){
+        console.log(res)
+        if(res.data.code == 0){
+          let total = res.data.data
+          _this.setData({
+            total:total
+          })
+        } 
+      },
+      fail:function(err){
+
+      }
+    })
+  },
+  showIsA(e){
+    console.log(e)
+    let index = e.currentTarget.dataset.indx
+    let key = `list[${index}].isshowA`
+    this.setData({
+      [key]:true,
+      Aindex:index,
+      motai:true
+  })
+  },
+  hideIsA(e){
+    console.log(e)
+    let index = e.currentTarget.dataset.indx
+    let key = `list[${index}].isshowA`
+    this.setData({
+      [key]:false,
+      isinpout:false
+    })
+  },
+  calerAll(){
+    let index = this.data.Aindex
+    let key = `list[${index}].isshowA`
+    let key2 = `list[${index}].isshowB`
+    this.setData({
+      motai:false,
+      [key]:false,
+      [key2]:false
+    })
+  },
+  //点赞
+  dianzhan(e){
+    console.log(e)
+    let _this = this;
+    let index = e.currentTarget.dataset.indx
+    let id = e.currentTarget.dataset.item
+    wx.request({
+      url: `${API_HOST}/dynamic/fabulous`,
+      method: "POST",
+      header: {
+        token: wx.getStorageSync('token')
+      },
+      data: {
+        dynamicId:id
+      },
+      success:function(res){
+        _this.setData({
+          isinpout:false,
+          motai:false
+        })
+        _this.getDynamicList()
+      },
+      fail:function(err){
+        console.log(err) 
+      }
+    })
+  },
+  //评论
+  dianpinglun(e){
+    console.log(e)
+    let _this = this;
+    let index = e.currentTarget.dataset.indx
+    let id = e.currentTarget.dataset.item
+    let key = `list[${index}].isshowA`
+    this.setData({
+      isinpout:true,
+      dynamicId:id,
+      pinglunid:id,
+      [key]:false,
+      isfocus:true,
+      commentUserId:''
+    })
+  },
+  //点击回复
+  dianhuifu(e){
+    let _this = this;
+    let index = e.currentTarget.dataset.indx
+    let id = e.currentTarget.dataset.item
+    let key = `list[${index}].isshowA`
+    let key2 = `list[${index}].isshowB`
+    this.setData({
+      isinpout:true,
+      pinglunid:id,
+      dynamicId:id,
+      [key]:false,
+      [key2]:false,
+      isfocus:true
+    })
+  },
+  hideinpout(){
+    this.setData({
+      isinpout:false
+    })
+  },
+  chakantupian(e){
+    let  list = e.currentTarget.dataset.item
+    let i =  e.currentTarget.dataset.index
+    wx.previewImage({
+      current: list[i],  
+      urls: list
+    })
+  },
+  gethuofu(e){
+    let i =  e.currentTarget.dataset.index
+    let id = e.currentTarget.dataset.comid
+    let key = `list[${i}].isshowB`
+    this.setData({
+      [key]:true,
+      motai:true,
+      commentUserId:id
+    })
+  },
+  //发送
+  sendcomit(){
+    let _this = this;
+    if(_this.data.strInput ==  ''){
+      wx.showToast({
+        title: '请输入内容',
+        icon:'none'
+      })
+    }else{
+      wx.request({
+        url: `${API_HOST}/dynamic/comment`,
+        method: "POST",
+        header: {
+          token: wx.getStorageSync('token')
+        },
+        data: {
+          "commentContent": _this.data.strInput,
+          "commentedUserId": _this.data.commentUserId,
+          "dynamicId": _this.data.dynamicId
+        },
+        success:function(res){
+          _this.getDynamicList()
+          _this.setData({
+            strInput:'',
+            motai:false
+          })
+        },
+        fail:function(err){
+          console.log(err) 
+        }
+      })
+    } 
+  },
+  contionsInout(e){
+    console.log(e)
+    let _this = this;
+    let val = e.detail.value
+    _this.setData({
+      strInput:val
+    })
+  },
+  //
+  huanqicel(e){
+    let  id = e.currentTarget.dataset.id
+    this.setData({
+      isClearOpened:true,
+      dynamicId:id
+    })
+  },
+  onActionClose(){
+    this.setData({
+      isClearOpened:false
+    })
+  },
+  //删除
+  delmrsa(){ 
+    let _this = this;
+    wx.request({
+      url: `${API_HOST}/dynamic/delete`,
+      method: "POST",
+      header: {
+        token: wx.getStorageSync('token')
+      },
+      data: {
+        "dynamicId": _this.data.dynamicId
+      },
+      success:function(res){
+       if(res.data.code == 0){
+        wx.navigateBack({
+          delta: 1
+        })
+       }
+      },
+      fail:function(err){
+        console.log(err) 
+      }
+    })
+  },
   onLoad: function (options) {
     let _this = this;
     wx.getSystemInfo({
@@ -98,12 +355,18 @@ Page({
   onReady: function () {
 
   },
-
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    setTimeout(()=>{
+      wx.pageScrollTo({ 
+        scrollTop:100,
+        duration: 300
+       })
+    },2000)
+    this.getDynamicList()
+    this.noNoticeTotal()
   },
 
   /**
@@ -124,7 +387,11 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.getDynamicList();
+    this.noNoticeTotal()
+    setTimeout(()=>{
+      wx.stopPullDownRefresh() 
+    },3000)
   },
 
   /**
@@ -138,6 +405,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: "有什么想说的 可以悄悄说了",
+      path: "/pages/whisper/whisperHome/index?userId=" + wx.getStorageSync('userId'),
+      imageUrl: "/assets/images/common/logo7.png",
+    };
   }
 })

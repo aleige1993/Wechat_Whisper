@@ -78,12 +78,12 @@
  	<!-- <view class="information-button" bindtap="onButtonClick" data-e-tap-so="this">
     给{{sex == 1 ? '他' : '她'}}说悄悄话
   </view> -->
- 	<navigator bindtap="gotopyqxc" class="tiaozhuanpyq border2" wx:if="{{userAdmin == 1 || userAdmin == 2}}">
+ 	<navigator bindtap="gotopyqxc" class="{{dynamelist.dynamicImageList.length == 0 ? 'tiaozhuanpyq11': 'tiaozhuanpyq'}}  border2" wx:if="{{userAdmin == 1 || userAdmin == 2}}">
  		<view class="title">
  			悄悄说
  		</view>
  		<view class="imgbox">
- 			<image wx:for="{{[1,2,3,4,5]}}" wx:key="a" src="/assets/images/tabs/jiaren.png"></image>
+ 		 <image wx:for="{{dynamelist.dynamicImageList}}"  mode="aspectFill" wx:key="a" src="{{item}}"></image>
  		</view>
  		<view class="icontitle iconfont iconyou"></view>
  	</navigator>
