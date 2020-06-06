@@ -1,9 +1,9 @@
 <!--pages/whisper/whisperHome/index.wxml-->
 <view class="whisper-panl">
 	<view class="item-hd">
-          <image class="additemimg" src="/assets/images/tabs/additem.png"></image>
-			<button open-type='share' class="btn-cover macouar"></button>
-		</view> 
+		<image class="additemimg" src="/assets/images/tabs/additem.png"></image>
+		<button open-type='share' class="btn-cover macouar"></button>
+	</view>
 	<navigator>
 		<view class="list_item1 border2" bindtap="gotopyq">
 			<image class="iconimg changeimg1" src='/assets/images/tabs/pyqs.png'></image>
@@ -14,7 +14,7 @@
 			</view>
 			<view class="hadericont icontitle iconfont iconyou"></view>
 		</view>
-	</navigator> 
+	</navigator>
 	<!-- <navigator>
 		<view class="list_item1 border2">
 			<image class="iconimg addwith" src='/assets/images/tabs/renadd.png'></image>
@@ -34,27 +34,31 @@
 			<view wx:else class="hadericont icontitle iconfont iconyou"></view>
 		</view>
 	</navigator>
-	<view class="showItmeAll " wx:if="{{isshow}}">
-		<!-- <scroll-view scroll-y="{{true}}"> -->
-			<wux-animation-group wux-class="example {{isshow?'cmix':''}}" in="{{true}}" type="fadeIn" duration="{{1000}}" exit="{{true}}" enter="{{true}}"> 
-		<wux-swipe-action-group>
-		<!-- right="{{ right1 }}"  -->
-			<wux-swipe-action  wx:for="{{messageList}}" right="{{ item.right}}" autoClose="{{autoClose}}"  wx:index="{{index}}"  data-item="{{item}}" data-index="{{index}}"  bind:click="onClick" bind:close="onCloses">
-				<view class="haoyoupanl {{item.istop == 1? 'haoyoupanlactive':''}}" data-item="{{item}}" bindtap="onButtonClick">
-					<image class="userimg" src="{{item.imgurl}}"></image>
-					<view class="datlke">
-						<view class="topcla">
-							<view class="name">{{item.remarkname?item.remarkname:item.friendname}}</view>
-							<view class="date">{{item.publishTime}}</view>
+	<scroll-view scroll-y style="height:74vh;">
+		<view class="showItmeAll " wx:if="{{isshow}}">
+			<!-- <scroll-view scroll-y="{{true}}"> -->
+			<wux-animation-group wux-class="example {{isshow?'cmix':''}}" in="{{true}}" type="fadeIn" duration="{{1000}}" exit="{{true}}" enter="{{true}}">
+				<wux-swipe-action-group>
+					<!-- right="{{ right1 }}"  -->
+					<wux-swipe-action wx:for="{{messageList}}" right="{{ item.right}}" autoClose="{{autoClose}}" wx:index="{{index}}" data-item="{{item}}" data-index="{{index}}" bind:click="onClick" bind:close="onCloses">
+						<view class="haoyoupanl {{item.istop == 1? 'haoyoupanlactive':''}}" data-item="{{item}}" bindtap="onButtonClick">
+							<view class="lajipp">
+								<image class="userimg" mode="aspectFill" src="{{item.imgurl}}"></image>
+								<view class="toubb" wx:if="{{item.unReadMessageNum>0}}">{{item.unReadMessageNum}}</view>
+							</view>
+							<view class="datlke">
+								<view class="topcla">
+									<view class="name">{{item.remarkname?item.remarkname:item.friendname}}</view>
+									<view class="date">{{item.publishTime}}</view>
+								</view>
+								<view class="botcla">
+									{{item.lastMessageContent}}
+								</view>
+							</view>
+							<view class="linkadd"></view>
 						</view>
-						<view class="botcla">
-							{{item.lastMessageContent}}
-						</view>
-					</view>
-          <view class="linkadd"></view>
-				</view>
-			</wux-swipe-action>
-			<!-- <wux-swipe-action   right="{{ right2 }}" bind:click="onClick">
+					</wux-swipe-action>
+					<!-- <wux-swipe-action   right="{{ right2 }}" bind:click="onClick">
 				<view class="haoyoupanl">
 					<image class="userimg" src="/assets/images/tabs/jiaren.png"></image>
 					<view class="datlke">
@@ -84,11 +88,15 @@
            <view class="linkadd"></view>
 				</view>
 			</wux-swipe-action>  -->
-		</wux-swipe-action-group> 
-	</wux-animation-group>
-		
-		<!-- </scroll-view>  -->
-	</view> 
+				</wux-swipe-action-group>
+			</wux-animation-group>
+
+			<!-- </scroll-view>  -->
+		</view>
+
+	</scroll-view>
+
+
 
 </view>
 <tab-bar index="{{'2'}}"></tab-bar>

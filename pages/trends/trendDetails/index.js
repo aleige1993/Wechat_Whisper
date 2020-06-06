@@ -6,6 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    movedynamicId:'',
+    types:1,
     list:[],
     dynamicId:'',
     isinpout:false,
@@ -32,16 +34,18 @@ Page({
       let types = options.tite
       if(types == 1){
         wx.setNavigationBarTitle({
-          title: '详情'
+          title: '相册详情'
         })
       }else{
         wx.setNavigationBarTitle({
-          title: '消息'
+          title: '新消息'
         })
       }
       let dynamicId = options.dynamicId
       this.setData({
-        dynamicId
+        dynamicId,
+        movedynamicId:dynamicId,
+        types: types ? types:2
       },()=>{
         _this.getqueryNotice(dynamicId)
       })
@@ -120,11 +124,12 @@ Page({
         dynamicId:id
       },
       success:function(res){
+        let ids = _this.data.types == 1 ? _this.data.dynamicId: _this.data.movedynamicId
         _this.setData({
           isinpout:false,
           motai:false
         })
-        _this.getqueryNotice(id)
+        _this.getqueryNotice(ids)
       },
       fail:function(err){
         console.log(err) 
@@ -145,19 +150,22 @@ Page({
       pinglunid:id,
       [key]:false,
       isfocus:true,
-      commentUserId:''
+      commentUserId:'',
+      dynamicId:id
     })
   },
   //点击回复
   dianhuifu(e){
     let _this = this;
     let index = e.currentTarget.dataset.indx
-    let id = e.currentTarget.dataset.itemhuifu
+    let id = e.currentTarget.dataset.item
     let list = _this.data.comlist
     let key = `list[${index}].isshowA`
     let key2 = `list[${index}].isshowB`
     let inputname = `回复${list.commentUserRemarkName?list.commentUserRemarkName:list.commentUserName}:`
+    console.log('id', id)
     this.setData({
+      dynamicId:id,
       inputname: inputname,
       inputNO:2,
       isinpout:true,
@@ -213,11 +221,22 @@ Page({
           "dynamicId": _this.data.dynamicId
         },
         success:function(res){
-          _this.getqueryNotice(_this.data.dynamicId)
-          _this.setData({
-            strInput:'',
-            motai:false
-          })
+          if(res.data.code == 0){
+            let ids = _this.data.types == 1 ? _this.data.dynamicId: _this.data.movedynamicId
+              console.log('types', _this.data.types)
+              console.log('ids', ids)
+              _this.getqueryNotice(ids)
+              _this.setData({
+                strInput:'',
+                motai:false
+              })
+          }else if (res.data.code == 500 || res.data.code == 400) {
+            console.log(1111)
+            wx.showToast({
+              title: res.data.msg,
+              icon: 'none'
+            })
+        }  
         },
         fail:function(err){
           console.log(err) 
@@ -274,7 +293,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    wx.hideShareMenu()
   },
 
   /**
@@ -317,7 +336,7 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      title: "有什么想说的 可以悄悄说了",
+      title: "有什么想说的？可以悄悄说了！",
       path: "/pages/tellsPeople/index",
       imageUrl: "/assets/images/common/logo7.png",
     };

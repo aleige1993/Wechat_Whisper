@@ -7,7 +7,7 @@
 				<image class="uingg1" mode="aspectFill" src="{{llist.friendAvatar}}"></image>
 			</view>
 			<view class="mesgbox">
-				<view class="mnama">{{llist.friendName}}</view>
+				<view class="mnama">{{llist.friendRemarkName?llist.friendRemarkName:llist.friendName}}</view>
 				<view class="mcenter">{{llist.content?llist.content:''}}</view>
 				<view class="imgpanl"   wx:if="{{llist.dynamicImageList.length == 1}}">
            <image  class="pyqdiyiz" bindtap="chakantupian" data-index="{{i}}" data-item="{{llist.dynamicImageList}}" wx:for-index="i" bindload="imageLoad" mode="widthFix" wx:for="{{llist.dynamicImageList}}" wx:for-item="imglist" src="{{imglist}}"></image>
@@ -20,7 +20,7 @@
 				</view>
 				<view class="mdizhi">{{llist.address?llist.address:''}}</view>
 				<view class="actione">
-					<view class="tiems1">{{llist.createTime}} <text class="delmrsa" data-id="{{llist.dynamicId}}" bindtap="huanqicel">删除</text></view>
+					<view class="tiems1">{{llist.createTime}} <text class="delmrsa" wx:if="{{llist.isOwn == 1 && types == 1}}" data-id="{{llist.dynamicId}}" bindtap="huanqicel">删除</text></view>
 					<view class="acdtst">
 						<image class="diandian1" data-indx="{{lindex}}" bindtap="showIsA" src="/assets/images/tabs/diandian1.png"></image>
 						<view class="anniu {{llist.isshowA?'':'showanniu'}}">
@@ -74,7 +74,7 @@
                         {{comlist.commentContent}}
                       </view>
                       <view class="huidssa" wx:if="{{comlist.isReply == 1}}" data-index="{{lindex}}" data-comid="{{comlist.commentUserId}}" data-list="{{comlist}}" bindtap="gethuofu">
-                        回复<text class="geres">{{comlist.commentUserRemarkName?comlist.commentUserRemarkName:comlist.replyUserName}}</text>{{comlist.commentContent}}
+                        回复<text class="geres">{{comlist.replyUserRemarkName?comlist.replyUserRemarkName:comlist.replyUserName}}</text>{{comlist.commentContent}}
                       </view>
                     </view>
                   </view>
@@ -102,8 +102,8 @@
 	</view>
 <!-- wx:if="{{isfocus}}" -->
  <view class="inpmodel"  wx:if="{{isinpout}}">
- <!-- adjust-position -->
-  <textarea class="ipmoput"  fixed="{{true}}" maxlength="140"   cursor-spacing="{{40}}"  adjust-position  placeholder="{{inputname}}" focus="{{isfocus}}"  bindblur="hideinpout"  value="{{strInput}}" bindinput="contionsInout" confirm-type="send" bindconfirm="sendcomit"></textarea>
+ <!-- adjust-position  -->
+  <textarea class="ipmoput"  bindblur="hideinpout"  fixed="{{true}}" maxlength="140"   cursor-spacing="{{40}}"  adjust-position  placeholder="{{inputname}}" focus="{{isfocus}}" placeholder-class="gugbiao" disable-default-padding="{{true}}"  value="{{strInput}}" bindinput="contionsInout" confirm-type="send" bindconfirm="sendcomit"></textarea>
 </view>
 <view class="motai" bindtap="calerAll" wx:if="{{motai}}"></view>
 <view class="weui-demo-dialog {{isClearOpened ? 'weui-demo-dialog_show' : ''}}">

@@ -920,6 +920,7 @@ Page({
     })
   },
   onLoad:async function (options) {
+    console.log('绑定',options)
     this.getSystemInfo()
     this.setData({
       userId: wx.getStorageSync('userId')
@@ -953,6 +954,7 @@ Page({
   },
   onShow:async function (){
     let _this = this;
+    // this.showModalfbd()
       // this.getNoticeToal()
       if (typeof this.getTabBar === 'function' &&
         this.getTabBar()) {
@@ -996,7 +998,7 @@ Page({
     let _this = this;
     wx.showModal({
       title: '提示',
-      content: '绑定好友后可互发信息',
+      content: '绑定收话人后可相互定时发送',
       confirmText: '绑定',
       showCancel: true,
       cancelText:'取消',

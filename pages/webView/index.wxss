@@ -1,1 +1,4 @@
 /* pages/webView/index.wxss */
+page{
+  background-color: #fff;
+}

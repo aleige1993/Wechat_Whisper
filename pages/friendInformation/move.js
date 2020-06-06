@@ -58,7 +58,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    wx.hideShareMenu()
   },
 
   /**
@@ -234,12 +234,12 @@ Page({
         token: wx.getStorageSync('token')
       },
       data: {
-        id: this.data.id
+        id: this.data.friendid
       },
       success: res => {
         if (res.data.code === 0) {
           wx.navigateBack({
-            delta: 1
+            delta: 2
           })
         } else if(res.data.code === 50001){
           _this.showModalfc()

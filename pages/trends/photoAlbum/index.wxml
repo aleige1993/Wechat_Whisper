@@ -1,7 +1,7 @@
 <!--pages/trends/photoAlbum/index.wxml-->
 <wxs src="../../../utils/tools.wxs" module="tools" />
 <scroll-view scroll-y style="height:{{windowHeight}}px" scroll-top="{{scrollTop}}" scroll-with-animation="{{true}}" >
-	<view class="haser">
+	<view class="haser" style="height:{{windowWidth}}px">
 		<!-- <view class="navpanll">
 			<view class="filde {{iscorlor?'':'navpanl2'}}"></view>
 			<view class="meitain">
@@ -15,7 +15,7 @@
     </view>
 		<view class="baergeo">
 			<view class="dsfwee"></view>
-			<image class="jweq" mode="widthFix" src="/assets/images/tabs/aaa.jpg"> </image>
+			<image class="jweq" mode="aspectFill" src="{{bgtutu}}"> </image>
 			<!-- <view class="xiabiao">
       <view class="tiescopor">有什么想说的，就在这里说吧</view>
       <image   class="xzewq" src="/assets/images/tabs/zhaoxiangjia.png"></image>
@@ -52,7 +52,13 @@
 						<image wx:for="{{v.picUrlList}}"  class="nianzhao" mode="aspectFill" wx:for-item="imgindex" src="{{imgindex}}"></image>
 					</view>
 					<view bindtap="chakantupian"  class="beijw disan" data-item="{{v.picUrlList}}"  wx:if="{{v.picUrlList.length==3}}">
-						<image wx:for="{{v.picUrlList}}"  class="nianzhao" mode="aspectFill" wx:for-item="imgindex" src="{{imgindex}}"></image>
+						<image class="kanqwe" mode="aspectFill" src="{{v.picUrlList[0]}}"></image>
+						<view class="doubel">
+							<image class="" mode="aspectFill" src="{{v.picUrlList[1]}}"></image>
+							<image class="" mode="aspectFill" src="{{v.picUrlList[2]}}"></image>
+						</view>
+					<!-- </view>
+						<image wx:for="{{v.picUrlList}}"  class="nianzhao" mode="aspectFill" wx:for-item="imgindex" src="{{imgindex}}"></image> -->
 					</view>
 					<view bindtap="chakantupian"  class="beijw disiwq" data-item="{{v.picUrlList}}" wx:if="{{v.picUrlList.length >= 4}}">
 						<image wx:for="{{v.picUrlList}}" wx:for-index="imginxd"  wx:if="{{imginxd<4}}" class="nianzhao" mode="aspectFill" wx:for-item="imgindex" src="{{imgindex}}"></image>
@@ -60,7 +66,7 @@
 					<!-- <view bindtap="chakantupian"  class="beijw" data-item="{{item.picUrlList}}" wx:if="{{item.picUrlList.lenght>4}}">
 						<image wx:for="{{item.picUrlList}}"  class="nianzhao" mode="aspectFill" src="item.picUrlList[0]"></image>
 					</view> -->
-					<view class="cqcnian" data-item="{{v.dynamicId}}" bindtap="godetail">
+					<view class="{{v.picUrlList.length>0?'cqcnian':'bujse'}}" data-item="{{v.dynamicId}}" bindtap="godetail">
 						<view class="niantext">
 						{{v.content?v.content:''}}
 						</view>

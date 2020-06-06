@@ -26,7 +26,7 @@ Page({
   },
   onSearchMessage() {
     wx.navigateTo({
-      url: '/pages/served/index?friendid=' + this.data.userid
+      url: '/pages/served/index?friendid=' + this.data.friendid
       // url: "/pages/chatRecord/index"
     });
   },
@@ -128,7 +128,7 @@ Page({
         token: wx.getStorageSync('token')
       },
       data: {
-        id: this.data.id
+        id: this.data.friendid
       },
       success: res => {
         if (res.data.code === 0) {
@@ -400,4 +400,7 @@ Page({
   onShow(){
     this.queryMicroDynamic()
   },
+  onReady(){
+    wx.hideShareMenu()
+  }
 })

@@ -6,7 +6,10 @@
 .wx-flex__item{
 	flex: 1;
 }
-
+.lisclir{
+	width:100%;
+	height: 100%;
+}
 .thin-border-bottom{
 	position: relative;
 }

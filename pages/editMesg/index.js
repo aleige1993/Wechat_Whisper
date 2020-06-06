@@ -563,6 +563,9 @@ Page({
     })
   },
   onSendMessage() {
+    var pages = getCurrentPages();
+    var prevPage = pages[pages.length -2];
+    
     var _this = this;
     var messageContent = "";
     var messageType = "";
@@ -630,6 +633,9 @@ Page({
           })
           setTimeout(()=>{
             _this.oncloes()
+            prevPage.setData({
+              testdata:true
+            })
           },1000)
           let NavigationBarTitle = _this.data.friendName
           if (_this.data.remarkname && _this.data.remarkname != 'null') {
@@ -836,6 +842,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    wx.hideShareMenu()
     let _this = this;
     setTimeout(() => {
       wx.createSelectorQuery().select('#page').boundingClientRect(function (rect) {
@@ -970,8 +977,6 @@ Page({
   },
   onDoen(){
     let _this = this;
-    var pages = getCurrentPages();
-    var prevPage = pages[pages.length -2];
     if(_this.data.isDone){
       _this.setData({
         msg4_input: _this.data.strInput,

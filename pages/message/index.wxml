@@ -4,13 +4,13 @@
 			{{systeminfo.windowHeight}}
 			<scroll-view class="message-content addscroll" scroll-into-view="msg-{{state.length}}" style="overflow:{{isShowModal ? 'hidden' : 'scroll'}}">
 				<view wx:for="{{messageList}}" wx:key="{{item.id}}" wx:for-index="index" class="message-content-item {{item.userid == userId?'right':''}}" id="{{'msg-' + index}}">
-					<image bindtap="{{ item.userid == userId?'right':'onItemClickToFriendInfo'}}" data-item="{{item}}" class="message-content-item_img" src="{{item.userid != userId ? item.imgurl : item.userImgurl}}" role="img"></image>
+					<image mode="aspectFill" bindtap="{{ item.userid == userId?'right':'onItemClickToFriendInfo'}}" data-item="{{item}}" class="message-content-item_img" src="{{item.userid != userId ? item.imgurl : item.userImgurl}}" role="img"></image>
 					<view class="message-content-item_msg">
 						<!-- <view class="triangle"></view> -->
 						<view class="message-content-title">
 							<text class="message-content-time" wx:if="{{item.messagestatus == 1}}">将于{{item.plantime+'送达'}}</text>
 							<text class="message-content-time" wx:if="{{item.messagestatus == 2}}">{{item.plantime}}</text>
-							<text class="message-content-time" wx:if="{{item.messagestatus == 3}}">{{item.plantime}}</text>
+							<text class="message-content-time" wx:if="{{item.messagestatus == 3}}">  {{ item.userid == userId ?'将于'+item.plantime+'送达' :item.plantime}}</text>
 							<text class="message-content-time" wx:if="{{item.messagestatus == 4}}">{{'该消息超时未接收'}}</text>
 							<text class="message-content-time errmsg" wx:if="{{item.messagestatus == 5}}">{{'该消息送达失败'}}</text>
 						</view>
@@ -36,7 +36,7 @@
 								{{item.messagestr}}
 							</view>
 						</view>
-						<view class="message-content-strimg {{item.messagestr == '' ? 'strimgtop':''}} {{item.messagecontent.length == 4? 'aswha':''}}" wx:if="{{item.messagecontent[0] != '' && item.messagetype === 4}}">
+						<view class="message-content-strimg {{item.messagestr?'':'youwenzi'}} {{item.messagecontent.length == 4? 'aswha':''}}" wx:if="{{item.messagecontent[0] != '' && item.messagetype === 4}}">
 						<!-- <view bindtap="dwewqewq">{{imagesinfos[30].width}}</view> -->
 							<block wx:for-index="imgIndex"  wx:for-item="imgItem" wx:for="{{item.messagecontent}}" wx:if="{{item.messagecontent.length==1}}" >
 								<view class="derwwaaa"> 

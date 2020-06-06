@@ -20,11 +20,12 @@
             <!-- <view>{{subItem.friendname}}</view> -->
           <van-cell>
              <view class="tells-list-item">
-              <image class="list_img" bindtap="onItemClickToFriendInfo" data-item="{{subItem}}" src="{{subItem.imgurl}}"></image>
+              <view class="list_img">
+               <image class="lisclir" mode="aspectFill" bindtap="onItemClickToFriendInfo" data-item="{{subItem}}" src="{{subItem.imgurl}}"></image>
+              </view> 
               <view class="list_msg" bindtap="onItemClickToFriendInfo" data-item="{{subItem}}">{{subItem.remarkname||subItem.friendname}}</view>
             </view>
           </van-cell>
-
           </view>
         </block>
       </view>

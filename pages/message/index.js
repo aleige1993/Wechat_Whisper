@@ -127,7 +127,9 @@ Page({
     msg4_input: "",
     msg4_imgs: [],
     messagetype: 4,
-    isbf: true
+    isbf: true,
+    testdata: false,
+    friendID:''
   },
   imageLoad: function(e) {
     var $width=e.detail.width,    //获取图片真实宽度
@@ -261,11 +263,16 @@ Page({
           })
         } else {
           toast(res.data.msg)
-
+          wx.navigateTo({
+            url: '/pages/login/index',
+          })
         }
       },
       fail: () => {
         toast("或取消息失败")
+      },
+      complete: (com)=>{
+        console.log('怎么回事', com)
       }
     })
   },
@@ -316,6 +323,7 @@ Page({
       })
       this.modifyStutas(item.id);
       innerAudioContext.src = item.messagecontent;
+      console.log('messagecontent', item.messagecontent)
       innerAudioContext.autoplay = true;
       innerAudioContext.play();
       innerAudioContext.onEnded(res => {
@@ -353,6 +361,7 @@ Page({
       isPlayVoice: true
     });
     innerAudioContext.src = _this.data.voiceValue;
+    console.log('voiceValue',_this.data.voiceValue)
     innerAudioContext.autoplay = true;
       innerAudioContext.play();
     innerAudioContext.onEnded(function () {
@@ -479,6 +488,9 @@ Page({
     })
   },
   onShowImage() {
+    this.setData({
+      testdata:true
+    })
     wx.navigateTo({
       url: '/pages/editMesg/index?options='+ JSON.stringify(this.data.options),
     })
@@ -634,7 +646,7 @@ Page({
           wx.setNavigationBarTitle({
             title: NavigationBarTitle
           })
-
+          _this.gundongfunc()
 
         } else if (res.data.code == 500 || res.data.code == 400) {
           wx.showToast({
@@ -785,7 +797,9 @@ Page({
   },
   //查看图片
   getShowimgs(e) {
-
+    this.setData({
+      testdata:false
+    })
     let usrIdex = e.currentTarget.dataset.item;
     let list = e.currentTarget.dataset.list;
     wx.previewImage({
@@ -797,7 +811,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    console.log('传送过来的数据', options)
+    // this.setData({
+    //   friendID:options.friendID
+    // })
     let NavigationBarTitle = options.friendName
     if (options.remarkname && options.remarkname != 'null' && options.remarkname != 'undefined') {
       NavigationBarTitle = options.remarkname
@@ -813,10 +830,9 @@ Page({
       imgUrl: options.imgUrl,
       sex: options.sex,
       userId: wx.getStorageSync('userId'),
-      itemlist: JSON.parse(options.itemlist)
+      itemlist: options.itemlist?JSON.parse(options.itemlist):''
     })
-
-    this.queryMessageList()
+    // this.queryMessageList()
 
   },
   onScrollTo() {
@@ -834,6 +850,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    wx.hideShareMenu()
     let _this = this;
     setTimeout(() => {
       wx.createSelectorQuery().select('#page').boundingClientRect(function (rect) {
@@ -847,13 +864,28 @@ Page({
       }).exec()
     }, 300)
   },
-
+   gundongfunc(){
+    let _this = this;
+    setTimeout(() => {
+      wx.createSelectorQuery().select('#page').boundingClientRect(function (rect) {
+        if (rect) {
+          wx.pageScrollTo({
+            scrollTop: rect.height,
+            duration: 300
+          })
+        }
+      }).exec()
+    }, 300)
+   },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
     this.updataTime()
-    this.queryMessageList();
+    this.queryMessageList()
+    if(this.data.testdata){
+     this.gundongfunc()
+    }
   },
 
   /**
@@ -890,7 +922,7 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      title: "有什么想说的 可以悄悄说了",
+      title: "有什么想说的？可以悄悄说了！",
       path: "/pages/whisper/whisperHome/index?userId=" + wx.getStorageSync('userId'),
       imageUrl: "/assets/images/common/logo7.png",
     };

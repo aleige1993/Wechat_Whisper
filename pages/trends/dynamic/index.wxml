@@ -1,7 +1,7 @@
 <!--pages/trends/dynamic/index.wxml-->
 <!--pages/trends/trends/photoAlbum/index.wxml-->
 <!-- <scroll-view scroll-y class="dunpaml" scroll-y style="height:{{windowHeight}}px" scroll-top="{{scrollTop}}" scroll-with-animation="{{true}}"> -->
-	<view class="haser">
+	<view class="haser" style="height:{{windowWidth}}px">
 		<!-- <view class="navpanll">
     <view class="filde {{iscorlor?'':'navpanl2'}}"></view>
     <view class="meitain">
@@ -15,7 +15,7 @@
 		</view>
 		<view class="baergeo">
 			<view class="dsfwee"></view>
-			<image class="jweq" mode="widthFix" src="/assets/images/tabs/aaa.jpg"> </image>
+			<image class="jweq" mode="aspectFill" src="{{bgtutu}}"> </image>
 			<view class="xiabiao">
 				<view class="tiescopor">有什么想说的，就在这里说吧</view>
 				<image bindtap="gosend" class="xzewq" src="/assets/images/tabs/zhaoxiangjia.png"></image>
@@ -97,6 +97,6 @@
 <!-- wx:if="{{isfocus}}" -->
 <view class="inpmodel" wx:if="{{isinpout}}">
 	<!-- adjust-position  -->
-	<textarea class="ipmoput" bindblur="hideinpout"  maxlength="140"  fixed="{{true}}"  cursor-spacing="{{40}}"  adjust-position  placeholder="{{inputname}}" focus="{{isfocus}}"    value="{{strInput}}" bindinput="contionsInout" confirm-type="send" bindconfirm="sendcomit"></textarea>
+	<textarea class="ipmoput" bindblur="hideinpout"  maxlength="140"  fixed="{{true}}"  cursor-spacing="{{40}}"  adjust-position  placeholder="{{inputname}}" focus="{{isfocus}}"  placeholder-class="gugbiao" disable-default-padding="{{true}}"   value="{{strInput}}" bindinput="contionsInout" confirm-type="send" bindconfirm="sendcomit"></textarea>
 </view>
 <view class="motai" bindtap="calerAll" wx:if="{{motai}}"></view>

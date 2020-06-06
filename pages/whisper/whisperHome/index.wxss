@@ -71,8 +71,27 @@ page{
   border-radius:100%;
   background-color: #E75E58;
 }
+.lajipp{
+  position: relative;
+}
+.toubb{
+  position: absolute;
+  top:-14rpx;
+  right:8rpx;
+  display: inline-block;
+  text-align: center;
+  width: 34rpx;
+  height: 34rpx;
+  line-height:34rpx;
+  color: #fff;
+  background-color: #E75E58;
+  z-index: 2;
+  border-radius: 100%;
+  font-size:20rpx;  
+}
 .userimg{
-  width: 87rpx;
+  min-width: 87rpx;
+  max-width: 88rpx;
   height: 87rpx;
   margin-right: 20rpx;
   border-radius: 6rpx;
@@ -91,6 +110,7 @@ page{
   width: 100%;
   box-sizing: border-box;
   position: relative;
+  display: flex;
 }
 .linkadd{
   position: absolute;
@@ -125,6 +145,10 @@ page{
 .botcla{
   color: #B3B3B3;
   font-size: 26rpx;
+  width: 600rpx;
+  overflow: hidden;/*超出部分隐藏*/
+  white-space: nowrap;/*不换行*/
+  text-overflow:ellipsis;/*超出部分文字以...显示*/
 }
 .clerbot{
   margin-bottom: 0 !important;
@@ -136,8 +160,9 @@ page{
   margin-left: 32rpx !important;
 }
 .showItmeAll{
-  min-height:74vh;
-  overflow-y: scroll;
+  /* min-height:74vh;
+  overflow-y: scroll; */
+  margin-bottom: 110rpx;
 }
 .macouar{
   height: 62rpx !important;

@@ -2,6 +2,9 @@
 page {
   background: #fff;
 }
+.message{
+  padding-bottom: 80rpx;
+}
 .moveimgesfweq{
   margin-left:10rpx;
   margin-right:0 !important;

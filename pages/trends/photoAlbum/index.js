@@ -10,7 +10,31 @@ Page({
     iscorlor:false,
     windowHeight:0,
     userId:'',
-    xclist:[]
+    xclist:[],
+    rkou:1,
+    bgtutu:'',
+    windowWidth:0
+  },
+  getbgtu(){
+    let _this = this
+    wx.request({
+      url: `${API_HOST}/dynamic/getUserBackground`,
+      method: "POST",
+      header: {
+        token: wx.getStorageSync('token')
+      },
+      data: {
+        userId: _this.data.userId
+      },
+      success:function(res){
+        console.log(res)
+        if(res.data.code == 0){
+          _this.setData({
+            bgtutu: res.data.data
+          })
+        } 
+      }
+    })
   },
   getQueryAmon(id){
     let _this = this;
@@ -91,15 +115,19 @@ Page({
     let _this = this;
     wx.getSystemInfo({
       success:function (res){
+       
         _this.setData({
-          windowHeight:res.windowHeight
+          windowHeight:res.windowHeight,
+          windowWidth: res.windowWidth
         })
       }
     })
     if(options){
       let id = options.userid
+      let rkou = options.jinrukou
       this.setData({
-        userId:id
+        userId:id,
+        rkou:rkou
       })
       this.getQueryAmon(id)
     }
@@ -109,7 +137,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    wx.hideShareMenu()
   },
 
   /**
@@ -120,6 +148,7 @@ Page({
     if(this.data.userId){
       this.getQueryAmon(this.data.userId)
     }
+    this.getbgtu()
    
   },
 
@@ -156,7 +185,7 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      title: "有什么想说的 可以悄悄说了",
+      title: "有什么想说的？可以悄悄说了！",
       path: "/pages/whisper/whisperHome/index?userId=" + wx.getStorageSync('userId'),
       imageUrl: "/assets/images/common/logo7.png",
     };

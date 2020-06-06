@@ -12,7 +12,7 @@
 		</view>
 
 		<view class="move_img">
-			<van-uploader multiple="{{true}}" file-list="{{ fileList }}" bind:delete="delImgs" bind:after-read="afterRead" max-count="9" image-fit="aspectFill">
+			<van-uploader multiple="{{true}}" file-list="{{ fileList }}" bind:delete="delImgs" bind:after-read="afterRead" max-count="9" image-fit="aspectFill" bindtap="Dianover">
         <view class="paizhaov">
           <image class="imgpaizhao" src="/assets/images/tabs/paizhao.png"></image>
         </view>

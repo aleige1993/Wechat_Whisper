@@ -1,8 +1,9 @@
 {
   "pages": [
     "pages/whisper/whisperHome/index",
-    "pages/personal/personal",
+    "pages/login/index",
     "pages/trends/trendDetails/index",
+    "pages/personal/personal",
     "pages/trends/photoAlbum/index",
     "pages/tellsPeople/index",
     "pages/editMesg/index",
@@ -14,7 +15,6 @@
     "pages/friendInformation/move",
     "pages/friendInformation/setCommon",
     "pages/friendInformation/index",
-    "pages/login/index",
     "pages/chooseFriend/index",
     "pages/signin/index",
     "pages/served/index",

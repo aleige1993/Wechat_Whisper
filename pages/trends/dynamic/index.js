@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    bgtutu:'',
     total:'',
     // scrollTop:200,
     iscorlor:false,
@@ -14,6 +15,7 @@ Page({
     ishuifu:false,
     motai:false,
     windowHeight:0,
+    windowWidth:'',
     list:[],
     dynamicId:'',
     isinpout:false,
@@ -39,6 +41,27 @@ Page({
   gosend(){
     wx.navigateTo({
       url: '/pages/trends/article/index',
+    })
+  },
+  getbgtu(){
+    let _this = this
+    wx.request({
+      url: `${API_HOST}/dynamic/getUserBackground`,
+      method: "POST",
+      header: {
+        token: wx.getStorageSync('token')
+      },
+      data: {
+        userId: _this.data.userId
+      },
+      success:function(res){
+        console.log(res)
+        if(res.data.code == 0){
+          _this.setData({
+            bgtutu: res.data.data
+          })
+        } 
+      }
     })
   },
   gotonewmsg(e){
@@ -294,11 +317,18 @@ Page({
           "dynamicId": _this.data.dynamicId
         },
         success:function(res){
-          _this.getDynamicList()
-          _this.setData({
-            strInput:'',
-            motai:false
-          })
+          if(res.data.code == 0){
+            _this.getDynamicList()
+            _this.setData({
+              strInput:'',
+              motai:false
+            })
+          }else if (res.data.code == 500 || res.data.code == 400) {
+              wx.showToast({
+                title: res.data.msg,
+                icon: 'none'
+              })
+          } 
         },
         fail:function(err){
           console.log(err) 
@@ -353,10 +383,16 @@ Page({
   },
   onLoad: function (options) {
     let _this = this;
+    if(options){
+      this.setData({
+        userId:options.userId
+      })
+    }
     wx.getSystemInfo({
       success:function (res){
         _this.setData({
-          windowHeight:res.windowHeight
+          windowHeight:res.windowHeight,
+          windowWidth: res.windowWidth
         })
       }
     })
@@ -386,6 +422,7 @@ Page({
   onShow: function () {
     this.getDynamicList()
     this.noNoticeTotal()
+    this.getbgtu()
   },
 
   /**
@@ -425,7 +462,7 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      title: "有什么想说的 可以悄悄说了",
+      title: "有什么想说的？可以悄悄说了！",
       path: "/pages/whisper/whisperHome/index?userId=" + wx.getStorageSync('userId'),
       imageUrl: "/assets/images/common/logo7.png",
     };

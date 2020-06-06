@@ -140,7 +140,7 @@ Page({
   },
   gomyqqs(){
     wx.navigateTo({
-      url: '/pages/trends/photoAlbum/index?userid='+ this.data.userId,
+      url: '/pages/trends/photoAlbum/index?jinrukou=1&userid='+ this.data.userId,
     })
   },
   isGuanzhu(){
@@ -907,7 +907,7 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      title: "有什么想说的 可以悄悄说了",
+      title: "有什么想说的？可以悄悄说了！",
       path: "/pages/whisper/whisperHome/index?userId=" + wx.getStorageSync('userId'),
       imageUrl: "/assets/images/common/logo7.png",
     };

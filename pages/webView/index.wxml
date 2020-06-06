@@ -1,2 +1,2 @@
-<!--pages/webView/index.wxml-->
-<web-view src="{{link}}"></web-view>
+<!--pages/webView/index.wxml isguanzhu == 1?yes:nos-->
+<web-view src="{{yes}}"></web-view>

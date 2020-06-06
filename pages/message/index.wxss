@@ -295,9 +295,12 @@ display: inline-block;
 .message-content-strimg{ 
   max-width: 480rpx !important;
   background: none !important;
-  margin-top: 10rpx !important;
+  margin-top: 10rpx;
   padding: 0 !important;
   /* text-align: right; */
+}
+.youwenzi{
+  margin-top: 62rpx !important;
 }
 .message-content-img_img {
   width: 100%;
@@ -919,6 +922,7 @@ height:600rpx;
 .right .moveimges{
   margin-left:10rpx !important;
   margin-right: 0 !important;
+  margin-bottom: -4rpx;
 }
 .addvewimh{
    width:148rpx;
@@ -944,6 +948,7 @@ height:600rpx;
 }
 .strimgtop{
   margin-top: 62rpx !important;
+  margin-right: -8rpx;
 }
 .msgboxpanl{
   position: fixed;
@@ -1052,6 +1057,10 @@ height: 148rpx !important;
 .right .moveimgesfweq{
   margin-left: 10rpx !important;
   margin-right: 0 !important;
+  margin-bottom: -4rpx;
+}
+.aswha{
+  /* margin-top: 62rpx !important; */
 }
 .aswha.message-content-strimg{
   width:320rpx !important;

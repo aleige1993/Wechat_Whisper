@@ -7,7 +7,7 @@ Page({
   },
 
   async onGetUserInfo(e) {
-    console.log(e);
+    console.log('登录',e);
     let userData = e.detail
     let res = await wx.$login()
     console.log(res);

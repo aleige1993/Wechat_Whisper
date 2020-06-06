@@ -20,7 +20,8 @@ Page({
     isDone:false,
     feedbackimg: [],
     strNum:0,
-    localhost:''
+    localhost:'',
+    isOver:false
   },
   // 获取地址
   getlocaltion(){
@@ -86,10 +87,13 @@ Page({
   },
   afterRead(event) {
     let _this = this
-    const { file } = event.detail;
+    const { file } = event.detail; 
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     console.log(file)
     file.map((item)=>{
+      _this.setData({
+        isOver:true
+      })
       wx.uploadFile({
         url: `${API_HOST}${API_UPLOAD_FILE}`, // 仅为示例，非真实的接口地址
         filePath: item.path,
@@ -109,9 +113,12 @@ Page({
           });
         },
         complete() {
+          _this.setData({
+            isOver:false
+          })
         }
-      }); 
-    }) 
+      });
+    })
   },
   //删除图片
   delImgs(e) {
@@ -136,6 +143,9 @@ Page({
   },
   onDoen(){
     let _this = this;
+    if(_this.data.isOver){
+      return false
+    }
     if(_this.data.strInput != '' || _this.data.feedbackimg.length != 0){
       wx.request({
         url: `${API_HOST}/dynamic/save`,
@@ -154,7 +164,12 @@ Page({
             wx.navigateBack({
               delta: 1
             })
-          }
+          }else if (res.data.code == 500 || res.data.code == 400) {
+            wx.showToast({
+              title: res.data.msg,
+              icon: 'none'
+            })
+        }  
         },
         fail(err){
           console.log(err)
@@ -200,7 +215,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    wx.hideShareMenu()
   },
 
   /**

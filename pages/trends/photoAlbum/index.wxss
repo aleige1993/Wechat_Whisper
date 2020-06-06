@@ -29,12 +29,13 @@
 }
 .baergeo{
   position: relative;
+  height: 100%;
 }
 .dsfwee{
   position:absolute;
   z-index:1;
   width: 100%;
-  height:98%;
+  height:100%;
   background-color:#000;
   opacity:0.2;
 }
@@ -47,7 +48,7 @@
   z-index: 2;
   display: flex;
   width: 100%;
-  bottom:-50rpx;
+  bottom:-62rpx;
   right:0;
   justify-content: flex-end;
   align-items: center;
@@ -111,6 +112,7 @@
 .hezuo{
   display: flex;
   flex: 1;
+  margin-bottom: 14rpx;
 }
 .beijw{
   width: 136rpx;
@@ -124,7 +126,7 @@
 .niantext{
   /* margin-left: 10rpx; */
   flex: 1;
-  height: 106rpx;
+  height: 102rpx;
   width: 100%;
   font-size: 26rpx;
   overflow: hidden;
@@ -150,7 +152,7 @@
   display: flex;
   padding-right: 50rpx;
   padding-left: 12rpx;
-  margin-bottom:8rpx;
+  margin-bottom:40rpx;
 }
 .diyi  .tian{
   color: #1A1A1A;
@@ -193,7 +195,13 @@
 }
 .doubel image{
   width:66rpx;
-  height:66rpx;
+  height:67rpx;
+}
+.bujse{
+  background-color: #f7f7f7;
+  padding:10rpx;
+  width: 100%;
+  box-sizing: border-box;
 }
 .disan .kanqwe{
   height: 136rpx;
@@ -234,8 +242,8 @@
   height: 20rpx;
   text-align: center;
   position:relative;
-  margin-top:60rpx;
-  margin-bottom:10rpx;
+  margin-top:100rpx;
+  margin-bottom:40rpx;
 }
 .csnim{
   flex: 1;

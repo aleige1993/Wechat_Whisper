@@ -1,7 +1,7 @@
 <view class="mine">
   <view class="mine-body">
     <view class="mine-container" bindtap="goPortrait"> 
-      <image  class="mine-containe_img" src="{{avatarUrl}}" role="img"></image>
+      <image  class="mine-containe_img" mode="aspectFill" src="{{avatarUrl}}" role="img"></image>
       <view class="mine-containe_name">{{username}}</view>
         <view class="hadericont icontitle iconfont iconyou"></view>  
     </view>

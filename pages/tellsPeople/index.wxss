@@ -210,8 +210,9 @@ page {
 .tells-list-item .list_img {
   width: 72rpx;
   height: 72rpx;
-  border-radius: 8rpx;
+  border-radius: 10rpx;
   background: #eee;
+  overflow: hidden;
 }
 
 .tells-list-item .list_msg {
@@ -234,6 +235,7 @@ page {
   height: 102rpx;
 }
 .madqwe{
+  font-size: 34rpx;
   margin-left: 28rpx;
   color: #576B95;
 }

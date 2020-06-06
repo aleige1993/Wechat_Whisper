@@ -1,11 +1,14 @@
 // pages/webView/index.js
+import { API_HOST } from '../../utils/config.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    link:'https://mp.weixin.qq.com/s/4MZcraUJ0rElwO461WhIYA'
+    yes:'https://mp.weixin.qq.com/s/4MZcraUJ0rElwO461WhIYA',
+    nos:'',
+    isguanzhu:1
   },
 
   /**
@@ -14,7 +17,25 @@ Page({
   onLoad: function (options) {
 
   },
-
+  isGuanzhu(){
+    let _this = this
+    wx.request({
+      url: `${API_HOST}/user/judgeIsFollow`,
+      method: "POST",
+      header: {
+        token: wx.getStorageSync('token')
+      },
+      success: function success(res) {
+        if(res.data.code == 0){
+          _this.setData({
+            isguanzhu: res.data.data
+          })
+        }
+      },
+      fail: function fail() {
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -26,7 +47,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.isGuanzhu()
   },
 
   /**

@@ -61,12 +61,12 @@ right3: [{
     }else if(t.includes('.png') || t.includes('.jpg') || t.includes('.gif') ||t.includes('.jpeg')){
       return '[图片]'
     }else{
-      return t
+      return t.replace(/,$/gi,"")
     }
   },
   gotopyq(){
     wx.navigateTo({
-      url: '/pages/trends/dynamic/index',
+      url: '/pages/trends/dynamic/index?userId='+this.data.userId,
     })
   },
 //点击显示切换
@@ -372,7 +372,7 @@ right3: [{
   onShareAppMessage(){
     return {
       title: "收话人添加邀请",
-      path: "/pages/whisper/whisperHome/index?userId=" + wx.getStorageSync('userId'),
+      path: "/pages/tellsPeople/index?userId=" + wx.getStorageSync('userId'),
       imageUrl: "/assets/images/common/logo7.png",
     };
   }

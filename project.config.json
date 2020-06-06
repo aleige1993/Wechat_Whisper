@@ -28,7 +28,7 @@
 		"bundle": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.11.0",
+	"libVersion": "2.11.1",
 	"appid": "wxf49fdf3bf810d3c9",
 	"projectname": "timer-whisper-webapp",
 	"debugOptions": {
@@ -72,7 +72,7 @@
 					"id": 1,
 					"name": "pages/tellsPeople/index",
 					"pathName": "pages/tellsPeople/index",
-					"query": "userId=12",
+					"query": "userId=26",
 					"scene": null
 				},
 				{
@@ -83,10 +83,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "聊天推送页面",
+					"id": 3,
+					"name": "pages/message/index",
 					"pathName": "pages/message/index",
-					"query": "",
+					"query": "friendID=26&friendName=子卿&remarkname=er&imgUrl=https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJp0JzSialEHSLk0QBlpG57SiaJTbD3ynbIDxmrfiahypRibpZ2kXqvnN3yY2X2dV1yIrCxB5GymzhvFg/132&sex=1&userId=25",
 					"scene": null
 				},
 				{
