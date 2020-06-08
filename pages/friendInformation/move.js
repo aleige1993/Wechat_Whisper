@@ -60,12 +60,37 @@ Page({
   onReady: function () {
     wx.hideShareMenu()
   },
-
+  huoququeryFriend(){
+    let _this = this
+    wx.request({
+      url: `${API_HOST}/friend/queryFriend`,
+      method: "POST",
+      header: {
+        token: wx.getStorageSync('token')
+      },
+      data: { 
+        friendID: _this.data.friendid
+      },
+      success: res => {
+        if (res.data.code === 0) {
+          let _data = res.data.data
+          _this.setData({ 
+            intimate: _data.intimate,
+            intimateid: _data.intimateid,
+            isreject: _data.isreject == 1 ? true : false,
+            istop: _data.istop == 1 ? true : false,
+           })
+      }
+    }
+  })
+  },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    console.log(1111111)
+    this.huoququeryFriend()
+    // this.updateFriend();
   },
 
   /**

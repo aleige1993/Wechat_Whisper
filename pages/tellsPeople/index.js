@@ -1041,6 +1041,7 @@ Page({
   },
     //绑定好友
     bindFriendFc(userId){
+      let _this = this
       wx.request({
         url: `${API_HOST}${API_BIND_FRIEND}?friendId=${this.data.userId}`,
         method: "POST",
@@ -1051,7 +1052,7 @@ Page({
           friendId: this.data.userId
         },
         success: res => {
-
+          _this.getFriendList()
         }
       })
     },

@@ -162,7 +162,7 @@ page{
 .showItmeAll{
   /* min-height:74vh;
   overflow-y: scroll; */
-  margin-bottom: 110rpx;
+  padding-bottom: 80rpx;
 }
 .macouar{
   height: 62rpx !important;

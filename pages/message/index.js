@@ -648,7 +648,12 @@ Page({
           })
           _this.gundongfunc()
 
-        } else if (res.data.code == 500 || res.data.code == 400) {
+        }else if (res.data.code == 301) {
+          wx.showToast({
+            title: '无法发送',
+            icon: 'none'
+          })
+        }else if (res.data.code == 500 || res.data.code == 400) {
           wx.showToast({
             title: res.data.msg,
             icon: 'none'
